@@ -9,13 +9,36 @@
     android:background="@drawable/dialog_background"
     android:padding="10dp">
 
+    <FrameLayout
+        android:id="@+id/error_icon"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/error_circle"/>
+
+        <ImageView
+            android:id="@+id/error_x"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/error_center_x"
+            android:scaleType="center"/>
+
+    </FrameLayout>
+
     <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="19sp"
             android:textColor="#575757"
-            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:singleLine="true"
             android:text="@string/dialog_default_title"/>
 

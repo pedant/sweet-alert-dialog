@@ -9,20 +9,32 @@ public class TestActivity extends Activity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.test_activity);
 
         findViewById(R.id.basic_test).setOnClickListener(this);
         findViewById(R.id.under_text_test).setOnClickListener(this);
+        findViewById(R.id.error_text_test).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(this);
+        SweetAlertDialog sweetAlertDialog = null;
         switch (v.getId()) {
+            case R.id.basic_test:
+                sweetAlertDialog = new SweetAlertDialog(this);
+                break;
             case R.id.under_text_test:
+                sweetAlertDialog = new SweetAlertDialog(this);
                 sweetAlertDialog.setContentText("It's pretty, isn't it?");
                 break;
+            case R.id.error_text_test:
+                sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.AlertType.ERROR_TYPE);
+                sweetAlertDialog.setTitleText("Oops...");
+                sweetAlertDialog.setContentText("Something went wrong!");
+                break;
         }
-        sweetAlertDialog.show();
+        if (sweetAlertDialog != null) {
+            sweetAlertDialog.show();
+        }
     }
 }
