@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <rotate
+        android:fromDegrees="0"
+        android:toDegrees="-45"
+        android:pivotX="110%"
+        android:pivotY="42%"
+        android:duration="0"
+        android:fillAfter="true">
+    </rotate>
+
+    <rotate
+        android:fromDegrees="0"
+        android:toDegrees="-45"
+        android:pivotX="10%"
+        android:pivotY="42%"
+        android:duration="0"
+        android:fillAfter="true">
+    </rotate>
+</set>

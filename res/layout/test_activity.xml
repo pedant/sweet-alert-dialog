@@ -72,5 +72,25 @@
             style="@style/dialog_blue_button"
             android:layout_margin="10dp"
             android:text="Try me!"/>
+
+    <TextView
+            android:id="@+id/txt_4"
+            android:layout_alignLeft="@id/logo_img"
+            android:layout_below="@id/error_text_test"
+            android:layout_marginLeft="15dp"
+            android:text="A success message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="15dp"
+            android:textColor="#797979"/>
+
+    <Button
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/txt_4"
+            android:id="@+id/success_text_test"
+            style="@style/dialog_blue_button"
+            android:layout_margin="10dp"
+            android:text="Try me!"/>
 </RelativeLayout>
 

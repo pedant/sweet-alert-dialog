@@ -2,7 +2,7 @@
 
 <set xmlns:android="http://schemas.android.com/apk/res/android"
      xmlns:sweet="http://schemas.android.com/apk/res-auto"
-     android:interpolator="@android:anim/accelerate_interpolator"
+     android:interpolator="@android:anim/linear_interpolator"
      android:shareInterpolator="true">
 
     <alpha

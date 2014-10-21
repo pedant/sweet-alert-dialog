@@ -14,6 +14,7 @@ public class TestActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.basic_test).setOnClickListener(this);
         findViewById(R.id.under_text_test).setOnClickListener(this);
         findViewById(R.id.error_text_test).setOnClickListener(this);
+        findViewById(R.id.success_text_test).setOnClickListener(this);
     }
 
     @Override
@@ -31,6 +32,11 @@ public class TestActivity extends Activity implements View.OnClickListener {
                 sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.AlertType.ERROR_TYPE);
                 sweetAlertDialog.setTitleText("Oops...");
                 sweetAlertDialog.setContentText("Something went wrong!");
+                break;
+            case R.id.success_text_test:
+                sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.AlertType.SUCCESS_TYPE);
+                sweetAlertDialog.setTitleText("Good job!");
+                sweetAlertDialog.setContentText("You clicked the button!");
                 break;
         }
         if (sweetAlertDialog != null) {
