@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/red_button_background_pressed"/>
-    <item android:drawable="@drawable/red_button_background_normal"/>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#CD5B55" />
+            <corners android:radius="6dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#DD6B55" />
+            <corners android:radius="6dp"/>
+        </shape>
+    </item>
 </selector>
