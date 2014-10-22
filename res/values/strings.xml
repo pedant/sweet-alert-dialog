@@ -5,5 +5,5 @@
     <string name="dialog_default_title">Here\'s a message!</string>
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_delete">Yes,delete it!</string>
+    <string name="dialog_confirm">Confirm</string>
 </resources>

@@ -97,13 +97,14 @@
                 android:layout_margin="10dp"
                 android:text="Try me!"/>
 
+
         <TextView
                 android:id="@+id/txt_5"
                 android:layout_alignLeft="@id/logo_img"
                 android:layout_below="@id/success_text_test"
                 android:layout_marginLeft="15dp"
-                android:text="A warning message"
-                android:layout_width="wrap_content"
+                android:text="A warning message, with a listener bind to the Confirm-button..."
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:layout_marginTop="15dp"
@@ -112,7 +113,7 @@
         <Button
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/txt_5"
-                android:id="@+id/warning_text_test"
+                android:id="@+id/warning_confirm_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"
                 android:text="Try me!"/>
@@ -120,10 +121,10 @@
         <TextView
                 android:id="@+id/txt_6"
                 android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/warning_text_test"
+                android:layout_below="@id/warning_confirm_test"
                 android:layout_marginLeft="15dp"
-                android:text="A message with a custom icon"
-                android:layout_width="wrap_content"
+                android:text="A warning message, with listeners bind to Cancel and Confirm button..."
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:layout_marginTop="15dp"
@@ -132,6 +133,26 @@
         <Button
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/txt_6"
+                android:id="@+id/warning_cancel_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!"/>
+
+        <TextView
+                android:id="@+id/txt_7"
+                android:layout_alignLeft="@id/logo_img"
+                android:layout_below="@id/warning_cancel_test"
+                android:layout_marginLeft="15dp"
+                android:text="A message with a custom icon"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="15dp"
+                android:textColor="#797979"/>
+
+        <Button
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/txt_7"
                 android:id="@+id/custom_img_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"

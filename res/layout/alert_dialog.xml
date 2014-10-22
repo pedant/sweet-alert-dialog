@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/loading"
-    android:layout_width="280dp"
+    android:layout_width="290dp"
     android:layout_height="wrap_content"
     android:gravity="center"
     android:layout_gravity="center"
@@ -136,12 +136,12 @@
                 android:id="@+id/cancel_button"
                 style="@style/dialog_blue_button"
                 android:background="@drawable/gray_button_background"
+                android:layout_marginRight="10dp"
                 android:text="@string/dialog_cancel"/>
         <Button
-                android:layout_marginLeft="10dp"
-                android:id="@+id/delete_button"
+                android:id="@+id/confirm_button"
                 style="@style/dialog_blue_button"
                 android:background="@drawable/red_button_background"
-                android:text="@string/dialog_delete"/>
+                android:text="@string/dialog_confirm"/>
     </LinearLayout>
 </LinearLayout>

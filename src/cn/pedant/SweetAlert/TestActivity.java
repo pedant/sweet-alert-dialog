@@ -15,7 +15,8 @@ public class TestActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.under_text_test).setOnClickListener(this);
         findViewById(R.id.error_text_test).setOnClickListener(this);
         findViewById(R.id.success_text_test).setOnClickListener(this);
-        findViewById(R.id.warning_text_test).setOnClickListener(this);
+        findViewById(R.id.warning_confirm_test).setOnClickListener(this);
+        findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
     }
 
@@ -40,10 +41,43 @@ public class TestActivity extends Activity implements View.OnClickListener {
                 sweetAlertDialog.setTitleText("Good job!");
                 sweetAlertDialog.setContentText("You clicked the button!");
                 break;
-            case R.id.warning_text_test:
+            case R.id.warning_confirm_test:
                 sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
                 sweetAlertDialog.setTitleText("Are you sure?");
-                sweetAlertDialog.setContentText("You won't be able to recover this file!");
+                sweetAlertDialog.setContentText("Won't be able to recover this file!");
+                sweetAlertDialog.setConfirmText("Yes,delete it!");
+                sweetAlertDialog.setOnConfirmListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.setTitleText("Deleted!");
+                        sDialog.setContentText("Your imaginary file has been deleted!");
+                        sDialog.setAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                    }
+                });
+                break;
+            case R.id.warning_cancel_test:
+                sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
+                sweetAlertDialog.setTitleText("Are you sure?");
+                sweetAlertDialog.setContentText("Won't be able to recover this file!");
+                sweetAlertDialog.setCancelText("No,cancel plx!");
+                sweetAlertDialog.setConfirmText("Yes,delete it!");
+                sweetAlertDialog.showCancelButton(true);
+                sweetAlertDialog.setOnCancelListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.setTitleText("Cancelled!");
+                        sDialog.setContentText("Your imaginary file is safe :)");
+                        sDialog.setAlertType(SweetAlertDialog.ERROR_TYPE);
+                    }
+                });
+                sweetAlertDialog.setOnConfirmListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.setTitleText("Deleted!");
+                        sDialog.setContentText("Your imaginary file has been deleted!");
+                        sDialog.setAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                    }
+                });
                 break;
             case R.id.custom_img_test:
                 sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE);
@@ -52,6 +86,7 @@ public class TestActivity extends Activity implements View.OnClickListener {
                 sweetAlertDialog.setCustomImage(R.drawable.custom_img);
                 break;
         }
+
         if (sweetAlertDialog != null) {
             sweetAlertDialog.show();
         }
