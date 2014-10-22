@@ -29,11 +29,14 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private SuccessTickView mSuccessTick;
     private ImageView mErrorX;
     private View mSuccessRightMask;
+    private int mCustomImgRes;
+    private ImageView mCustomImage;
 
     public static final int NORMAL_TYPE = 0;
     public static final int ERROR_TYPE = 1;
     public static final int SUCCESS_TYPE = 2;
     public static final int WARNING_TYPE = 3;
+    public static final int CUSTOM_IMAGE_TYPE = 4;
 
     public SweetAlertDialog(Context context) {
         this(context, NORMAL_TYPE);
@@ -88,6 +91,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         FrameLayout successFrame = (FrameLayout)findViewById(R.id.success_frame);
         mSuccessTick = (SuccessTickView)successFrame.findViewById(R.id.success_tick);
         mSuccessRightMask = successFrame.findViewById(R.id.mask_right);
+        mCustomImage = (ImageView)findViewById(R.id.custom_image);
 
         View okButton = findViewById(R.id.ok_button);
         okButton.setOnClickListener(this);
@@ -112,6 +116,9 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                 findViewById(R.id.cancel_button).setOnClickListener(this);
                 findViewById(R.id.delete_button).setOnClickListener(this);
                 break;
+            case CUSTOM_IMAGE_TYPE:
+                setCustomImage(mCustomImgRes);
+                break;
         }
     }
 
@@ -119,6 +126,14 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mTitleText = text;
         if (mTitleTextView != null && mTitleText != null) {
             mTitleTextView.setText(mTitleText);
+        }
+    }
+
+    public void setCustomImage (int resourceId) {
+        mCustomImgRes = resourceId;
+        if (mCustomImage != null && mCustomImgRes > 0) {
+            mCustomImage.setVisibility(View.VISIBLE);
+            mCustomImage.setImageResource(mCustomImgRes);
         }
     }
 

@@ -16,6 +16,7 @@ public class TestActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.error_text_test).setOnClickListener(this);
         findViewById(R.id.success_text_test).setOnClickListener(this);
         findViewById(R.id.warning_text_test).setOnClickListener(this);
+        findViewById(R.id.custom_img_test).setOnClickListener(this);
     }
 
     @Override
@@ -43,6 +44,12 @@ public class TestActivity extends Activity implements View.OnClickListener {
                 sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
                 sweetAlertDialog.setTitleText("Are you sure?");
                 sweetAlertDialog.setContentText("You won't be able to recover this file!");
+                break;
+            case R.id.custom_img_test:
+                sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE);
+                sweetAlertDialog.setTitleText("Sweet!");
+                sweetAlertDialog.setContentText("Here's a custom image.");
+                sweetAlertDialog.setCustomImage(R.drawable.custom_img);
                 break;
         }
         if (sweetAlertDialog != null) {

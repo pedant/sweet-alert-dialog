@@ -9,6 +9,15 @@
     android:background="@drawable/dialog_background"
     android:padding="10dp">
 
+    <ImageView
+        android:id="@+id/custom_image"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/app_name"
+        android:visibility="gone"
+        android:scaleType="fitCenter"/>
+
     <FrameLayout
         android:id="@+id/error_frame"
         android:layout_width="53dp"

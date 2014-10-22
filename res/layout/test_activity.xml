@@ -5,6 +5,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout android:layout_width="match_parent"
+                    android:paddingBottom="10dp"
                   android:layout_height="wrap_content">
 
         <ImageView
@@ -112,6 +113,26 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/txt_5"
                 android:id="@+id/warning_text_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!"/>
+
+        <TextView
+                android:id="@+id/txt_6"
+                android:layout_alignLeft="@id/logo_img"
+                android:layout_below="@id/warning_text_test"
+                android:layout_marginLeft="15dp"
+                android:text="A message with a custom icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="15dp"
+                android:textColor="#797979"/>
+
+        <Button
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/txt_6"
+                android:id="@+id/custom_img_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"
                 android:text="Try me!"/>
