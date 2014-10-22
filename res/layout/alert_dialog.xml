@@ -73,7 +73,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/success_circle"/>
 
-        <cn.pedant.SweetAlert.ui.SuccessTickView
+        <cn.pedant.SweetAlert.widget.SuccessTickView
                 android:id="@+id/success_tick"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
@@ -119,29 +119,21 @@
             android:textColor="#797979"
             android:visibility="gone"/>
 
-    <Button
-            android:id="@+id/ok_button"
-            style="@style/dialog_blue_button"
-            android:layout_marginTop="10dp"
-            android:text="@string/dialog_ok"/>
-
     <LinearLayout
-            android:id="@+id/warning_buttons"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:gravity="center">
         <Button
                 android:id="@+id/cancel_button"
                 style="@style/dialog_blue_button"
                 android:background="@drawable/gray_button_background"
                 android:layout_marginRight="10dp"
+                android:visibility="gone"
                 android:text="@string/dialog_cancel"/>
         <Button
                 android:id="@+id/confirm_button"
                 style="@style/dialog_blue_button"
-                android:background="@drawable/red_button_background"
-                android:text="@string/dialog_confirm"/>
+                android:text="@string/dialog_ok"/>
     </LinearLayout>
 </LinearLayout>
