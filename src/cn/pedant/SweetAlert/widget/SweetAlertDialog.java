@@ -3,6 +3,7 @@ package cn.pedant.SweetAlert.widget;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -35,7 +36,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private ImageView mErrorX;
     private View mSuccessLeftMask;
     private View mSuccessRightMask;
-    private int mCustomImgRes;
+    private Drawable mCustomImgDrawable;
     private ImageView mCustomImage;
     private Button mConfirmButton;
     private Button mCancelButton;
@@ -167,7 +168,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                     mWarningFrame.setVisibility(View.VISIBLE);
                     break;
                 case CUSTOM_IMAGE_TYPE:
-                    setCustomImage(mCustomImgRes);
+                    setCustomImage(mCustomImgDrawable);
                     break;
             }
             if (!fromCreate) {
@@ -197,13 +198,17 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
-    public SweetAlertDialog setCustomImage (int resourceId) {
-        mCustomImgRes = resourceId;
-        if (mCustomImage != null && mCustomImgRes > 0) {
+    public SweetAlertDialog setCustomImage (Drawable drawable) {
+        mCustomImgDrawable = drawable;
+        if (mCustomImage != null && mCustomImgDrawable != null) {
             mCustomImage.setVisibility(View.VISIBLE);
-            mCustomImage.setImageResource(mCustomImgRes);
+            mCustomImage.setImageDrawable(mCustomImgDrawable);
         }
         return this;
+    }
+
+    public SweetAlertDialog setCustomImage (int resourceId) {
+        return setCustomImage(getContext().getResources().getDrawable(resourceId));
     }
 
     public String getContentText () {
