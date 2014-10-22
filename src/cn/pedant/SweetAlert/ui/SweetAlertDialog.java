@@ -24,24 +24,22 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private TextView mContentTextView;
     private String mTitleText;
     private String mContentText;
-    private AlertType mAlertType;
+    private int mAlertType;
     private FrameLayout mErrorFrame;
     private SuccessTickView mSuccessTick;
     private ImageView mErrorX;
     private View mSuccessRightMask;
 
-    public static enum AlertType {
-        NORMAL_TYPE,
-        ERROR_TYPE,
-        SUCCESS_TYPE,
-        WARNING_TYPE
-    }
+    public static final int NORMAL_TYPE = 0;
+    public static final int ERROR_TYPE = 1;
+    public static final int SUCCESS_TYPE = 2;
+    public static final int WARNING_TYPE = 3;
 
     public SweetAlertDialog(Context context) {
-        this(context, AlertType.NORMAL_TYPE);
+        this(context, NORMAL_TYPE);
     }
 
-    public SweetAlertDialog(Context context, AlertType alertType) {
+    public SweetAlertDialog(Context context, int alertType) {
         super(context, R.style.alert_dialog);
         setCancelable(true);
         setCanceledOnTouchOutside(false);
@@ -70,11 +68,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
             }
         });
-        if (mAlertType == AlertType.ERROR_TYPE) {
+        if (mAlertType == ERROR_TYPE) {
             mErrorInAnim = OptAnimationLoader.loadAnimation(getContext(), R.anim.error_frame_in);
             mErrorXInAnim = OptAnimationLoader.loadAnimation(getContext(), R.anim.error_x_in);
-        }
-        if (mAlertType == AlertType.SUCCESS_TYPE) {
+        } else if (mAlertType == SUCCESS_TYPE) {
             mSuccessBowAnim = OptAnimationLoader.loadAnimation(getContext(), R.anim.success_bow_roate);
             mSuccessLayoutAnimSet = (AnimationSet)OptAnimationLoader.loadAnimation(getContext(), R.anim.success_mask_layout);
         }
@@ -92,19 +89,29 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mSuccessTick = (SuccessTickView)successFrame.findViewById(R.id.success_tick);
         mSuccessRightMask = successFrame.findViewById(R.id.mask_right);
 
-        findViewById(R.id.ok_button).setOnClickListener(this);
+        View okButton = findViewById(R.id.ok_button);
+        okButton.setOnClickListener(this);
 
         setTitleText(mTitleText);
         setContentText(mContentText);
 
-        if (mAlertType == AlertType.ERROR_TYPE) {
-            mErrorFrame.setVisibility(View.VISIBLE);
-        }
-        if (mAlertType == AlertType.SUCCESS_TYPE) {
-            successFrame.setVisibility(View.VISIBLE);
-            // initial rotate layout of success mask
-            findViewById(R.id.mask_left).startAnimation(mSuccessLayoutAnimSet.getAnimations().get(0));
-            mSuccessRightMask.startAnimation(mSuccessLayoutAnimSet.getAnimations().get(1));
+        switch (mAlertType) {
+            case ERROR_TYPE:
+                mErrorFrame.setVisibility(View.VISIBLE);
+                break;
+            case SUCCESS_TYPE:
+                successFrame.setVisibility(View.VISIBLE);
+                // initial rotate layout of success mask
+                findViewById(R.id.mask_left).startAnimation(mSuccessLayoutAnimSet.getAnimations().get(0));
+                mSuccessRightMask.startAnimation(mSuccessLayoutAnimSet.getAnimations().get(1));
+                break;
+            case WARNING_TYPE:
+                okButton.setVisibility(View.GONE);
+                findViewById(R.id.warning_frame).setVisibility(View.VISIBLE);
+                findViewById(R.id.warning_buttons).setVisibility(View.VISIBLE);
+                findViewById(R.id.cancel_button).setOnClickListener(this);
+                findViewById(R.id.delete_button).setOnClickListener(this);
+                break;
         }
     }
 
@@ -125,12 +132,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     protected void onStart() {
         mDialogView.startAnimation(mScaleInAnim);
-        if (mErrorInAnim != null) {
+        if (mAlertType == ERROR_TYPE) {
             mErrorFrame.startAnimation(mErrorInAnim);
             mErrorX.startAnimation(mErrorXInAnim);
-        }
-
-        if (mSuccessBowAnim != null) {
+        } else if (mAlertType == SUCCESS_TYPE) {
             mSuccessTick.startTickAnim();
             mSuccessRightMask.startAnimation(mSuccessBowAnim);
         }
@@ -144,6 +149,9 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ok_button:
+                dismiss();
+                break;
+            case R.id.cancel_button:
                 dismiss();
                 break;
         }

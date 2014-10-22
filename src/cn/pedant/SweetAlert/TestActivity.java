@@ -15,6 +15,7 @@ public class TestActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.under_text_test).setOnClickListener(this);
         findViewById(R.id.error_text_test).setOnClickListener(this);
         findViewById(R.id.success_text_test).setOnClickListener(this);
+        findViewById(R.id.warning_text_test).setOnClickListener(this);
     }
 
     @Override
@@ -29,14 +30,19 @@ public class TestActivity extends Activity implements View.OnClickListener {
                 sweetAlertDialog.setContentText("It's pretty, isn't it?");
                 break;
             case R.id.error_text_test:
-                sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.AlertType.ERROR_TYPE);
+                sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
                 sweetAlertDialog.setTitleText("Oops...");
                 sweetAlertDialog.setContentText("Something went wrong!");
                 break;
             case R.id.success_text_test:
-                sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.AlertType.SUCCESS_TYPE);
+                sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
                 sweetAlertDialog.setTitleText("Good job!");
                 sweetAlertDialog.setContentText("You clicked the button!");
+                break;
+            case R.id.warning_text_test:
+                sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
+                sweetAlertDialog.setTitleText("Are you sure?");
+                sweetAlertDialog.setContentText("You won't be able to recover this file!");
                 break;
         }
         if (sweetAlertDialog != null) {

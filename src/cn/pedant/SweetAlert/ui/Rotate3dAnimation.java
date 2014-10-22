@@ -11,25 +11,21 @@ import android.view.animation.Transformation;
 import cn.pedant.SweetAlert.R;
 
 public class Rotate3dAnimation extends Animation {
-    private float mFromDegrees;
-    private float mToDegrees;
-
     private int mPivotXType = ABSOLUTE;
     private int mPivotYType = ABSOLUTE;
     private float mPivotXValue = 0.0f;
     private float mPivotYValue = 0.0f;
 
+    private float mFromDegrees;
+    private float mToDegrees;
     private float mPivotX;
     private float mPivotY;
-
     private Camera mCamera;
-    private RollType mRollType;
+    private int mRollType;
 
-    public static enum RollType {
-        ROLL_BY_X,
-        ROLL_BY_Y,
-        ROLL_BY_Z
-    }
+    public static final int ROLL_BY_X = 0;
+    public static final int ROLL_BY_Y = 1;
+    public static final int ROLL_BY_Z = 2;
 
     protected static class Description {
         public int type;
@@ -73,14 +69,7 @@ public class Rotate3dAnimation extends Animation {
 
         mFromDegrees = a.getFloat(R.styleable.Rotate3dAnimation_fromDeg, 0.0f);
         mToDegrees = a.getFloat(R.styleable.Rotate3dAnimation_toDeg, 0.0f);
-        int rollType = a.getInt(R.styleable.Rotate3dAnimation_rollType, 0);
-        if (1 == rollType) {
-            mRollType = RollType.ROLL_BY_Y;
-        } else if (2 == rollType) {
-            mRollType = RollType.ROLL_BY_Z;
-        } else {
-            mRollType = RollType.ROLL_BY_X;
-        }
+        mRollType = a.getInt(R.styleable.Rotate3dAnimation_rollType, ROLL_BY_X);
         Description d = parseValue(a.peekValue(R.styleable.Rotate3dAnimation_pivotX));
         mPivotXType = d.type;
         mPivotXValue = d.value;
@@ -94,14 +83,16 @@ public class Rotate3dAnimation extends Animation {
         initializePivotPoint();
     }
 
-    public Rotate3dAnimation (RollType rollType, float fromDegrees, float toDegrees) {
+    public Rotate3dAnimation (int rollType, float fromDegrees, float toDegrees) {
+        mRollType = rollType;
         mFromDegrees = fromDegrees;
         mToDegrees = toDegrees;
         mPivotX = 0.0f;
         mPivotY = 0.0f;
     }
 
-    public Rotate3dAnimation (RollType rollType, float fromDegrees, float toDegrees, float pivotX, float pivotY) {
+    public Rotate3dAnimation (int rollType, float fromDegrees, float toDegrees, float pivotX, float pivotY) {
+        mRollType = rollType;
         mFromDegrees = fromDegrees;
         mToDegrees = toDegrees;
 
@@ -112,8 +103,8 @@ public class Rotate3dAnimation extends Animation {
         initializePivotPoint();
     }
 
-    public Rotate3dAnimation (RollType rollType, float fromDegrees, float toDegrees, int pivotXType, float pivotXValue,
-                           int pivotYType, float pivotYValue) {
+    public Rotate3dAnimation (int rollType, float fromDegrees, float toDegrees, int pivotXType, float pivotXValue, int pivotYType, float pivotYValue) {
+        mRollType = rollType;
         mFromDegrees = fromDegrees;
         mToDegrees = toDegrees;
 
@@ -149,12 +140,16 @@ public class Rotate3dAnimation extends Animation {
         final Matrix matrix = t.getMatrix();
 
         mCamera.save();
-        if (mRollType == RollType.ROLL_BY_X) {
-            mCamera.rotateX(degrees);
-        } else if (mRollType == RollType.ROLL_BY_Y) {
-            mCamera.rotateY(degrees);
-        } else if (mRollType == RollType.ROLL_BY_Z) {
-            mCamera.rotateZ(degrees);
+        switch (mRollType) {
+            case ROLL_BY_X:
+                mCamera.rotateX(degrees);
+                break;
+            case ROLL_BY_Y:
+                mCamera.rotateY(degrees);
+                break;
+            case ROLL_BY_Z:
+                mCamera.rotateZ(degrees);
+                break;
         }
         mCamera.getMatrix(matrix);
         mCamera.restore();

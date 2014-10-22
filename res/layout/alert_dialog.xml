@@ -71,6 +71,26 @@
 
     </FrameLayout>
 
+    <FrameLayout
+            android:id="@+id/warning_frame"
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone">
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/warning_circle"/>
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/warning_sigh"
+                android:scaleType="center"/>
+    </FrameLayout>
+
     <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
@@ -96,4 +116,23 @@
             android:layout_marginTop="10dp"
             android:text="@string/dialog_ok"/>
 
+    <LinearLayout
+            android:id="@+id/warning_buttons"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:gravity="center">
+        <Button
+                android:id="@+id/cancel_button"
+                style="@style/dialog_blue_button"
+                android:background="@drawable/gray_button_background"
+                android:text="@string/dialog_cancel"/>
+        <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/delete_button"
+                style="@style/dialog_blue_button"
+                android:background="@drawable/red_button_background"
+                android:text="@string/dialog_delete"/>
+    </LinearLayout>
 </LinearLayout>
