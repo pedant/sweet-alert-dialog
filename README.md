@@ -79,7 +79,7 @@ Sweet Alert Dialog
         })
         .show();
 
-确认后对话框样式切换：
+确认后**切换**对话框样式：
 
     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
         .setTitleText("Are you sure?")
@@ -98,7 +98,7 @@ Sweet Alert Dialog
         })
         .show();
 
-[更多Android原创技术分享见:http://www.pedant.cn](http://www.pedant.cn)
+[更多Android原创技术分享见: pedant.cn](http://www.pedant.cn)
 
 ## License
 
@@ -123,4 +123,5 @@ Sweet Alert Dialog
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
+
 
