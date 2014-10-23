@@ -104,7 +104,7 @@ Sweet Alert Dialog
 
     The MIT License (MIT)
 
-    Copyright (c) 2014 书呆子(http://pedant.cn)
+    Copyright (c) 2014 Pedant(http://pedant.cn)
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
