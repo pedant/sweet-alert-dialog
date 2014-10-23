@@ -2,7 +2,7 @@ Sweet Alert Dialog
 ===================
 灵感来源于JS版SweetAlert(http://tristanedwards.me/sweetalert)
 
-## Demo
+## Sample
 ![image](https://github.com/pedant/sweet-alert-dialog/raw/master/tmp_screen.jpg)
 
 ## 如何开始
@@ -97,4 +97,6 @@ Sweet Alert Dialog
             }
         })
         .show();
+
+更多使用案例见Sample内代码！
 

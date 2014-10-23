@@ -2,13 +2,13 @@ package cn.pedant.SweetAlert.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import cn.pedant.SweetAlert.R;
 
 public class SuccessTickView extends View {
     private float mDensity = -1;
@@ -37,7 +37,7 @@ public class SuccessTickView extends View {
 
     private void init () {
         mPaint = new Paint();
-        mPaint.setColor(Color.parseColor("#A5DC86"));
+        mPaint.setColor(getResources().getColor(R.color.success_stroke_color));
         mLeftRectWidth = CONST_LEFT_RECT_W;
         mRightRectWidth = CONST_RIGHT_RECT_W;
         mLeftRectGrowMode = false;
