@@ -98,7 +98,7 @@ Sweet Alert Dialog
         })
         .show();
 
-更多使用案例见Sample内代码！
+[更多Android原创技术分享见:http://www.pedant.cn](http://www.pedant.cn)
 
 ## License
 
