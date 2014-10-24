@@ -2,20 +2,20 @@ Sweet Alert Dialog
 ===================
 
 ## Sample
-![image](https://github.com/pedant/sweet-alert-dialog/raw/master/show_error.gif)![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
+![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)![image](https://github.com/pedant/sweet-alert-dialog/raw/master/show_error.gif)
 
 灵感来源于JS版[SweetAlert](http://tristanedwards.me/sweetalert)
 
 ## 如何开始
 只显示标题：
 
-	new SweetAlertDialog(this)
+    new SweetAlertDialog(this)
         .setTitleText("Here's a message!")
         .show();
 
 显示标题和内容：
 
-	new SweetAlertDialog(this)
+    new SweetAlertDialog(this)
         .setTitleText("Here's a message!")
         .setContentText("It's pretty, isn't it?")
         .show();
