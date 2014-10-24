@@ -1,9 +1,11 @@
 Sweet Alert Dialog
 ===================
-灵感来源于JS版SweetAlert(http://tristanedwards.me/sweetalert)
 
 ## Sample
-![image](https://github.com/pedant/sweet-alert-dialog/raw/master/tmp_screen.jpg)
+![image](https://github.com/pedant/sweet-alert-dialog/raw/master/show_error.gif)
+![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
+
+灵感来源于JS版[SweetAlert](http://tristanedwards.me/sweetalert)
 
 ## 如何开始
 只显示标题：
