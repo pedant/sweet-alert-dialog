@@ -2,8 +2,7 @@ Sweet Alert Dialog
 ===================
 
 ## Sample
-![image](https://github.com/pedant/sweet-alert-dialog/raw/master/show_error.gif)
-![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
+![image](https://github.com/pedant/sweet-alert-dialog/raw/master/show_error.gif)![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
 
 灵感来源于JS版[SweetAlert](http://tristanedwards.me/sweetalert)
 
