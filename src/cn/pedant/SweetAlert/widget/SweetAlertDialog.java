@@ -4,8 +4,10 @@ package cn.pedant.SweetAlert.widget;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.widget.Button;
@@ -14,12 +16,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import cn.pedant.SweetAlert.R;
 
+import java.util.List;
+
 public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private View mDialogView;
     private AnimationSet mScaleInAnim;
     private AnimationSet mScaleOutAnim;
     private Animation mErrorInAnim;
-    private Animation mErrorXInAnim;
+    private AnimationSet mErrorXInAnim;
     private AnimationSet mSuccessLayoutAnimSet;
     private Animation mSuccessBowAnim;
     private TextView mTitleTextView;
@@ -64,7 +68,21 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setCanceledOnTouchOutside(false);
         mAlertType = alertType;
         mErrorInAnim = OptAnimationLoader.loadAnimation(getContext(), R.anim.error_frame_in);
-        mErrorXInAnim = OptAnimationLoader.loadAnimation(getContext(), R.anim.error_x_in);
+        mErrorXInAnim = (AnimationSet)OptAnimationLoader.loadAnimation(getContext(), R.anim.error_x_in);
+        // 2.3.x system don't support alpha-animation on layer-list drawable
+        // remove it from animation set
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1) {
+            List<Animation> childAnims = mErrorXInAnim.getAnimations();
+            int idx = 0;
+            for (;idx < childAnims.size();idx++) {
+                if (childAnims.get(idx) instanceof AlphaAnimation) {
+                    break;
+                }
+            }
+            if (idx < childAnims.size()) {
+                childAnims.remove(idx);
+            }
+        }
         mSuccessBowAnim = OptAnimationLoader.loadAnimation(getContext(), R.anim.success_bow_roate);
         mSuccessLayoutAnimSet = (AnimationSet)OptAnimationLoader.loadAnimation(getContext(), R.anim.success_mask_layout);
         mScaleInAnim = (AnimationSet) OptAnimationLoader.loadAnimation(getContext(), R.anim.dialog_scale_in);
