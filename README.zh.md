@@ -3,7 +3,11 @@ Sweet Alert Dialog
 
 ![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
 
+[English Version](https://github.com/pedant/sweet-alert-dialog/raw/master/README.md)
+
 灵感来源于JS版[SweetAlert](http://tristanedwards.me/sweetalert)
+
+[Demo下载](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.0/sweet-alert-sample-v1.0.apk)
 
 ## 如何开始
 只显示标题：

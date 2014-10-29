@@ -1,32 +1,35 @@
 Sweet Alert Dialog
 ===================
-
 ![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
 
-灵感来源于JS版[SweetAlert](http://tristanedwards.me/sweetalert)
+[中文版](https://github.com/pedant/sweet-alert-dialog/raw/master/README.zh.md)
 
-## 如何开始
-只显示标题：
+Inspired by JavaScript [SweetAlert](http://tristanedwards.me/sweetalert)
+
+[Demo Download](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.0/sweet-alert-sample-v1.0.apk)
+
+## Usage
+A basic message：
 
     new SweetAlertDialog(this)
         .setTitleText("Here's a message!")
         .show();
 
-显示标题和内容：
+A title with a text under：
 
     new SweetAlertDialog(this)
         .setTitleText("Here's a message!")
         .setContentText("It's pretty, isn't it?")
         .show();
 
-显示异常样式：
+A error message：
 
     new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
         .setTitleText("Oops...")
         .setContentText("Something went wrong!")
         .show();
 
-显示警告样式：
+A warning message：
 
     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
         .setTitleText("Are you sure?")
@@ -34,14 +37,14 @@ Sweet Alert Dialog
         .setConfirmText("Yes,delete it!")
         .show();
 
-显示成功完成样式：
+A success message：
 
     new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
         .setTitleText("Good job!")
         .setContentText("You clicked the button!")
         .show();
 
-自定义头部图像：
+A message with a custom icon：
 
     new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
         .setTitleText("Sweet!")
@@ -49,7 +52,7 @@ Sweet Alert Dialog
         .setCustomImage(R.drawable.custom_img)
         .show();
 
-确认事件绑定：
+Bind the listener to confirm button：
 
     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
         .setTitleText("Are you sure?")
@@ -63,7 +66,7 @@ Sweet Alert Dialog
         })
         .show();
 
-显示取消按钮及事件绑定：
+Show the cancel button and bind listener to it：
 
     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
         .setTitleText("Are you sure?")
@@ -79,7 +82,7 @@ Sweet Alert Dialog
         })
         .show();
 
-确认后**切换**对话框样式：
+**Change** the dialog style upon confirming：
 
     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
         .setTitleText("Are you sure?")
@@ -98,7 +101,7 @@ Sweet Alert Dialog
         })
         .show();
 
-[更多Android原创技术分享见: pedant.cn](http://www.pedant.cn)
+[more android tech shares: pedant.cn](http://www.pedant.cn)
 
 ## License
 
