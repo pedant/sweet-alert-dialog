@@ -3,7 +3,7 @@ Sweet Alert Dialog
 
 ![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
 
-[English Version](https://github.com/pedant/sweet-alert-dialog/raw/master/README.md)
+[English Version](https://github.com/pedant/sweet-alert-dialog/blob/master/README.md)
 
 灵感来源于JS版[SweetAlert](http://tristanedwards.me/sweetalert)
 
