@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -20,8 +21,9 @@ import java.util.List;
 
 public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private View mDialogView;
-    private AnimationSet mScaleInAnim;
-    private AnimationSet mScaleOutAnim;
+    private AnimationSet mModalInAnim;
+    private AnimationSet mModalOutAnim;
+    private Animation mOverlayOutAnim;
     private Animation mErrorInAnim;
     private AnimationSet mErrorXInAnim;
     private AnimationSet mSuccessLayoutAnimSet;
@@ -85,9 +87,9 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         }
         mSuccessBowAnim = OptAnimationLoader.loadAnimation(getContext(), R.anim.success_bow_roate);
         mSuccessLayoutAnimSet = (AnimationSet)OptAnimationLoader.loadAnimation(getContext(), R.anim.success_mask_layout);
-        mScaleInAnim = (AnimationSet) OptAnimationLoader.loadAnimation(getContext(), R.anim.dialog_scale_in);
-        mScaleOutAnim = (AnimationSet) OptAnimationLoader.loadAnimation(getContext(), R.anim.dialog_scale_out);
-        mScaleOutAnim.setAnimationListener(new Animation.AnimationListener() {
+        mModalInAnim = (AnimationSet) OptAnimationLoader.loadAnimation(getContext(), R.anim.modal_in);
+        mModalOutAnim = (AnimationSet) OptAnimationLoader.loadAnimation(getContext(), R.anim.modal_out);
+        mModalOutAnim.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
 
@@ -109,6 +111,14 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
             }
         });
+        // dialog overlay fade out
+        mOverlayOutAnim = new Animation() {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                getWindow().getDecorView().getBackground().setAlpha((int)((1 - interpolatedTime) * 255));
+            }
+        };
+        mOverlayOutAnim.setDuration(150);
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -289,12 +299,13 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     }
 
     protected void onStart() {
-        mDialogView.startAnimation(mScaleInAnim);
+        mDialogView.startAnimation(mModalInAnim);
         playAnimation();
     }
 
     public void dismiss() {
-        mDialogView.startAnimation(mScaleOutAnim);
+        mConfirmButton.startAnimation(mOverlayOutAnim);
+        mDialogView.startAnimation(mModalOutAnim);
     }
 
     @Override
