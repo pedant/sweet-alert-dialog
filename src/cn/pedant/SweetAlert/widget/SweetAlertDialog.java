@@ -299,6 +299,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     }
 
     protected void onStart() {
+        getWindow().getDecorView().getBackground().setAlpha(255);
         mDialogView.startAnimation(mModalInAnim);
         playAnimation();
     }
