@@ -1,4 +1,4 @@
-package cn.pedant.SweetAlert;
+package cn.pedant.SweetAlert.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
