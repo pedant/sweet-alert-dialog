@@ -1,9 +1,10 @@
-package cn.pedant.SweetAlert;
+package cn.pedant.SweetAlert.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import cn.pedant.SweetAlert.widget.SweetAlertDialog;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SampleActivity extends Activity implements View.OnClickListener {
     @Override

@@ -1,4 +1,4 @@
-package cn.pedant.SweetAlert.widget;
+package cn.pedant.SweetAlert;
 
 
 import android.app.Dialog;
@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cn.pedant.SweetAlert.R;
 
 import java.util.List;
 
@@ -311,21 +310,18 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.cancel_button:
-                if (mCancelClickListener != null) {
-                    mCancelClickListener.onClick(SweetAlertDialog.this);
-                } else {
-                    dismiss();
-                }
-                break;
-            case R.id.confirm_button:
-                if (mConfirmClickListener != null) {
-                    mConfirmClickListener.onClick(SweetAlertDialog.this);
-                } else {
-                    dismiss();
-                }
-                break;
+        if (v.getId() == R.id.cancel_button) {
+            if (mCancelClickListener != null) {
+                mCancelClickListener.onClick(SweetAlertDialog.this);
+            } else {
+                dismiss();
+            }
+        } else if (v.getId() == R.id.confirm_button) {
+            if (mConfirmClickListener != null) {
+                mConfirmClickListener.onClick(SweetAlertDialog.this);
+            } else {
+                dismiss();
+            }
         }
     }
 }

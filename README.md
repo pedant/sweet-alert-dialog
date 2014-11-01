@@ -8,6 +8,28 @@ Inspired by JavaScript [SweetAlert](http://tristanedwards.me/sweetalert)
 
 [Demo Download](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.0/sweet-alert-sample-v1.0.apk)
 
+## Setup
+The simplest way to use SweetAlertDialog is to add the library as aar dependency to your build.
+
+**Maven**
+
+    <dependency>
+      <groupId>cn.pedant.sweetalert</groupId>
+      <artifactId>library</artifactId>
+      <version>1.1</version>
+      <type>aar</type>
+    </dependency>
+
+**Gradle**
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'cn.pedant.sweetalert:library:1.1'
+    }
+
 ## Usage
 A basic message：
 

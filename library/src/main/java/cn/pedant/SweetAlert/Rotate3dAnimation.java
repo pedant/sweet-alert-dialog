@@ -1,4 +1,4 @@
-package cn.pedant.SweetAlert.widget;
+package cn.pedant.SweetAlert;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
-import cn.pedant.SweetAlert.R;
 
 public class Rotate3dAnimation extends Animation {
     private int mPivotXType = ABSOLUTE;

@@ -1,0 +1,23 @@
+apply plugin: 'com.android.application'
+
+version = VERSION_NAME
+group = GROUP
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 17
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    //compile 'cn.pedant.sweetalert:library:1.1'
+    compile project(':library')
+}

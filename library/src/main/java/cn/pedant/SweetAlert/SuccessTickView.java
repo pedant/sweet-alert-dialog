@@ -1,4 +1,4 @@
-package cn.pedant.SweetAlert.widget;
+package cn.pedant.SweetAlert;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
-import cn.pedant.SweetAlert.R;
 
 public class SuccessTickView extends View {
     private float mDensity = -1;

@@ -9,6 +9,28 @@ Sweet Alert Dialog
 
 [Demo下载](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.0/sweet-alert-sample-v1.0.apk)
 
+## 安装
+使用SweetAlertDialog最简单的办法就是像下面这样添加项目依赖。
+
+**Maven**
+
+    <dependency>
+      <groupId>cn.pedant.sweetalert</groupId>
+      <artifactId>library</artifactId>
+      <version>1.1</version>
+      <type>aar</type>
+    </dependency>
+
+**Gradle**
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'cn.pedant.sweetalert:library:1.1'
+    }
+
 ## 如何开始
 只显示标题：
 

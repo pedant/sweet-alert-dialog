@@ -1,4 +1,4 @@
-package cn.pedant.SweetAlert.widget;
+package cn.pedant.SweetAlert;
 
 import android.content.Context;
 import android.content.res.Resources;
