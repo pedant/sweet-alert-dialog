@@ -6,7 +6,7 @@ Sweet Alert Dialog
 
 Inspired by JavaScript [SweetAlert](http://tristanedwards.me/sweetalert)
 
-[Demo Download](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.0/sweet-alert-sample-v1.0.apk)
+[Demo Download](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.1/sweet-alert-sample-v1.1.apk)
 
 ## Setup
 The simplest way to use SweetAlertDialog is to add the library as aar dependency to your build.
