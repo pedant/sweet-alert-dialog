@@ -7,7 +7,7 @@ Sweet Alert Dialog
 
 灵感来源于JS版[SweetAlert](http://tristanedwards.me/sweetalert)
 
-[Demo下载](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.0/sweet-alert-sample-v1.0.apk)
+[Demo下载](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.1/sweet-alert-sample-v1.1.apk)
 
 ## 安装
 使用SweetAlertDialog最简单的办法就是像下面这样添加项目依赖。
