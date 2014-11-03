@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -114,10 +115,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mOverlayOutAnim = new Animation() {
             @Override
             protected void applyTransformation(float interpolatedTime, Transformation t) {
-                getWindow().getDecorView().getBackground().setAlpha((int)((1 - interpolatedTime) * 255));
+                WindowManager.LayoutParams wlp = getWindow().getAttributes();
+                wlp.alpha = 1 - interpolatedTime;
+                getWindow().setAttributes(wlp);
             }
         };
-        mOverlayOutAnim.setDuration(150);
+        mOverlayOutAnim.setDuration(120);
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -298,7 +301,6 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     }
 
     protected void onStart() {
-        getWindow().getDecorView().getBackground().setAlpha(255);
         mDialogView.startAnimation(mModalInAnim);
         playAnimation();
     }
