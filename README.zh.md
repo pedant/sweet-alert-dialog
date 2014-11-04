@@ -1,13 +1,17 @@
 Sweet Alert Dialog
 ===================
+Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
 
-![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Sweet%20Alert%20Dialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1065)
 
 [English Version](https://github.com/pedant/sweet-alert-dialog/blob/master/README.md)
 
 灵感来源于JS版[SweetAlert](http://tristanedwards.me/sweetalert)
 
 [Demo下载](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.1/sweet-alert-sample-v1.1.apk)
+
+## 运行示意图
+![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
 
 ## 安装
 使用SweetAlertDialog最简单的办法就是像下面这样添加项目依赖。
