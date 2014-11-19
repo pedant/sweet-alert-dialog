@@ -3,11 +3,11 @@
     android:id="@+id/loading"
     android:layout_width="290dp"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:layout_gravity="center"
-    android:orientation="vertical"
     android:background="@drawable/dialog_background"
-    android:padding="10dp">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp" >
 
     <ImageView
         android:id="@+id/custom_image"
@@ -15,125 +15,151 @@
         android:layout_height="53dp"
         android:layout_marginTop="5dp"
         android:contentDescription="@string/app_name"
-        android:visibility="gone"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
 
     <FrameLayout
         android:id="@+id/error_frame"
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:layout_marginTop="5dp"
-        android:visibility="gone">
+        android:visibility="gone" >
 
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/error_circle"/>
+            android:background="@drawable/error_circle" />
 
         <ImageView
             android:id="@+id/error_x"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/error_center_x"
-            android:scaleType="center"/>
-
+            android:scaleType="center"
+            android:src="@drawable/error_center_x" />
     </FrameLayout>
 
     <FrameLayout
-            android:id="@+id/success_frame"
-            android:layout_width="53dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="5dp"
-            android:visibility="gone">
+        android:id="@+id/success_frame"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone" >
 
         <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/success_bow"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/success_bow" />
 
         <View
-                android:id="@+id/mask_right"
-                android:layout_width="35dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="-13dp"
-                android:layout_gravity="right"
-                android:background="@android:color/white"/>
+            android:id="@+id/mask_right"
+            android:layout_width="35dp"
+            android:layout_height="80dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="-13dp"
+            android:background="@android:color/white" />
 
         <View
-                android:id="@+id/mask_left"
-                android:layout_width="21dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="-3dp"
-                android:layout_gravity="left"
-                android:background="@android:color/white"/>
+            android:id="@+id/mask_left"
+            android:layout_width="21dp"
+            android:layout_height="60dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="-3dp"
+            android:background="@android:color/white" />
 
         <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/success_circle"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/success_circle" />
 
-        <cn.pedant.SweetAlert.SuccessTickView
-                android:id="@+id/success_tick"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
+        <cn.pedant.SweetAlert.widget.SuccessTickView
+            android:id="@+id/success_tick"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </FrameLayout>
 
     <FrameLayout
-            android:id="@+id/warning_frame"
-            android:layout_width="53dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="5dp"
-            android:visibility="gone">
+        android:id="@+id/warning_frame"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone" >
 
         <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/warning_circle"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/warning_circle" />
 
         <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/warning_sigh"
-                android:scaleType="center"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="center"
+            android:src="@drawable/warning_sigh" />
     </FrameLayout>
 
     <TextView
-            android:id="@+id/title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="19sp"
-            android:textColor="#575757"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:singleLine="true"
-            android:text="@string/dialog_default_title"/>
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:text="@string/dialog_default_title"
+        android:textColor="#575757"
+        android:textSize="15sp" />
 
     <TextView
-            android:id="@+id/content_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#797979"
-            android:visibility="gone"/>
+        android:id="@+id/content_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#797979"
+        android:textSize="14sp"
+        android:visibility="gone" />
 
     <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center" >
+
         <Button
-                android:id="@+id/cancel_button"
-                style="@style/dialog_blue_button"
-                android:background="@drawable/gray_button_background"
-                android:layout_marginRight="10dp"
-                android:visibility="gone"
-                android:text="@string/dialog_cancel"/>
+            android:id="@+id/cancel_button"
+            style="@style/dialog_blue_button"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/gray_button_background"
+            android:text="@string/dialog_cancel"
+            android:visibility="gone" />
+
         <Button
-                android:id="@+id/confirm_button"
-                style="@style/dialog_blue_button"
-                android:text="@string/dialog_ok"/>
+            android:id="@+id/confirm_button"
+            style="@style/dialog_blue_button"
+            android:text="@string/dialog_ok" />
+
+        <Button
+            android:id="@+id/third_button"
+            style="@style/dialog_red_button"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/green_button_background"
+            android:text="@string/dialog_cancel"
+            android:visibility="gone" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <CheckBox
+            android:id="@+id/sweetSec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#575757"
+            android:textSize="15sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
 </LinearLayout>

@@ -13,4 +13,6 @@
     <color name="success_stroke_color">#A5DC86</color>
     <color name="trans_success_stroke_color">#33A5DC86</color>
     <color name="warning_stroke_color">#F8BB86</color>
+    <color name="green_btn_bg_color">#69B322</color>
+    <color name="green_btn_bg_pressed_color">#D9F178</color>    
 </resources>
