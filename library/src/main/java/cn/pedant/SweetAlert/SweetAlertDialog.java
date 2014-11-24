@@ -305,7 +305,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         playAnimation();
     }
 
-    public void dismiss() {
+    /**
+     * The real Dialog.dismiss() will be invoked async-ly after the animation finishes.
+     */
+    public void dismissWithAnimation() {
         mConfirmButton.startAnimation(mOverlayOutAnim);
         mDialogView.startAnimation(mModalOutAnim);
     }
@@ -316,13 +319,13 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
             if (mCancelClickListener != null) {
                 mCancelClickListener.onClick(SweetAlertDialog.this);
             } else {
-                dismiss();
+                dismissWithAnimation();
             }
         } else if (v.getId() == R.id.confirm_button) {
             if (mConfirmClickListener != null) {
                 mConfirmClickListener.onClick(SweetAlertDialog.this);
             } else {
-                dismiss();
+                dismissWithAnimation();
             }
         }
     }
