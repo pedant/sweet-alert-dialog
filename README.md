@@ -21,7 +21,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     <dependency>
       <groupId>cn.pedant.sweetalert</groupId>
       <artifactId>library</artifactId>
-      <version>1.1</version>
+      <version>1.2</version>
       <type>aar</type>
     </dependency>
 
@@ -32,7 +32,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
     dependencies {
-        compile 'cn.pedant.sweetalert:library:1.1'
+        compile 'cn.pedant.sweetalert:library:1.2'
     }
 
 ## Usage
@@ -88,7 +88,7 @@ Bind the listener to confirm button：
         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog) {
-                sDialog.dismiss();
+                sDialog.dismissWithAnimation();
             }
         })
         .show();
@@ -104,7 +104,7 @@ Show the cancel button and bind listener to it：
         .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog) {
-                sDialog.dismiss();
+                sDialog.cancel();
             }
         })
         .show();

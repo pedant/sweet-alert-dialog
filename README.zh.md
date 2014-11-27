@@ -21,7 +21,7 @@ Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
     <dependency>
       <groupId>cn.pedant.sweetalert</groupId>
       <artifactId>library</artifactId>
-      <version>1.1</version>
+      <version>1.2</version>
       <type>aar</type>
     </dependency>
 
@@ -32,7 +32,7 @@ Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
     }
 
     dependencies {
-        compile 'cn.pedant.sweetalert:library:1.1'
+        compile 'cn.pedant.sweetalert:library:1.2'
     }
 
 ## 如何开始
@@ -88,7 +88,7 @@ Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog) {
-                sDialog.dismiss();
+                sDialog.dismissWithAnimation();
             }
         })
         .show();
@@ -104,7 +104,7 @@ Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
         .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog) {
-                sDialog.dismiss();
+                sDialog.cancel();
             }
         })
         .show();

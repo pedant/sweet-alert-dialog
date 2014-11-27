@@ -49,6 +49,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private FrameLayout mWarningFrame;
     private OnSweetClickListener mCancelClickListener;
     private OnSweetClickListener mConfirmClickListener;
+    private boolean mCloseFromCancel;
 
     public static final int NORMAL_TYPE = 0;
     public static final int ERROR_TYPE = 1;
@@ -101,7 +102,11 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                 mDialogView.post(new Runnable() {
                     @Override
                     public void run() {
-                        SweetAlertDialog.super.dismiss();
+                        if (mCloseFromCancel) {
+                            SweetAlertDialog.super.cancel();
+                        } else {
+                            SweetAlertDialog.super.dismiss();
+                        }
                     }
                 });
             }
@@ -306,9 +311,22 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     }
 
     /**
+     * The real Dialog.cancel() will be invoked async-ly after the animation finishes.
+     */
+    @Override
+    public void cancel() {
+        dismissWithAnimation(true);
+    }
+
+    /**
      * The real Dialog.dismiss() will be invoked async-ly after the animation finishes.
      */
     public void dismissWithAnimation() {
+        dismissWithAnimation(false);
+    }
+
+    private void dismissWithAnimation(boolean fromCancel) {
+        mCloseFromCancel = fromCancel;
         mConfirmButton.startAnimation(mOverlayOutAnim);
         mDialogView.startAnimation(mModalOutAnim);
     }
