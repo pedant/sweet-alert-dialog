@@ -8,7 +8,7 @@ buildscript {
 }
 
 ext {
-    compileSdkVersion = 17
+    compileSdkVersion = 21
     buildToolsVersion = "19.1.0"
 }
 
