@@ -25,8 +25,10 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.basic_test:
                 // default title "Here's a message!"
-                new SweetAlertDialog(this)
-                        .show();
+                SweetAlertDialog sd = new SweetAlertDialog(this);
+                sd.setCancelable(true);
+                sd.setCanceledOnTouchOutside(true);
+                sd.show();
                 break;
             case R.id.under_text_test:
                 new SweetAlertDialog(this)

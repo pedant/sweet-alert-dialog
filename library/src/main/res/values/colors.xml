@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="float_transparent">#66000000</color>
+    <color name="float_transparent">#00000000</color>
     <color name="sweet_dialog_bg_color">#FFFFFF</color>
     <color name="button_text_color">#FFFFFF</color>
     <color name="gray_btn_bg_color">#D0D0D0</color>
