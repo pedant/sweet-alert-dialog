@@ -39,7 +39,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
 
 show material progress
 
-	SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+    SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
     pDialog.setTitleText("loading...");
     pDialog.setCancelable(false);
     pDialog.show();
