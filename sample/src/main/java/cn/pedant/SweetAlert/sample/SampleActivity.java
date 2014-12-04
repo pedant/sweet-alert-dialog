@@ -127,7 +127,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 new CountDownTimer(800 * 7, 800) {
                     public void onTick(long millisUntilFinished) {
                         // you can change the progress bar color by ProgressHelper every 800 millis
-                        /*i++;
+                        i++;
                         switch (i){
                             case 0:
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
@@ -136,7 +136,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_50));
                                 break;
                             case 2:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_blue_grey_95));
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.success_stroke_color));
                                 break;
                             case 3:
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_20));
@@ -150,7 +150,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                             case 6:
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.success_stroke_color));
                                 break;
-                        }*/
+                        }
                     }
 
                     public void onFinish() {

@@ -38,10 +38,13 @@ Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
 ## 如何开始
 显示Material进度样式
 
-    SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+    SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+    pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
     pDialog.setTitleText("loading...");
     pDialog.setCancelable(false);
     pDialog.show();
+
+![image](https://github.com/pedant/sweet-alert-dialog/raw/master/material_progress_shot.jpg)
 
 你可以通过**SweetAlertDialog.getProgressHelper()**调用materialish-progress中下面这些方法，来动态改变进度条的样式
 - resetCount()

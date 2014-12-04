@@ -39,10 +39,13 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
 
 show material progress
 
-    SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+    SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+    pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
     pDialog.setTitleText("loading...");
     pDialog.setCancelable(false);
     pDialog.show();
+
+![image](https://github.com/pedant/sweet-alert-dialog/raw/master/material_progress_shot.jpg)
 
 You can customize progress bar dynamically with materialish-progress methods via **SweetAlertDialog.getProgressHelper()**:
 - resetCount()
