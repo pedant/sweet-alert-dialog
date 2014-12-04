@@ -36,6 +36,32 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
 ## Usage
+
+A basic progress dialog
+
+	new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+		.setContentText("Loading... For ten seconds than close. Every second change color.")
+		.spin()
+		.show;
+
+You can customize handle and customize progress bar dynamically with this methods:
+	isSpinning() 
+	resetCount()
+	stopSpinning()
+	spin()
+	setProgress(float progress) 
+	setInstantProgress(float progress)
+	getProgress()getCircleRadius()
+	setCircleRadius(int circleRadius) 
+	getBarWidth() setBarWidth(int barWidth)getBarColor()
+	setBarColor(int barColor)
+	getRimColor()
+	setRimColor(int rimColor)
+	getSpinSpeed() 
+	setSpinSpeed(float spinSpeed)
+	setRimWidth(int rimWidth) 
+	setProgressMessageColor(int color)
+
 A basic message：
 
     new SweetAlertDialog(this)
