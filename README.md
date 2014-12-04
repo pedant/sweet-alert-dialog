@@ -45,7 +45,6 @@ show material progress
     pDialog.show();
 
 You can customize progress bar dynamically with materialish-progress methods via **SweetAlertDialog.getProgressHelper()**:
-
 - resetCount()
 - isSpinning()
 - spin()
@@ -67,6 +66,7 @@ You can customize progress bar dynamically with materialish-progress methods via
 - setSpinSpeed(float spinSpeed)
 
 thanks to the project [materialish-progress](https://github.com/pnikosis/materialish-progress) and [@croccio](https://github.com/croccio) participation.
+
 more usages about progress, please see the sample.
 
 A basic message：
