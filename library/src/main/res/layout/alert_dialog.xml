@@ -100,24 +100,11 @@
             android:scaleType="center" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/title_text"
+    <FrameLayout
+        android:id="@+id/progress_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="19sp"
-        android:textColor="#575757"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:singleLine="true"
-        android:text="@string/dialog_default_title" />
-
-    <LinearLayout
-        android:id="@+id/progress_dialog"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="9dp"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:visibility="gone">
@@ -126,13 +113,23 @@
             android:id="@+id/progressWheel"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            wheel:barColor="@color/progress_bar_color"
             wheel:progressIndeterminate="true"
             android:layout_gravity="center" />
-    </LinearLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="19sp"
+        android:textColor="#575757"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:text="@string/dialog_default_title" />
 
     <TextView
         android:id="@+id/content_text"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"

@@ -15,7 +15,6 @@ import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -36,12 +35,13 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private String mTitleText;
     private String mContentText;
     private boolean mShowCancel;
+    private boolean mShowContent;
     private String mCancelText;
     private String mConfirmText;
     private int mAlertType;
     private FrameLayout mErrorFrame;
     private FrameLayout mSuccessFrame;
-    private LinearLayout mProgressFrame;
+    private FrameLayout mProgressFrame;
     private SuccessTickView mSuccessTick;
     private ImageView mErrorX;
     private View mSuccessLeftMask;
@@ -50,22 +50,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private ImageView mCustomImage;
     private Button mConfirmButton;
     private Button mCancelButton;
-    private ProgressWheel progressWheel;
+    private ProgressHelper mProgressHelper;
     private FrameLayout mWarningFrame;
     private OnSweetClickListener mCancelClickListener;
     private OnSweetClickListener mConfirmClickListener;
     private boolean mCloseFromCancel;
-    private int mProgressMessageColor;
-    private String mProgressMessage;
-    private int mProgressRimWidth;
-    private int mProgressRimColor;
-    private float mProgressSpin;
-    private int mPogressWidth;
-    private int mProgressColor;
-    private float mProgressInstantProgress;
-    private float mProgress;
-    private int mProgressCircleRadius;
-    private boolean toSpin;
+
     public static final int NORMAL_TYPE = 0;
     public static final int ERROR_TYPE = 1;
     public static final int SUCCESS_TYPE = 2;
@@ -85,6 +75,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         super(context, R.style.alert_dialog);
         setCancelable(true);
         setCanceledOnTouchOutside(false);
+        mProgressHelper = new ProgressHelper(context);
         mAlertType = alertType;
         mErrorInAnim = OptAnimationLoader.loadAnimation(getContext(), R.anim.error_frame_in);
         mErrorXInAnim = (AnimationSet)OptAnimationLoader.loadAnimation(getContext(), R.anim.error_x_in);
@@ -142,14 +133,6 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
             }
         };
         mOverlayOutAnim.setDuration(120);
-
-        setRimWidth(0);
-        setRimColor(0x00000000);
-        setBarWidth(10);
-        setBarColor(getContext().getResources().getColor(R.color.progress_bar_color));
-        setSpinSpeed(0.75f);
-        setCircleRadius(80);
-        setProgressMessageColor(getContext().getResources().getColor(R.color.text_color));
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,7 +145,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mErrorFrame = (FrameLayout)findViewById(R.id.error_frame);
         mErrorX = (ImageView)mErrorFrame.findViewById(R.id.error_x);
         mSuccessFrame = (FrameLayout)findViewById(R.id.success_frame);
-        mProgressFrame = (LinearLayout)findViewById(R.id.progress_dialog);
+        mProgressFrame = (FrameLayout)findViewById(R.id.progress_dialog);
         mSuccessTick = (SuccessTickView)mSuccessFrame.findViewById(R.id.success_tick);
         mSuccessLeftMask = mSuccessFrame.findViewById(R.id.mask_left);
         mSuccessRightMask = mSuccessFrame.findViewById(R.id.mask_right);
@@ -170,14 +153,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mWarningFrame = (FrameLayout)findViewById(R.id.warning_frame);
         mConfirmButton = (Button)findViewById(R.id.confirm_button);
         mCancelButton = (Button)findViewById(R.id.cancel_button);
-        progressWheel = (ProgressWheel) findViewById(R.id.progressWheel);
-
+        mProgressHelper.setProgressWheel((ProgressWheel)findViewById(R.id.progressWheel));
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
 
         setTitleText(mTitleText);
         setContentText(mContentText);
-        showCancelButton(mShowCancel);
         setCancelText(mCancelText);
         setConfirmText(mConfirmText);
         changeAlertType(mAlertType, true);
@@ -189,6 +170,8 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mErrorFrame.setVisibility(View.GONE);
         mSuccessFrame.setVisibility(View.GONE);
         mWarningFrame.setVisibility(View.GONE);
+        mProgressFrame.setVisibility(View.GONE);
+        mConfirmButton.setVisibility(View.VISIBLE);
 
         mConfirmButton.setBackgroundResource(R.drawable.blue_button_background);
         mErrorFrame.clearAnimation();
@@ -236,18 +219,6 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                 case PROGRESS_TYPE:
                     mProgressFrame.setVisibility(View.VISIBLE);
                     mConfirmButton.setVisibility(View.GONE);
-                    mTitleTextView.setVisibility(View.GONE);
-
-                    setCancelable(false);
-
-                    setRimWidth(mProgressRimWidth);
-                    setRimColor(mProgressRimColor);
-                    setBarWidth(mPogressWidth);
-                    setBarColor(mProgressColor);
-                    setSpinSpeed(mProgressSpin);
-                    setCircleRadius(mProgressCircleRadius);
-                    setProgressMessageColor(mProgressMessageColor);
-                    if (toSpin) spin();
                     break;
             }
             if (!fromCreate) {
@@ -297,7 +268,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public SweetAlertDialog setContentText (String text) {
         mContentText = text;
         if (mContentTextView != null && mContentText != null) {
-            mContentTextView.setVisibility(View.VISIBLE);
+            showContentText(true);
             mContentTextView.setText(mContentText);
         }
         return this;
@@ -315,6 +286,18 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
+    public boolean isShowContentText () {
+        return mShowContent;
+    }
+
+    public SweetAlertDialog showContentText (boolean isShow) {
+        mShowContent = isShow;
+        if (mContentTextView != null) {
+            mContentTextView.setVisibility(mShowContent ? View.VISIBLE : View.GONE);
+        }
+        return this;
+    }
+
     public String getCancelText () {
         return mCancelText;
     }
@@ -322,6 +305,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public SweetAlertDialog setCancelText (String text) {
         mCancelText = text;
         if (mCancelButton != null && mCancelText != null) {
+            showCancelButton(true);
             mCancelButton.setText(mCancelText);
         }
         return this;
@@ -392,127 +376,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         }
     }
 
-    public boolean isSpinning() {
-        return progressWheel.isSpinning();
-    }
-
-    public SweetAlertDialog resetCount() {
-        if (progressWheel != null) {
-            progressWheel.resetCount();
-        }
-        return this;
-    }
-
-    public void stopSpinning() {
-        toSpin = false;
-        progressWheel.stopSpinning();
-    }
-
-    public SweetAlertDialog spin() {
-        toSpin = true;
-        if (progressWheel != null) {
-            progressWheel.spin();
-        }
-        return this;
-    }
-
-    public SweetAlertDialog setProgress(float progress) {
-        mProgress = progress;
-        if (progressWheel != null) {
-            progressWheel.setProgress(progress);
-        }
-        return this;
-    }
-
-    public SweetAlertDialog setInstantProgress(float progress) {
-        mProgressInstantProgress = progress;
-        if (progressWheel != null) {
-            progressWheel.setInstantProgress(progress);
-        }
-        return this;
-    }
-
-    public float getProgress() {
-        return progressWheel.getProgress();
-    }
-
-    public int getCircleRadius() {
-        return progressWheel.getCircleRadius();
-    }
-
-    public SweetAlertDialog setCircleRadius(int circleRadius) {
-        mProgressCircleRadius = circleRadius;
-        if (progressWheel != null) {
-            progressWheel.setCircleRadius(circleRadius);
-        }
-        return this;
-    }
-
-    public int getBarWidth() {
-        return progressWheel.getBarWidth();
-    }
-
-    public SweetAlertDialog setBarWidth(int barWidth) {
-        mPogressWidth = barWidth;
-        if (progressWheel != null) {
-            progressWheel.setBarWidth(barWidth);
-        }
-        return this;
-    }
-
-    public int getBarColor() {
-        return progressWheel.getBarColor();
-    }
-
-    public SweetAlertDialog setBarColor(int barColor) {
-        mProgressColor = barColor;
-        if (progressWheel != null) {
-            progressWheel.setBarColor(barColor);
-        }
-        return this;
-    }
-
-    public int getRimColor() {
-        return progressWheel.getRimColor();
-    }
-
-    public SweetAlertDialog setRimColor(int rimColor) {
-        mProgressRimColor = rimColor;
-        if (progressWheel != null) {
-            progressWheel.setRimColor(rimColor);
-        }
-        return this;
-    }
-
-    public float getSpinSpeed() {
-        return progressWheel.getSpinSpeed();
-    }
-
-    public SweetAlertDialog setSpinSpeed(float spinSpeed) {
-        mProgressSpin = spinSpeed;
-        if (progressWheel != null) {
-            progressWheel.setSpinSpeed(spinSpeed);
-        }
-        return this;
-    }
-
-    public int getRimWidth() {
-        return progressWheel.getRimWidth();
-    }
-
-    public SweetAlertDialog setRimWidth(int rimWidth) {
-        mProgressRimWidth = rimWidth;
-        if (progressWheel != null) {
-            progressWheel.setRimWidth(rimWidth);
-        }
-        return this;
-    }
-
-    public SweetAlertDialog setProgressMessageColor(int color){
-        mProgressMessageColor = color;
-        if (mContentTextView != null) {
-            mContentTextView.setTextColor(color);
-        }
-        return this;
+    public ProgressHelper getProgressHelper () {
+        return mProgressHelper;
     }
 }

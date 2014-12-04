@@ -120,62 +120,44 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .show();
                 break;
             case R.id.progress_dialog:
-                final SweetAlertDialog progressSweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
-                        .setContentText("Loading... For ten seconds than close. Every second change color.")
-                        .spin();
-
-                progressSweetAlertDialog.show();
-                new CountDownTimer(10000, 1000) {
-
+                final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                        .setTitleText("loading...");
+                pDialog.show();
+                pDialog.setCancelable(false);
+                new CountDownTimer(800 * 7, 800) {
                     public void onTick(long millisUntilFinished) {
-                        i++;
+                        // you can change the progress bar color by ProgressHelper every 800 millis
+                        /*i++;
                         switch (i){
                             case 0:
-                                progressSweetAlertDialog.setBarColor(getResources().getColor(R.color.red_btn_bg_color));
-                                progressSweetAlertDialog.setProgressMessageColor(getResources().getColor(R.color.red_btn_bg_color));
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
                                 break;
                             case 1:
-                                progressSweetAlertDialog.setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
-                                progressSweetAlertDialog.setProgressMessageColor(getResources().getColor(R.color.blue_btn_bg_color));
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_50));
                                 break;
                             case 2:
-                                progressSweetAlertDialog.setBarColor(getResources().getColor(R.color.gray_btn_bg_pressed_color));
-                                progressSweetAlertDialog.setProgressMessageColor(getResources().getColor(R.color.gray_btn_bg_pressed_color));
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_blue_grey_95));
                                 break;
                             case 3:
-                                progressSweetAlertDialog.setBarColor(getResources().getColor(R.color.material_deep_teal_500));
-                                progressSweetAlertDialog.setProgressMessageColor(getResources().getColor(R.color.material_deep_teal_500));
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_20));
                                 break;
                             case 4:
-                                progressSweetAlertDialog.setBarColor(getResources().getColor(R.color.material_deep_teal_500));
-                                progressSweetAlertDialog.setProgressMessageColor(getResources().getColor(R.color.material_deep_teal_500));
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_blue_grey_80));
                                 break;
                             case 5:
-                                progressSweetAlertDialog.setBarColor(getResources().getColor(R.color.material_blue_grey_950));
-                                progressSweetAlertDialog.setProgressMessageColor(getResources().getColor(R.color.material_blue_grey_950));
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.warning_stroke_color));
                                 break;
                             case 6:
-                                progressSweetAlertDialog.setBarColor(getResources().getColor(R.color.material_deep_teal_200));
-                                progressSweetAlertDialog.setProgressMessageColor(getResources().getColor(R.color.material_deep_teal_200));
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.success_stroke_color));
                                 break;
-                            case 7:
-                                progressSweetAlertDialog.setBarColor(getResources().getColor(R.color.material_blue_grey_800));
-                                progressSweetAlertDialog.setProgressMessageColor(getResources().getColor(R.color.material_blue_grey_800));
-                                break;
-                            case 8:
-                                progressSweetAlertDialog.setBarColor(getResources().getColor(R.color.warning_stroke_color));
-                                progressSweetAlertDialog.setProgressMessageColor(getResources().getColor(R.color.warning_stroke_color));
-                                break;
-                            case 9:
-                                progressSweetAlertDialog.setBarColor(getResources().getColor(R.color.success_stroke_color));
-                                progressSweetAlertDialog.setProgressMessageColor(getResources().getColor(R.color.success_stroke_color));
-                                break;
-                        }
+                        }*/
                     }
 
                     public void onFinish() {
                         i = -1;
-                        progressSweetAlertDialog.dismissWithAnimation();
+                        pDialog.setTitleText("Success!")
+                                .setConfirmText("OK")
+                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                     }
                 }.start();
                 break;

@@ -23,7 +23,7 @@
             android:layout_alignLeft="@id/logo_img"
             android:layout_below="@id/logo_img"
             android:layout_marginLeft="15dp"
-            android:text="A basic progress"
+            android:text="show material progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
