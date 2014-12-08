@@ -121,7 +121,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.progress_dialog:
                 final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
-                        .setTitleText("loading...");
+                        .setTitleText("Loading");
                 pDialog.show();
                 pDialog.setCancelable(false);
                 new CountDownTimer(800 * 7, 800) {

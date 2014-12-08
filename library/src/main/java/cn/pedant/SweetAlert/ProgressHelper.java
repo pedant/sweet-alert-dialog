@@ -25,7 +25,7 @@ public class ProgressHelper {
         mRimColor = 0x00000000;
         mIsInstantProgress = false;
         mProgressVal = -1;
-        mCircleRadius = 80;
+        mCircleRadius = ctx.getResources().getDimensionPixelOffset(R.dimen.progress_circle_radius);
     }
 
     public ProgressWheel getProgressWheel () {
@@ -112,6 +112,9 @@ public class ProgressHelper {
         return mCircleRadius;
     }
 
+    /**
+     * @param circleRadius units using pixel
+     * **/
     public void setCircleRadius(int circleRadius) {
         mCircleRadius = circleRadius;
         updatePropsIfNeed();
