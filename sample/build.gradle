@@ -26,6 +26,6 @@ android {
 }
 
 dependencies {
-    //compile 'cn.pedant.sweetalert:library:1.2'
+    //compile 'cn.pedant.sweetalert:library:1.3'
     compile project(':library')
 }

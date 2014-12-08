@@ -21,7 +21,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     <dependency>
       <groupId>cn.pedant.sweetalert</groupId>
       <artifactId>library</artifactId>
-      <version>1.2</version>
+      <version>1.3</version>
       <type>aar</type>
     </dependency>
 
@@ -32,7 +32,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
     dependencies {
-        compile 'cn.pedant.sweetalert:library:1.2'
+        compile 'cn.pedant.sweetalert:library:1.3'
     }
 
 ## Usage
@@ -41,7 +41,7 @@ show material progress
 
     SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
     pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-    pDialog.setTitleText("loading...");
+    pDialog.setTitleText("Loading");
     pDialog.setCancelable(false);
     pDialog.show();
 
