@@ -227,7 +227,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         }
     }
 
-    public int getAlerType () {
+    public int getAlertType () {
         return mAlertType;
     }
 
