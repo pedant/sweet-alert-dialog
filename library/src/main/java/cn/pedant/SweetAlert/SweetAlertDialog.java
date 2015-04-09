@@ -3,6 +3,7 @@ package cn.pedant.SweetAlert;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -55,6 +56,8 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private OnSweetClickListener mCancelClickListener;
     private OnSweetClickListener mConfirmClickListener;
     private boolean mCloseFromCancel;
+
+    private ProgressWheel progressWheel;
 
     public static final int NORMAL_TYPE = 0;
     public static final int ERROR_TYPE = 1;
@@ -139,6 +142,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_dialog);
 
+        progressWheel = new ProgressWheel(getContext());
+        progressWheel.setBarColor(Color.BLUE);
+        progressWheel.setBarWidth(80);
+
         mDialogView = getWindow().getDecorView().findViewById(android.R.id.content);
         mTitleTextView = (TextView)findViewById(R.id.title_text);
         mContentTextView = (TextView)findViewById(R.id.content_text);
@@ -153,7 +160,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mWarningFrame = (FrameLayout)findViewById(R.id.warning_frame);
         mConfirmButton = (Button)findViewById(R.id.confirm_button);
         mCancelButton = (Button)findViewById(R.id.cancel_button);
-        mProgressHelper.setProgressWheel((ProgressWheel)findViewById(R.id.progressWheel));
+        mProgressHelper.setProgressWheel(progressWheel);
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
 
@@ -162,6 +169,8 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setCancelText(mCancelText);
         setConfirmText(mConfirmText);
         changeAlertType(mAlertType, true);
+
+        mProgressFrame.addView(progressWheel);
 
     }
 
