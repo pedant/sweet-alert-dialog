@@ -54,7 +54,9 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private EditText mFeedbackEdit;
     private OnSweetClickListener mCancelClickListener;
     private OnSweetClickListener mConfirmClickListener;
+    private FeedbackTextWatch mFeedbackTextWatch;
     private boolean mCloseFromCancel;
+    private boolean mForceUserInputFeedback;
 
     public static final int NORMAL_TYPE = 0;
     public static final int ERROR_TYPE = 1;
@@ -159,6 +161,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
 
+        if (mAlertType == FEEDBACK_TYPE && mForceUserInputFeedback){
+            mConfirmButton.setClickable(false);
+            mConfirmButton.setBackgroundResource(R.drawable.gray_button_background);
+            mFeedbackEdit.addTextChangedListener(mFeedbackTextWatch);
+        }
+
         setTitleText(mTitleText);
         setContentText(mContentText);
         setCancelText(mCancelText);
@@ -225,16 +233,29 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                     break;
                 case FEEDBACK_TYPE:
                     mFeedbackEdit.setVisibility(View.VISIBLE);
-                    mFeedbackEdit.addTextChangedListener(new FeedbackTextWatch());
                     mConfirmButton.setVisibility(View.VISIBLE);
-                    mConfirmButton.setClickable(false);
-                    mConfirmButton.setBackgroundResource(R.drawable.gray_button_background);
                     break;
             }
             if (!fromCreate) {
                 playAnimation();
             }
         }
+    }
+
+    public void setForceUserInputFeedback(boolean forceUserInputFeedback){
+        mForceUserInputFeedback = forceUserInputFeedback;
+        if ((mAlertType == FEEDBACK_TYPE) && forceUserInputFeedback){
+            if (mFeedbackTextWatch == null){
+                mFeedbackTextWatch = new FeedbackTextWatch();
+            }
+
+            if (mConfirmButton != null && mFeedbackEdit != null){
+                mConfirmButton.setClickable(false);
+                mConfirmButton.setBackgroundResource(R.drawable.gray_button_background);
+                mFeedbackEdit.addTextChangedListener(mFeedbackTextWatch);
+            }
+        }
+
     }
 
     public int getAlerType () {
