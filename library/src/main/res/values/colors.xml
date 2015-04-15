@@ -19,4 +19,7 @@
     <color name="material_blue_grey_95">#ff21272b</color>
     <color name="material_deep_teal_20">#ff80cbc4</color>
     <color name="material_deep_teal_50">#ff009688</color>
+    <color name="option_item_bg_pressed">#f0f0f0</color>
+    <color name="option_item_bg">#ffffff</color>
+    <color name="option_divider_color">#80575757</color>
 </resources>
