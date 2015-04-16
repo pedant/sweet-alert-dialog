@@ -1,15 +1,15 @@
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.14.1'
+        classpath 'com.android.tools.build:gradle:1.0.0'
     }
 }
 
 ext {
     compileSdkVersion = 21
-    buildToolsVersion = "19.1.0"
+    buildToolsVersion = "21.1.2"
 }
 
 allprojects {

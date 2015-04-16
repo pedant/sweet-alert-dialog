@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 
+import android.widget.Toast;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SampleActivity extends Activity implements View.OnClickListener {
@@ -23,6 +24,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
+        findViewById(R.id.feed_back).setOnClickListener(this);
     }
 
     @Override
@@ -160,6 +162,22 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                                 .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                     }
                 }.start();
+                break;
+            case R.id.feed_back:
+                final SweetAlertDialog dialog = new SweetAlertDialog(this, SweetAlertDialog.FEEDBACK_TYPE);
+                dialog.setTitleText("title");
+                dialog.setContentText("content");
+                dialog.setCancelText("cancel");
+                dialog.showCancelButton(true);
+                dialog.setCancelable(true);
+                dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        Toast.makeText(SampleActivity.this, dialog.getFeedbackText(), Toast.LENGTH_LONG).show();
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
                 break;
         }
     }

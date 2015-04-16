@@ -6,16 +6,15 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.Transformation;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 
 import com.pnikosis.materialishprogress.ProgressWheel;
 
@@ -52,9 +51,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private Button mCancelButton;
     private ProgressHelper mProgressHelper;
     private FrameLayout mWarningFrame;
+    private EditText mFeedbackEdit;
     private OnSweetClickListener mCancelClickListener;
     private OnSweetClickListener mConfirmClickListener;
+    private FeedbackTextWatch mFeedbackTextWatch;
     private boolean mCloseFromCancel;
+    private boolean mForceUserInputFeedback;
 
     public static final int NORMAL_TYPE = 0;
     public static final int ERROR_TYPE = 1;
@@ -62,6 +64,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public static final int WARNING_TYPE = 3;
     public static final int CUSTOM_IMAGE_TYPE = 4;
     public static final int PROGRESS_TYPE = 5;
+    public static final int FEEDBACK_TYPE = 6;
 
     public static interface OnSweetClickListener {
         public void onClick (SweetAlertDialog sweetAlertDialog);
@@ -153,9 +156,16 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mWarningFrame = (FrameLayout)findViewById(R.id.warning_frame);
         mConfirmButton = (Button)findViewById(R.id.confirm_button);
         mCancelButton = (Button)findViewById(R.id.cancel_button);
+        mFeedbackEdit = (EditText) findViewById(R.id.feed_back_edit);
         mProgressHelper.setProgressWheel((ProgressWheel)findViewById(R.id.progressWheel));
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
+
+        if (mAlertType == FEEDBACK_TYPE && mForceUserInputFeedback){
+            mConfirmButton.setClickable(false);
+            mConfirmButton.setBackgroundResource(R.drawable.gray_button_background);
+            mFeedbackEdit.addTextChangedListener(mFeedbackTextWatch);
+        }
 
         setTitleText(mTitleText);
         setContentText(mContentText);
@@ -172,6 +182,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mWarningFrame.setVisibility(View.GONE);
         mProgressFrame.setVisibility(View.GONE);
         mConfirmButton.setVisibility(View.VISIBLE);
+        mFeedbackEdit.setVisibility(View.GONE);
 
         mConfirmButton.setBackgroundResource(R.drawable.blue_button_background);
         mErrorFrame.clearAnimation();
@@ -220,11 +231,31 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                     mProgressFrame.setVisibility(View.VISIBLE);
                     mConfirmButton.setVisibility(View.GONE);
                     break;
+                case FEEDBACK_TYPE:
+                    mFeedbackEdit.setVisibility(View.VISIBLE);
+                    mConfirmButton.setVisibility(View.VISIBLE);
+                    break;
             }
             if (!fromCreate) {
                 playAnimation();
             }
         }
+    }
+
+    public void setForceUserInputFeedback(boolean forceUserInputFeedback){
+        mForceUserInputFeedback = forceUserInputFeedback;
+        if ((mAlertType == FEEDBACK_TYPE) && forceUserInputFeedback){
+            if (mFeedbackTextWatch == null){
+                mFeedbackTextWatch = new FeedbackTextWatch();
+            }
+
+            if (mConfirmButton != null && mFeedbackEdit != null){
+                mConfirmButton.setClickable(false);
+                mConfirmButton.setBackgroundResource(R.drawable.gray_button_background);
+                mFeedbackEdit.addTextChangedListener(mFeedbackTextWatch);
+            }
+        }
+
     }
 
     public int getAlerType () {
@@ -238,6 +269,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     public String getTitleText () {
         return mTitleText;
+    }
+
+    public String getFeedbackText(){
+        return mFeedbackEdit.getText().toString();
     }
 
     public SweetAlertDialog setTitleText (String text) {
@@ -378,5 +413,30 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     public ProgressHelper getProgressHelper () {
         return mProgressHelper;
+    }
+
+    private class FeedbackTextWatch implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if (s != null && s.length() > 0 ){
+                mConfirmButton.setClickable(true);
+                mConfirmButton.setBackgroundResource(R.drawable.blue_button_background);
+            }else {
+                mConfirmButton.setClickable(false);
+                mConfirmButton.setBackgroundResource(R.drawable.gray_button_background);
+
+            }
+        }
     }
 }

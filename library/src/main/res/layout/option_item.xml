@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/optionItemTextView"
+    android:text="hello"
+    android:textSize="19sp"
+    android:textColor="@color/text_color"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:gravity="center_vertical"
+    android:paddingLeft="15dp"
+    android:background="@drawable/option_item_bg_selector"
+    />

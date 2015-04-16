@@ -138,6 +138,16 @@
         android:textColor="#797979"
         android:visibility="gone" />
 
+    <EditText
+        android:id="@+id/feed_back_edit"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/feedback_edit_text_padding"
+        android:background="@drawable/feedback_edit_background"
+        android:hint="feedback..."/>
+
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"

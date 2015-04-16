@@ -177,6 +177,13 @@
                 android:layout_margin="10dp"
                 android:text="Try me!"/>
 
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/custom_img_test"
+            android:id="@+id/feed_back"
+            style="@style/dialog_blue_button"
+            android:layout_margin="10dp"
+            android:text="Try me!"/>
     </RelativeLayout>
 </ScrollView>
 
