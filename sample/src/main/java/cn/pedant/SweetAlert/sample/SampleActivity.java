@@ -1,6 +1,7 @@
 package cn.pedant.SweetAlert.sample;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -10,6 +11,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class SampleActivity extends Activity implements View.OnClickListener {
 
     private int i = -1;
+    private Typeface tf;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,8 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
+
+        tf = Typeface.createFromAsset(this.getAssets(), "noasarck.otf");
     }
 
     @Override
@@ -71,13 +75,17 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .show();
                 break;
             case R.id.warning_cancel_test:
-                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Are you sure?")
-                        .setContentText("Won't be able to recover this file!")
-                        .setCancelText("No,cancel plx!")
-                        .setConfirmText("Yes,delete it!")
-                        .showCancelButton(true)
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                SweetAlertDialog s = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
+                s.setTitleText("Are you sure?");
+                s.setContentText("Won't be able to recover this file!");
+                s.setCancelText("No,cancel plx!");
+                s.setConfirmText("Yes,delete it!");
+                s.setTitleTextSize(30);
+                s.setContentTextSize(20);
+                s.setButtonsTextSize(20);
+                s.setTypeface(tf);
+                s.showCancelButton(true);
+                s.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
@@ -109,8 +117,8 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                                         .setConfirmClickListener(null)
                                         .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                             }
-                        })
-                        .show();
+                        });
+                s.show();
                 break;
             case R.id.custom_img_test:
                 new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
