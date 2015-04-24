@@ -3,9 +3,12 @@ package cn.pedant.SweetAlert;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -38,6 +41,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private boolean mShowContent;
     private String mCancelText;
     private String mConfirmText;
+    private int mTitleSize;
+    private int mContentSize;
+    private int mButtonsSize;
+    private Typeface mTf;
     private int mAlertType;
     private FrameLayout mErrorFrame;
     private FrameLayout mSuccessFrame;
@@ -55,6 +62,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private OnSweetClickListener mCancelClickListener;
     private OnSweetClickListener mConfirmClickListener;
     private boolean mCloseFromCancel;
+    private MediaPlayer mp;
 
     public static final int NORMAL_TYPE = 0;
     public static final int ERROR_TYPE = 1;
@@ -161,6 +169,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setContentText(mContentText);
         setCancelText(mCancelText);
         setConfirmText(mConfirmText);
+        setTitleTextSize(mTitleSize);
+        setContentTextSize(mContentSize);
+        setButtonsTextSize(mButtonsSize);
+        setTypeface(mTf);
         changeAlertType(mAlertType, true);
 
     }
@@ -244,6 +256,57 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mTitleText = text;
         if (mTitleTextView != null && mTitleText != null) {
             mTitleTextView.setText(mTitleText);
+        }
+        return this;
+    }
+
+    public SweetAlertDialog setTitleTextSize(int sps){
+        mTitleSize = sps;
+        if (mTitleTextView != null && mTitleSize != 0) {
+            mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+        }
+
+
+        return this;
+    }
+
+    public SweetAlertDialog setContentTextSize(int sps){
+        mContentSize = sps;
+        if (mContentTextView != null && mContentSize != 0) {
+            mContentTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+        }
+
+        return this;
+    }
+
+    public SweetAlertDialog setButtonsTextSize(int sps){
+        mButtonsSize = sps;
+        if (mCancelButton != null && mButtonsSize != 0) {
+            mCancelButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+        }
+
+        if (mConfirmButton != null && mButtonsSize != 0) {
+            mConfirmButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+        }
+
+        return this;
+    }
+
+    public SweetAlertDialog setTypeface(Typeface tf){
+        mTf = tf;
+        if (mTitleTextView != null && mTf != null) {
+            mTitleTextView.setTypeface(tf);
+        }
+        if (mContentTextView != null && mTf != null) {
+            mContentTextView.setTypeface(tf);
+        }
+
+        if (mCancelButton != null && mTf != null) {
+            mCancelButton.setTypeface(tf);
+        }
+
+        if (mConfirmButton != null && mTf != null) {
+            mConfirmButton.setTypeface(tf);
         }
         return this;
     }
@@ -333,6 +396,13 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
+    public SweetAlertDialog setMediaPlayer(MediaPlayer mp){
+        this.mp = mp;
+
+        return this;
+    }
+
+
     protected void onStart() {
         mDialogView.startAnimation(mModalInAnim);
         playAnimation();
@@ -361,6 +431,11 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
+        if(mp != null){
+            mp.start();
+        }
+
         if (v.getId() == R.id.cancel_button) {
             if (mCancelClickListener != null) {
                 mCancelClickListener.onClick(SweetAlertDialog.this);
