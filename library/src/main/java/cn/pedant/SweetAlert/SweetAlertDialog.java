@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -183,7 +184,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setButtonPadding(mButtonsPaddingLeft, mButtonsPaddingTop, mButtonsPaddingRight, mButtonsPaddingBottom);
         setButtonContainerMargins(mButtonContainerMarginLeft, mButtonContainerMarginTop, mButtonContainerMarginRight,
             mButtonContainerMarginBottom);
-        setButtonMinHeight(mButtonHeight);
+        setButtonHeight(mButtonHeight);
         setTypeface(mTf);
         changeAlertType(mAlertType, true);
 
@@ -338,13 +339,24 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
-    public SweetAlertDialog setButtonMinHeight(int dps) {
+    public SweetAlertDialog setButtonHeight(int dps) {
         mButtonHeight = dps;
-        if (mButtonContainer!= null && mButtonHeight != 0) {
+        if (mCancelButton != null && mButtonHeight != 0) {
             final float scale = getContext().getResources().getDisplayMetrics().density;
             int pixels = (int) (dps * scale + 0.5f);
-            mButtonContainer.setMinimumHeight(pixels);
+            ViewGroup.LayoutParams layoutParams = mCancelButton.getLayoutParams();
+            layoutParams.height = pixels;
+            mCancelButton.setLayoutParams(layoutParams);
         }
+
+        if (mConfirmButton != null && mButtonHeight != 0) {
+            final float scale = getContext().getResources().getDisplayMetrics().density;
+            int pixels = (int) (dps * scale + 0.5f);
+            ViewGroup.LayoutParams layoutParams = mConfirmButton.getLayoutParams();
+            layoutParams.height = pixels;
+            mConfirmButton.setLayoutParams(layoutParams);
+        }
+
         return this;
     }
 

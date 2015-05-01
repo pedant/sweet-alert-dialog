@@ -179,10 +179,10 @@ public class SampleActivity extends Activity implements View.OnClickListener {
               marginExample.setConfirmText("Yes,delete it!");
               marginExample.setTitleTextSize(30);
               marginExample.setContentTextSize(20);
-              marginExample.setButtonsTextSize(20);
-              marginExample.setButtonContainerMargins(10, 20, 10, 10);
+              marginExample.setButtonsTextSize(18);
+              marginExample.setButtonContainerMargins(20, 20, 20, 20);
               marginExample.setButtonPadding(30, 30, 30, 30);
-              marginExample.setButtonMinHeight(80);
+              marginExample.setButtonHeight(50);
               marginExample.show();
               break;
 
