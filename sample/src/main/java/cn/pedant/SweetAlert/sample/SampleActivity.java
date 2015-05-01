@@ -83,6 +83,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 s.setTitleTextSize(30);
                 s.setContentTextSize(20);
                 s.setButtonsTextSize(20);
+                s.setButtonContainerMargins(10, 20, 10, 10);
                 s.setTypeface(tf);
                 s.showCancelButton(true);
                 s.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {

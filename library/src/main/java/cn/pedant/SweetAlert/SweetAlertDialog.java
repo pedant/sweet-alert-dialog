@@ -15,10 +15,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.Transformation;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 
 import com.pnikosis.materialishprogress.ProgressWheel;
 
@@ -49,6 +46,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private FrameLayout mErrorFrame;
     private FrameLayout mSuccessFrame;
     private FrameLayout mProgressFrame;
+    private LinearLayout mButtonContainer;
     private SuccessTickView mSuccessTick;
     private ImageView mErrorX;
     private View mSuccessLeftMask;
@@ -161,6 +159,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mWarningFrame = (FrameLayout)findViewById(R.id.warning_frame);
         mConfirmButton = (Button)findViewById(R.id.confirm_button);
         mCancelButton = (Button)findViewById(R.id.cancel_button);
+        mButtonContainer = (LinearLayout)findViewById(R.id.button_container);
         mProgressHelper.setProgressWheel((ProgressWheel)findViewById(R.id.progressWheel));
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
@@ -276,6 +275,23 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
             mContentTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
         }
 
+        return this;
+    }
+
+    /**
+     * Sets the margins for the button container on the bottom.
+     * @param left The left in pixels
+     * @param top The top in pixels
+     * @param right The right in pixels
+     * @param bottom The bottom in pixels
+     * @return
+     */
+    public SweetAlertDialog setButtonContainerMargins(int left, int top, int right, int bottom) {
+        if (mButtonContainer != null) {
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mButtonContainer.getLayoutParams();
+            params.setMargins(left, top, right, bottom);
+            mButtonContainer.setLayoutParams(params);
+        }
         return this;
     }
 
