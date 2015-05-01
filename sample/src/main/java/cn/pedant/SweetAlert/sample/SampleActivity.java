@@ -25,6 +25,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
+        findViewById(R.id.custom_margin_test).setOnClickListener(this);
 
         tf = Typeface.createFromAsset(this.getAssets(), "noasarck.otf");
     }
@@ -170,6 +171,21 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                     }
                 }.start();
                 break;
+            case R.id.custom_margin_test:
+              SweetAlertDialog marginExample = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
+              marginExample.setTitleText("Are you sure?");
+              marginExample.setContentText("Won't be able to recover this file!");
+              marginExample.setCancelText("No,cancel plx!");
+              marginExample.setConfirmText("Yes,delete it!");
+              marginExample.setTitleTextSize(30);
+              marginExample.setContentTextSize(20);
+              marginExample.setButtonsTextSize(20);
+              marginExample.setButtonContainerMargins(10, 20, 10, 10);
+              marginExample.setButtonPadding(30, 30, 30, 30);
+              marginExample.setButtonMinHeight(80);
+              marginExample.show();
+              break;
+
         }
     }
 }

@@ -68,6 +68,15 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public static final int WARNING_TYPE = 3;
     public static final int CUSTOM_IMAGE_TYPE = 4;
     public static final int PROGRESS_TYPE = 5;
+    private int mButtonsPaddingLeft;
+    private int mButtonsPaddingTop;
+    private int mButtonsPaddingRight;
+    private int mButtonsPaddingBottom;
+    private int mButtonContainerMarginLeft;
+    private int mButtonContainerMarginTop;
+    private int mButtonContainerMarginRight;
+    private int mButtonContainerMarginBottom;
+    private int mButtonHeight;
 
     public static interface OnSweetClickListener {
         public void onClick (SweetAlertDialog sweetAlertDialog);
@@ -171,6 +180,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setTitleTextSize(mTitleSize);
         setContentTextSize(mContentSize);
         setButtonsTextSize(mButtonsSize);
+        setButtonPadding(mButtonsPaddingLeft, mButtonsPaddingTop, mButtonsPaddingRight, mButtonsPaddingBottom);
+        setButtonContainerMargins(mButtonContainerMarginLeft, mButtonContainerMarginTop, mButtonContainerMarginRight,
+            mButtonContainerMarginBottom);
+        setButtonMinHeight(mButtonHeight);
         setTypeface(mTf);
         changeAlertType(mAlertType, true);
 
@@ -287,10 +300,50 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
      * @return
      */
     public SweetAlertDialog setButtonContainerMargins(int left, int top, int right, int bottom) {
+        mButtonContainerMarginLeft = left;
+        mButtonContainerMarginTop = top;
+        mButtonContainerMarginRight = right;
+        mButtonContainerMarginBottom = bottom;
+
         if (mButtonContainer != null) {
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mButtonContainer.getLayoutParams();
-            params.setMargins(left, top, right, bottom);
+            params.setMargins(mButtonContainerMarginLeft, mButtonContainerMarginTop, mButtonContainerMarginRight, mButtonContainerMarginBottom);
             mButtonContainer.setLayoutParams(params);
+        }
+        return this;
+    }
+
+    /**
+     * Sets the padding for both the cancel and confirm buttons.
+     * @param left
+     * @param top
+     * @param right
+     * @param bottom
+     * @return
+     */
+    public SweetAlertDialog setButtonPadding(int left, int top, int right, int bottom) {
+        mButtonsPaddingLeft = left;
+        mButtonsPaddingTop = top;
+        mButtonsPaddingRight = right;
+        mButtonsPaddingBottom = bottom;
+
+        if (mCancelButton != null) {
+            mCancelButton.setPadding(mButtonsPaddingLeft, mButtonsPaddingTop, mButtonsPaddingRight, mButtonsPaddingBottom);
+        }
+
+        if (mConfirmButton != null) {
+            mConfirmButton.setPadding(mButtonsPaddingLeft, mButtonsPaddingTop, mButtonsPaddingRight, mButtonsPaddingBottom);
+        }
+
+        return this;
+    }
+
+    public SweetAlertDialog setButtonMinHeight(int dps) {
+        mButtonHeight = dps;
+        if (mButtonContainer!= null && mButtonHeight != 0) {
+            final float scale = getContext().getResources().getDisplayMetrics().density;
+            int pixels = (int) (dps * scale + 0.5f);
+            mButtonContainer.setMinimumHeight(pixels);
         }
         return this;
     }
