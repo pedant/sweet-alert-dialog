@@ -113,7 +113,7 @@
             android:id="@+id/progressWheel"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            wheel:progressIndeterminate="true"
+            wheel:matProg_progressIndeterminate="true"
             android:layout_gravity="center" />
     </FrameLayout>
 
