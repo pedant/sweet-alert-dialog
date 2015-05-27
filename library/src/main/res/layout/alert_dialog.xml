@@ -151,13 +151,13 @@
             android:background="@drawable/gray_button_background"
             android:layout_marginRight="10dp"
             android:visibility="gone"
-            android:text="@string/dialog_cancel" android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+            android:lines="1"
+            android:text="@string/dialog_cancel" />
 
         <Button
             android:id="@+id/confirm_button"
             style="@style/dialog_blue_button"
-            android:text="@string/dialog_ok" android:layout_height="wrap_content" android:layout_width="wrap_content"
-            />
+            android:lines="1"
+            android:text="@string/dialog_ok" />
     </LinearLayout>
 </LinearLayout>

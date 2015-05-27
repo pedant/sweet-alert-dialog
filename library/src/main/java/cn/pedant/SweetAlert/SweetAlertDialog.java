@@ -339,19 +339,15 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
-    public SweetAlertDialog setButtonHeight(int dps) {
-        mButtonHeight = dps;
+    public SweetAlertDialog setButtonHeight(int pixels) {
+        mButtonHeight = pixels;
         if (mCancelButton != null && mButtonHeight != 0) {
-            final float scale = getContext().getResources().getDisplayMetrics().density;
-            int pixels = (int) (dps * scale + 0.5f);
             ViewGroup.LayoutParams layoutParams = mCancelButton.getLayoutParams();
             layoutParams.height = pixels;
             mCancelButton.setLayoutParams(layoutParams);
         }
 
         if (mConfirmButton != null && mButtonHeight != 0) {
-            final float scale = getContext().getResources().getDisplayMetrics().density;
-            int pixels = (int) (dps * scale + 0.5f);
             ViewGroup.LayoutParams layoutParams = mConfirmButton.getLayoutParams();
             layoutParams.height = pixels;
             mConfirmButton.setLayoutParams(layoutParams);
