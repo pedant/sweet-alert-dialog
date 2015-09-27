@@ -1,4 +1,4 @@
-Sweet Alert Dialog
+﻿Sweet Alert Dialog
 ===================
 SweetAlert for Android, a beautiful and clever alert dialog
 
@@ -76,6 +76,7 @@ A basic message：
 
     new SweetAlertDialog(this)
         .setTitleText("Here's a message!")
+        .setConfirmText("OK")
         .show();
 
 A title with a text under：
@@ -83,6 +84,7 @@ A title with a text under：
     new SweetAlertDialog(this)
         .setTitleText("Here's a message!")
         .setContentText("It's pretty, isn't it?")
+        .setConfirmText("OK")
         .show();
 
 A error message：
@@ -90,6 +92,7 @@ A error message：
     new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
         .setTitleText("Oops...")
         .setContentText("Something went wrong!")
+        .setConfirmText("OK")
         .show();
 
 A warning message：
@@ -105,6 +108,7 @@ A success message：
     new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
         .setTitleText("Good job!")
         .setContentText("You clicked the button!")
+        .setConfirmText("OK")
         .show();
 
 A message with a custom icon：
@@ -113,6 +117,7 @@ A message with a custom icon：
         .setTitleText("Sweet!")
         .setContentText("Here's a custom image.")
         .setCustomImage(R.drawable.custom_img)
+        .setConfirmText("OK")
         .show();
 
 Bind the listener to confirm button：
@@ -163,6 +168,23 @@ Show the cancel button and bind listener to it：
             }
         })
         .show();
+
+Show a dialog without buttons:
+
+        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+            .setTitleText("Congratulations!")
+            .setContentText("You created a dialog without buttons!")
+            .show();
+
+Dialog with **three** buttons! Neutral, cancel, confirm.
+
+        new SweetAlertDialog(this)
+            .setTitleText("Three buttons!")
+            .setContentText("There's never enough buttons. I like buttons.")
+            .setNeutralText("Maybe")
+            .setCancelText("No")
+            .setConfirmText("Yes")
+            .show();
 
 [more android tech shares: pedant.cn](http://www.pedant.cn)
 

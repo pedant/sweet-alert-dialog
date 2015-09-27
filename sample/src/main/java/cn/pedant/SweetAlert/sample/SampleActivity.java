@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Toast;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -23,6 +24,8 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
+        findViewById(R.id.no_buttons_test).setOnClickListener(this);
+        findViewById(R.id.three_buttons_test).setOnClickListener(this);
     }
 
     @Override
@@ -33,23 +36,27 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 SweetAlertDialog sd = new SweetAlertDialog(this);
                 sd.setCancelable(true);
                 sd.setCanceledOnTouchOutside(true);
+                sd.setConfirmText("OK");
                 sd.show();
                 break;
             case R.id.under_text_test:
                 new SweetAlertDialog(this)
                         .setContentText("It's pretty, isn't it?")
+                        .setConfirmText("OK")
                         .show();
                 break;
             case R.id.error_text_test:
                 new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText("Oops...")
                         .setContentText("Something went wrong!")
+                        .setConfirmText("OK")
                         .show();
                 break;
             case R.id.success_text_test:
                 new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                         .setTitleText("Good job!")
                         .setContentText("You clicked the button!")
+                        .setConfirmText("OK")
                         .show();
                 break;
             case R.id.warning_confirm_test:
@@ -117,6 +124,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .setTitleText("Sweet!")
                         .setContentText("Here's a custom image.")
                         .setCustomImage(R.drawable.custom_img)
+                        .setConfirmText("OK")
                         .show();
                 break;
             case R.id.progress_dialog:
@@ -160,6 +168,34 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                                 .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                     }
                 }.start();
+                break;
+            case R.id.no_buttons_test:
+                final SweetAlertDialog noButtonDialog = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Congratulations!")
+                        .setContentText("You created a dialog without buttons!");
+                noButtonDialog.show();
+
+                // Make the dialog disappear after a while
+                new CountDownTimer(2500, 2500) {
+                    @Override
+                    public void onTick(long l) {
+                        // nothing
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        noButtonDialog.dismissWithAnimation();
+                    }
+                }.start();
+                break;
+            case R.id.three_buttons_test:
+                new SweetAlertDialog(this)
+                        .setTitleText("Three buttons!")
+                        .setContentText("There's never enough buttons. I like buttons.")
+                        .setNeutralText("Maybe")
+                        .setCancelText("No")
+                        .setConfirmText("Yes")
+                        .show();
                 break;
         }
     }
