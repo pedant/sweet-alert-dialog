@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Toast;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -24,6 +25,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
         findViewById(R.id.no_buttons_test).setOnClickListener(this);
+        findViewById(R.id.three_buttons_test).setOnClickListener(this);
     }
 
     @Override
@@ -185,6 +187,15 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         noButtonDialog.dismissWithAnimation();
                     }
                 }.start();
+                break;
+            case R.id.three_buttons_test:
+                new SweetAlertDialog(this)
+                        .setTitleText("Three buttons!")
+                        .setContentText("There's never enough buttons. I like buttons.")
+                        .setNeutralText("Maybe")
+                        .setCancelText("No")
+                        .setConfirmText("Yes")
+                        .show();
                 break;
         }
     }

@@ -145,6 +145,14 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/neutral_button"
+            style="@style/dialog_blue_button"
+            android:background="@drawable/gray_button_background"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            android:text="@string/dialog_neutral" />
+
+        <Button
             android:id="@+id/cancel_button"
             style="@style/dialog_blue_button"
             android:background="@drawable/gray_button_background"

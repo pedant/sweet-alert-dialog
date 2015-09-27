@@ -176,6 +176,16 @@ Show a dialog without buttons:
             .setContentText("You created a dialog without buttons!")
             .show();
 
+Dialog with **three** buttons! Neutral, cancel, confirm.
+
+        new SweetAlertDialog(this)
+            .setTitleText("Three buttons!")
+            .setContentText("There's never enough buttons. I like buttons.")
+            .setNeutralText("Maybe")
+            .setCancelText("No")
+            .setConfirmText("Yes")
+            .show();
+
 [more android tech shares: pedant.cn](http://www.pedant.cn)
 
 ## License
