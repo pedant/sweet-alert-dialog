@@ -35,6 +35,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private String mTitleText;
     private String mContentText;
     private boolean mShowCancel;
+    private boolean mShowConfirm;
     private boolean mShowContent;
     private String mCancelText;
     private String mConfirmText;
@@ -171,7 +172,6 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mSuccessFrame.setVisibility(View.GONE);
         mWarningFrame.setVisibility(View.GONE);
         mProgressFrame.setVisibility(View.GONE);
-        mConfirmButton.setVisibility(View.VISIBLE);
 
         mConfirmButton.setBackgroundResource(R.drawable.blue_button_background);
         mErrorFrame.clearAnimation();
@@ -218,7 +218,6 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                     break;
                 case PROGRESS_TYPE:
                     mProgressFrame.setVisibility(View.VISIBLE);
-                    mConfirmButton.setVisibility(View.GONE);
                     break;
             }
             if (!fromCreate) {
@@ -278,10 +277,22 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         return mShowCancel;
     }
 
+    public boolean isShowConfirmButton () {
+        return mShowConfirm;
+    }
+
     public SweetAlertDialog showCancelButton (boolean isShow) {
         mShowCancel = isShow;
         if (mCancelButton != null) {
             mCancelButton.setVisibility(mShowCancel ? View.VISIBLE : View.GONE);
+        }
+        return this;
+    }
+
+    public SweetAlertDialog showConfirmButton (boolean isShow) {
+        mShowConfirm = isShow;
+        if (mConfirmButton != null) {
+            mConfirmButton.setVisibility(mShowConfirm ? View.VISIBLE : View.GONE);
         }
         return this;
     }
@@ -318,6 +329,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public SweetAlertDialog setConfirmText (String text) {
         mConfirmText = text;
         if (mConfirmButton != null && mConfirmText != null) {
+            showConfirmButton(true);
             mConfirmButton.setText(mConfirmText);
         }
         return this;
