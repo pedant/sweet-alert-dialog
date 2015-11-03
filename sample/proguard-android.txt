@@ -1,3 +1,5 @@
- -keep class cn.pedant.SweetAlert.Rotate3dAnimation {
+-keep class cn.pedant.SweetAlert.Rotate3dAnimation {
     public <init>(...);
  }
+
+-dontwarn android.support.v4.**
