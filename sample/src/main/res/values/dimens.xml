@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="dialog_bottom_margin_size">12dp</dimen>
+  <dimen name="dialog_top_margin_size">20dp</dimen>
+  <dimen name="dialog_left_right_padding_size">18dp</dimen>
+  <dimen name="dialog_height_size">40dp</dimen>
+  <dimen name="dialog_top_bottom_padding_size">0dp</dimen>
+</resources>

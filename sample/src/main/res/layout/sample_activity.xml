@@ -177,6 +177,25 @@
                 android:layout_margin="10dp"
                 android:text="Try me!"/>
 
+      <TextView
+          android:id="@+id/button_padding_and_margin_dialog"
+          android:layout_alignLeft="@id/logo_img"
+          android:layout_below="@id/custom_img_test"
+          android:layout_marginLeft="15dp"
+          android:text="A message with a custom padding and margin on the button and button container"
+          android:layout_width="200dp"
+          android:layout_height="wrap_content"
+          android:textSize="14sp"
+          android:layout_marginTop="15dp"
+          android:textColor="#797979"/>
+
+      <Button
+          android:layout_centerHorizontal="true"
+          android:layout_below="@id/button_padding_and_margin_dialog"
+          android:id="@+id/custom_margin_test"
+          style="@style/dialog_blue_button"
+          android:layout_margin="10dp"
+          android:text="Try me!"/>
     </RelativeLayout>
 </ScrollView>
 

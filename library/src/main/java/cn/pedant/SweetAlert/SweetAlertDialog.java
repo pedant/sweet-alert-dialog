@@ -3,19 +3,20 @@ package cn.pedant.SweetAlert;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.Transformation;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 
 import com.pnikosis.materialishprogress.ProgressWheel;
 
@@ -38,10 +39,15 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private boolean mShowContent;
     private String mCancelText;
     private String mConfirmText;
+    private int mTitleSize;
+    private int mContentSize;
+    private int mButtonsSize;
+    private Typeface mTf;
     private int mAlertType;
     private FrameLayout mErrorFrame;
     private FrameLayout mSuccessFrame;
     private FrameLayout mProgressFrame;
+    private LinearLayout mButtonContainer;
     private SuccessTickView mSuccessTick;
     private ImageView mErrorX;
     private View mSuccessLeftMask;
@@ -55,6 +61,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private OnSweetClickListener mCancelClickListener;
     private OnSweetClickListener mConfirmClickListener;
     private boolean mCloseFromCancel;
+    private MediaPlayer mp;
 
     public static final int NORMAL_TYPE = 0;
     public static final int ERROR_TYPE = 1;
@@ -62,6 +69,15 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public static final int WARNING_TYPE = 3;
     public static final int CUSTOM_IMAGE_TYPE = 4;
     public static final int PROGRESS_TYPE = 5;
+    private int mButtonsPaddingLeft;
+    private int mButtonsPaddingTop;
+    private int mButtonsPaddingRight;
+    private int mButtonsPaddingBottom;
+    private int mButtonContainerMarginLeft;
+    private int mButtonContainerMarginTop;
+    private int mButtonContainerMarginRight;
+    private int mButtonContainerMarginBottom;
+    private int mButtonHeight;
 
     public static interface OnSweetClickListener {
         public void onClick (SweetAlertDialog sweetAlertDialog);
@@ -153,6 +169,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mWarningFrame = (FrameLayout)findViewById(R.id.warning_frame);
         mConfirmButton = (Button)findViewById(R.id.confirm_button);
         mCancelButton = (Button)findViewById(R.id.cancel_button);
+        mButtonContainer = (LinearLayout)findViewById(R.id.button_container);
         mProgressHelper.setProgressWheel((ProgressWheel)findViewById(R.id.progressWheel));
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
@@ -161,6 +178,14 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setContentText(mContentText);
         setCancelText(mCancelText);
         setConfirmText(mConfirmText);
+        setTitleTextSize(mTitleSize);
+        setContentTextSize(mContentSize);
+        setButtonsTextSize(mButtonsSize);
+        setButtonPadding(mButtonsPaddingLeft, mButtonsPaddingTop, mButtonsPaddingRight, mButtonsPaddingBottom);
+        setButtonContainerMargins(mButtonContainerMarginLeft, mButtonContainerMarginTop, mButtonContainerMarginRight,
+            mButtonContainerMarginBottom);
+        setButtonHeight(mButtonHeight);
+        setTypeface(mTf);
         changeAlertType(mAlertType, true);
 
     }
@@ -244,6 +269,121 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mTitleText = text;
         if (mTitleTextView != null && mTitleText != null) {
             mTitleTextView.setText(mTitleText);
+        }
+        return this;
+    }
+
+    public SweetAlertDialog setTitleTextSize(int sps){
+        mTitleSize = sps;
+        if (mTitleTextView != null && mTitleSize != 0) {
+            mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+        }
+
+
+        return this;
+    }
+
+    public SweetAlertDialog setContentTextSize(int sps){
+        mContentSize = sps;
+        if (mContentTextView != null && mContentSize != 0) {
+            mContentTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+        }
+
+        return this;
+    }
+
+    /**
+     * Sets the margins for the button container on the bottom.
+     * @param left The left in pixels
+     * @param top The top in pixels
+     * @param right The right in pixels
+     * @param bottom The bottom in pixels
+     * @return
+     */
+    public SweetAlertDialog setButtonContainerMargins(int left, int top, int right, int bottom) {
+        mButtonContainerMarginLeft = left;
+        mButtonContainerMarginTop = top;
+        mButtonContainerMarginRight = right;
+        mButtonContainerMarginBottom = bottom;
+
+        if (mButtonContainer != null) {
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mButtonContainer.getLayoutParams();
+            params.setMargins(mButtonContainerMarginLeft, mButtonContainerMarginTop, mButtonContainerMarginRight, mButtonContainerMarginBottom);
+            mButtonContainer.setLayoutParams(params);
+        }
+        return this;
+    }
+
+    /**
+     * Sets the padding for both the cancel and confirm buttons.
+     * @param left
+     * @param top
+     * @param right
+     * @param bottom
+     * @return
+     */
+    public SweetAlertDialog setButtonPadding(int left, int top, int right, int bottom) {
+        mButtonsPaddingLeft = left;
+        mButtonsPaddingTop = top;
+        mButtonsPaddingRight = right;
+        mButtonsPaddingBottom = bottom;
+
+        if (mCancelButton != null) {
+            mCancelButton.setPadding(mButtonsPaddingLeft, mButtonsPaddingTop, mButtonsPaddingRight, mButtonsPaddingBottom);
+        }
+
+        if (mConfirmButton != null) {
+            mConfirmButton.setPadding(mButtonsPaddingLeft, mButtonsPaddingTop, mButtonsPaddingRight, mButtonsPaddingBottom);
+        }
+
+        return this;
+    }
+
+    public SweetAlertDialog setButtonHeight(int pixels) {
+        mButtonHeight = pixels;
+        if (mCancelButton != null && mButtonHeight != 0) {
+            ViewGroup.LayoutParams layoutParams = mCancelButton.getLayoutParams();
+            layoutParams.height = pixels;
+            mCancelButton.setLayoutParams(layoutParams);
+        }
+
+        if (mConfirmButton != null && mButtonHeight != 0) {
+            ViewGroup.LayoutParams layoutParams = mConfirmButton.getLayoutParams();
+            layoutParams.height = pixels;
+            mConfirmButton.setLayoutParams(layoutParams);
+        }
+
+        return this;
+    }
+
+    public SweetAlertDialog setButtonsTextSize(int sps){
+        mButtonsSize = sps;
+        if (mCancelButton != null && mButtonsSize != 0) {
+            mCancelButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+        }
+
+        if (mConfirmButton != null && mButtonsSize != 0) {
+            mConfirmButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+        }
+
+        return this;
+    }
+
+    public SweetAlertDialog setTypeface(Typeface tf){
+        mTf = tf;
+        if (mTitleTextView != null && mTf != null) {
+            mTitleTextView.setTypeface(tf);
+        }
+        if (mContentTextView != null && mTf != null) {
+            mContentTextView.setTypeface(tf);
+        }
+
+        if (mCancelButton != null && mTf != null) {
+            mCancelButton.setTypeface(tf);
+        }
+
+        if (mConfirmButton != null && mTf != null) {
+            mConfirmButton.setTypeface(tf);
         }
         return this;
     }
@@ -333,6 +473,13 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
+    public SweetAlertDialog setMediaPlayer(MediaPlayer mp){
+        this.mp = mp;
+
+        return this;
+    }
+
+
     protected void onStart() {
         mDialogView.startAnimation(mModalInAnim);
         playAnimation();
@@ -361,6 +508,11 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
+        if(mp != null){
+            mp.start();
+        }
+
         if (v.getId() == R.id.cancel_button) {
             if (mCancelClickListener != null) {
                 mCancelClickListener.onClick(SweetAlertDialog.this);
