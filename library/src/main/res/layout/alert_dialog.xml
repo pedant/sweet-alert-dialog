@@ -149,6 +149,7 @@
             style="@style/dialog_blue_button"
             android:background="@drawable/gray_button_background"
             android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:visibility="gone"
             android:text="@string/dialog_cancel" />
 
