@@ -1,181 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFF"
-            xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF">
 
-    <RelativeLayout android:layout_width="match_parent"
-                    android:paddingBottom="10dp"
-                  android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
 
         <ImageView
-               android:id="@+id/logo_img"
-               android:layout_width="180dp"
-               android:layout_height="wrap_content"
-               android:src="@drawable/logo_big"
-               android:layout_marginTop="10dp"
-               android:layout_marginBottom="15dp"
-               android:layout_centerHorizontal="true"
-               android:contentDescription="@string/app_name"/>
+            android:id="@+id/logo_img"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_big" />
 
         <TextView
             android:id="@+id/txt_0"
-            android:layout_alignLeft="@id/logo_img"
-            android:layout_below="@id/logo_img"
-            android:layout_marginLeft="15dp"
-            android:text="show material progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#797979"/>
+            android:layout_below="@id/logo_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:gravity="center"
+            android:text="show material progress"
+            android:textColor="#797979"
+            android:textSize="14sp" />
 
         <Button
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/txt_0"
             android:id="@+id/progress_dialog"
             style="@style/dialog_blue_button"
+            android:layout_below="@id/txt_0"
+            android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:onClick="onClick"
+            android:text="Try me!" />
 
         <TextView
             android:id="@+id/txt_1"
-            android:layout_alignLeft="@id/logo_img"
-            android:layout_below="@id/progress_dialog"
-            android:layout_marginLeft="15dp"
-            android:text="A basic message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#797979"/>
+            android:layout_below="@id/progress_dialog"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:gravity="center"
+            android:text="A basic message"
+            android:textColor="#797979"
+            android:textSize="14sp" />
 
         <Button
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/txt_1"
             android:id="@+id/basic_test"
             style="@style/dialog_blue_button"
+            android:layout_below="@id/txt_1"
+            android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:onClick="onClick"
+            android:text="Try me!" />
 
         <TextView
-                android:id="@+id/txt_2"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/basic_test"
-                android:layout_marginLeft="15dp"
-                android:text="A title with a text under"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+            android:id="@+id/txt_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/basic_test"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="A title with a text under"
+            android:textColor="#797979"
+            android:textSize="14sp" />
 
         <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_2"
-                android:id="@+id/under_text_test"
-                style="@style/dialog_blue_button"
-                android:layout_margin="10dp"
-                android:text="Try me!"/>
+            android:id="@+id/under_text_test"
+            style="@style/dialog_blue_button"
+            android:layout_below="@id/txt_2"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:onClick="onClick"
+            android:text="Try me!" />
 
         <TextView
-                android:id="@+id/txt_3"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/under_text_test"
-                android:layout_marginLeft="15dp"
-                android:text="show error message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+            android:id="@+id/txt_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/under_text_test"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="show error message"
+            android:textColor="#797979"
+            android:textSize="14sp" />
 
         <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_3"
-                android:id="@+id/error_text_test"
-                style="@style/dialog_blue_button"
-                android:layout_margin="10dp"
-                android:text="Try me!"/>
+            android:id="@+id/error_text_test"
+            style="@style/dialog_blue_button"
+            android:layout_below="@id/txt_3"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:onClick="onClick"
+            android:text="Try me!" />
 
         <TextView
-                android:id="@+id/txt_4"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/error_text_test"
-                android:layout_marginLeft="15dp"
-                android:text="A success message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+            android:id="@+id/txt_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/error_text_test"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="A success message"
+            android:textColor="#797979"
+            android:textSize="14sp" />
 
         <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_4"
-                android:id="@+id/success_text_test"
-                style="@style/dialog_blue_button"
-                android:layout_margin="10dp"
-                android:text="Try me!"/>
+            android:id="@+id/success_text_test"
+            style="@style/dialog_blue_button"
+            android:layout_below="@id/txt_4"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:onClick="onClick"
+            android:text="Try me!" />
 
 
         <TextView
-                android:id="@+id/txt_5"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/success_text_test"
-                android:layout_marginLeft="15dp"
-                android:text="A warning message, with a listener bind to the Confirm-button..."
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+            android:id="@+id/txt_5"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/success_text_test"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="A warning message, with a listener bind to the Confirm-button..."
+            android:textColor="#797979"
+            android:textSize="14sp" />
 
         <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_5"
-                android:id="@+id/warning_confirm_test"
-                style="@style/dialog_blue_button"
-                android:layout_margin="10dp"
-                android:text="Try me!"/>
+            android:id="@+id/warning_confirm_test"
+            style="@style/dialog_blue_button"
+            android:layout_below="@id/txt_5"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:onClick="onClick"
+            android:text="Try me!" />
 
         <TextView
-                android:id="@+id/txt_6"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/warning_confirm_test"
-                android:layout_marginLeft="15dp"
-                android:text="A warning message, with listeners bind to Cancel and Confirm button..."
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+            android:id="@+id/txt_6"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/warning_confirm_test"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="A warning message, with listeners bind to Cancel and Confirm button..."
+            android:textColor="#797979"
+            android:textSize="14sp" />
 
         <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_6"
-                android:id="@+id/warning_cancel_test"
-                style="@style/dialog_blue_button"
-                android:layout_margin="10dp"
-                android:text="Try me!"/>
+            android:id="@+id/warning_cancel_test"
+            style="@style/dialog_blue_button"
+            android:layout_below="@id/txt_6"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:onClick="onClick"
+            android:text="Try me!" />
 
         <TextView
-                android:id="@+id/txt_7"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/warning_cancel_test"
-                android:layout_marginLeft="15dp"
-                android:text="A message with a custom icon"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+            android:id="@+id/txt_7"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/warning_cancel_test"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="A message with a custom icon"
+            android:textColor="#797979"
+            android:textSize="14sp" />
 
         <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_7"
-                android:id="@+id/custom_img_test"
-                style="@style/dialog_blue_button"
-                android:layout_margin="10dp"
-                android:text="Try me!"/>
+            android:id="@+id/custom_img_test"
+            style="@style/dialog_blue_button"
+            android:layout_below="@id/txt_7"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:onClick="onClick"
+            android:text="Try me!" />
 
     </RelativeLayout>
 </ScrollView>
