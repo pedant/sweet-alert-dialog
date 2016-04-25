@@ -2,6 +2,7 @@ package cn.pedant.SweetAlert.sample;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -120,29 +121,31 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                     public void onTick(long millisUntilFinished) {
                         // you can change the progress bar color by ProgressHelper every 800 millis
                         i++;
+                        int colorResource = R.color.blue_btn_bg_color;
                         switch (i) {
                             case 0:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
+                                colorResource = R.color.blue_btn_bg_color;
                                 break;
                             case 1:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_50));
+                                colorResource = R.color.material_deep_teal_50;
                                 break;
                             case 2:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.success_stroke_color));
+                                colorResource = R.color.success_stroke_color;
                                 break;
                             case 3:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_20));
+                                colorResource = R.color.material_deep_teal_20;
                                 break;
                             case 4:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_blue_grey_80));
+                                colorResource = R.color.material_blue_grey_80;
                                 break;
                             case 5:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.warning_stroke_color));
+                                colorResource = R.color.warning_stroke_color;
                                 break;
                             case 6:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.success_stroke_color));
+                                colorResource = R.color.success_stroke_color;
                                 break;
                         }
+                        pDialog.getProgressHelper().setBarColor(ContextCompat.getColor(SampleActivity.this, colorResource));
                     }
 
                     public void onFinish() {
