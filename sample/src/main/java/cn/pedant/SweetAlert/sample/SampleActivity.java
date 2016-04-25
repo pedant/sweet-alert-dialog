@@ -1,13 +1,13 @@
 package cn.pedant.SweetAlert.sample;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class SampleActivity extends Activity implements View.OnClickListener {
+public class SampleActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int i = -1;
 
@@ -15,14 +15,6 @@ public class SampleActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_activity);
-        findViewById(R.id.basic_test).setOnClickListener(this);
-        findViewById(R.id.under_text_test).setOnClickListener(this);
-        findViewById(R.id.error_text_test).setOnClickListener(this);
-        findViewById(R.id.success_text_test).setOnClickListener(this);
-        findViewById(R.id.warning_confirm_test).setOnClickListener(this);
-        findViewById(R.id.warning_cancel_test).setOnClickListener(this);
-        findViewById(R.id.custom_img_test).setOnClickListener(this);
-        findViewById(R.id.progress_dialog).setOnClickListener(this);
     }
 
     @Override
@@ -58,15 +50,15 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .setContentText("Won't be able to recover this file!")
                         .setConfirmText("Yes,delete it!")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            // reuse previous dialog instance
-                            sDialog.setTitleText("Deleted!")
-                                    .setContentText("Your imaginary file has been deleted!")
-                                    .setConfirmText("OK")
-                                    .setConfirmClickListener(null)
-                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        }
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance
+                                sDialog.setTitleText("Deleted!")
+                                        .setContentText("Your imaginary file has been deleted!")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
                         })
                         .show();
                 break;
@@ -128,7 +120,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                     public void onTick(long millisUntilFinished) {
                         // you can change the progress bar color by ProgressHelper every 800 millis
                         i++;
-                        switch (i){
+                        switch (i) {
                             case 0:
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
                                 break;

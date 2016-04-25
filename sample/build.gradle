@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 21
+        targetSdkVersion 23
     }
 
     lintOptions {
@@ -28,4 +28,6 @@ android {
 dependencies {
     //compile 'cn.pedant.sweetalert:library:1.3'
     compile project(':library')
+
+    compile "com.android.support:appcompat-v7:23.3.0"
 }
