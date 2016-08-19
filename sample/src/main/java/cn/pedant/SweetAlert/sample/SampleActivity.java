@@ -3,6 +3,7 @@ package cn.pedant.SweetAlert.sample;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -23,6 +24,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
+        findViewById(R.id.custom_view_test).setOnClickListener(this);
     }
 
     @Override
@@ -58,15 +60,15 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .setContentText("Won't be able to recover this file!")
                         .setConfirmText("Yes,delete it!")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            // reuse previous dialog instance
-                            sDialog.setTitleText("Deleted!")
-                                    .setContentText("Your imaginary file has been deleted!")
-                                    .setConfirmText("OK")
-                                    .setConfirmClickListener(null)
-                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        }
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance
+                                sDialog.setTitleText("Deleted!")
+                                        .setContentText("Your imaginary file has been deleted!")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
                         })
                         .show();
                 break;
@@ -128,7 +130,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                     public void onTick(long millisUntilFinished) {
                         // you can change the progress bar color by ProgressHelper every 800 millis
                         i++;
-                        switch (i){
+                        switch (i) {
                             case 0:
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
                                 break;
@@ -160,6 +162,15 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                                 .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                     }
                 }.start();
+                break;
+            case R.id.custom_view_test:
+                View view = LayoutInflater.from(this).inflate(R.layout.dialog_custom_view, null);
+                SweetAlertDialog dialog = new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_VIEW)
+                        .setTitleText("Sweet!");
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
+                dialog.setCustomView(view, false);
+
                 break;
         }
     }
