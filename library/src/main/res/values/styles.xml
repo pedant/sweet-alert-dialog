@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="alert_dialog" parent="android:Theme.Dialog">
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">false</item>
-        <item name="android:windowBackground">@color/float_transparent</item>
+        <item name="android:windowBackground">@color/sweet_dialog_transparent</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.4</item>
@@ -18,6 +19,6 @@
         <item name="android:textSize">14sp</item>
         <item name="android:paddingLeft">21dp</item>
         <item name="android:paddingRight">21dp</item>
-        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:textColor">@color/sweet_dialog_button_text_color</item>
     </style>
 </resources>
