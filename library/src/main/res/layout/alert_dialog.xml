@@ -147,15 +147,15 @@
 
         <Button
             android:id="@+id/cancel_button"
-            style="@style/dialog_blue_button"
             android:background="@drawable/gray_button_background"
             android:layout_marginRight="10dp"
             android:visibility="gone"
-            android:text="@string/sweet_dialog_cancel"/>
+            android:text="@string/sweet_dialog_cancel"
+            style="@style/SweetAlertDialog.Button.Blue"/>
 
         <Button
             android:id="@+id/confirm_button"
             android:text="@string/sweet_dialog_ok"
-            style="@style/dialog_blue_button"/>
+            style="@style/SweetAlertDialog.Button.Blue"/>
     </LinearLayout>
 </LinearLayout>

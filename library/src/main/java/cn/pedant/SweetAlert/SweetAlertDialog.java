@@ -73,7 +73,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     }
 
     public SweetAlertDialog(Context context, int alertType) {
-        super(context, R.style.alert_dialog);
+        super(context, R.style.SweetAlertDialog);
         setCancelable(true);
         setCanceledOnTouchOutside(false);
         mProgressHelper = new ProgressHelper(context);
