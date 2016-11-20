@@ -125,6 +125,7 @@
         android:layout_marginTop="10dp"
         android:textSize="@dimen/sweet_dialog_title"
         android:textColor="@color/sweet_dialog_text_color"
+        android:text="@string/sweet_dialog_default_title"
         android:maxLines="1"/>
 
     <TextView
@@ -150,11 +151,11 @@
             android:background="@drawable/gray_button_background"
             android:layout_marginRight="10dp"
             android:visibility="gone"
-            android:text="@string/dialog_cancel"/>
+            android:text="@string/sweet_dialog_cancel"/>
 
         <Button
             android:id="@+id/confirm_button"
-            android:text="@string/dialog_ok"
+            android:text="@string/sweet_dialog_ok"
             style="@style/dialog_blue_button"/>
     </LinearLayout>
 </LinearLayout>

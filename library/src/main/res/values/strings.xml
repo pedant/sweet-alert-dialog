@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SweetAlertDialog</string>
-    <string name="dialog_default_title">Here\'s a message!</string>
-    <string name="dialog_ok">OK</string>
-    <string name="dialog_cancel">Cancel</string>
-    <string name="LOADING">Loading…</string>
+
+    <string name="sweet_dialog_default_title">Here\'s a message!</string>
+    <string name="sweet_dialog_ok">OK</string>
+    <string name="sweet_dialog_cancel">Cancel</string>
+    <string name="sweet_dialog_loading">Loading…</string>
 </resources>
