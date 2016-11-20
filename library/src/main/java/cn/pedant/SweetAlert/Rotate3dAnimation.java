@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 public class Rotate3dAnimation extends Animation {
+
     private int mPivotXType = ABSOLUTE;
     private int mPivotYType = ABSOLUTE;
     private float mPivotXValue = 0.0f;
@@ -39,8 +40,8 @@ public class Rotate3dAnimation extends Animation {
         } else {
             if (value.type == TypedValue.TYPE_FRACTION) {
                 d.type = (value.data & TypedValue.COMPLEX_UNIT_MASK) ==
-                        TypedValue.COMPLEX_UNIT_FRACTION_PARENT ?
-                        RELATIVE_TO_PARENT : RELATIVE_TO_SELF;
+                    TypedValue.COMPLEX_UNIT_FRACTION_PARENT ?
+                    RELATIVE_TO_PARENT : RELATIVE_TO_SELF;
                 d.value = TypedValue.complexToFloat(value.data);
                 return d;
             } else if (value.type == TypedValue.TYPE_FLOAT) {
@@ -48,7 +49,7 @@ public class Rotate3dAnimation extends Animation {
                 d.value = value.getFloat();
                 return d;
             } else if (value.type >= TypedValue.TYPE_FIRST_INT &&
-                    value.type <= TypedValue.TYPE_LAST_INT) {
+                value.type <= TypedValue.TYPE_LAST_INT) {
                 d.type = ABSOLUTE;
                 d.value = value.data;
                 return d;
@@ -61,7 +62,7 @@ public class Rotate3dAnimation extends Animation {
         return d;
     }
 
-    public Rotate3dAnimation (Context context, AttributeSet attrs) {
+    public Rotate3dAnimation(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.Rotate3dAnimation);
@@ -82,7 +83,7 @@ public class Rotate3dAnimation extends Animation {
         initializePivotPoint();
     }
 
-    public Rotate3dAnimation (int rollType, float fromDegrees, float toDegrees) {
+    public Rotate3dAnimation(int rollType, float fromDegrees, float toDegrees) {
         mRollType = rollType;
         mFromDegrees = fromDegrees;
         mToDegrees = toDegrees;
@@ -90,7 +91,7 @@ public class Rotate3dAnimation extends Animation {
         mPivotY = 0.0f;
     }
 
-    public Rotate3dAnimation (int rollType, float fromDegrees, float toDegrees, float pivotX, float pivotY) {
+    public Rotate3dAnimation(int rollType, float fromDegrees, float toDegrees, float pivotX, float pivotY) {
         mRollType = rollType;
         mFromDegrees = fromDegrees;
         mToDegrees = toDegrees;
@@ -102,7 +103,7 @@ public class Rotate3dAnimation extends Animation {
         initializePivotPoint();
     }
 
-    public Rotate3dAnimation (int rollType, float fromDegrees, float toDegrees, int pivotXType, float pivotXValue, int pivotYType, float pivotYValue) {
+    public Rotate3dAnimation(int rollType, float fromDegrees, float toDegrees, int pivotXType, float pivotXValue, int pivotYType, float pivotYValue) {
         mRollType = rollType;
         mFromDegrees = fromDegrees;
         mToDegrees = toDegrees;
@@ -153,7 +154,7 @@ public class Rotate3dAnimation extends Animation {
         mCamera.getMatrix(matrix);
         mCamera.restore();
 
-        matrix.preTranslate(-mPivotX, -mPivotY);
+        matrix.preTranslate(- mPivotX, - mPivotY);
         matrix.postTranslate(mPivotX, mPivotY);
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 public class ProgressHelper {
+
     private ProgressWheel mProgressWheel;
     private boolean mToSpin;
     private float mSpinSpeed;
@@ -20,28 +21,28 @@ public class ProgressHelper {
         mToSpin = true;
         mSpinSpeed = 0.75f;
         mBarWidth = ctx.getResources().getDimensionPixelSize(R.dimen.common_circle_width) + 1;
-        mBarColor = ctx.getResources().getColor(R.color.success_stroke_color);
+        mBarColor = ctx.getResources().getColor(R.color.sweet_dialog_success_stroke_color);
         mRimWidth = 0;
         mRimColor = 0x00000000;
         mIsInstantProgress = false;
-        mProgressVal = -1;
+        mProgressVal = - 1;
         mCircleRadius = ctx.getResources().getDimensionPixelOffset(R.dimen.progress_circle_radius);
     }
 
-    public ProgressWheel getProgressWheel () {
+    public ProgressWheel getProgressWheel() {
         return mProgressWheel;
     }
 
-    public void setProgressWheel (ProgressWheel progressWheel) {
+    public void setProgressWheel(ProgressWheel progressWheel) {
         mProgressWheel = progressWheel;
         updatePropsIfNeed();
     }
 
-    private void updatePropsIfNeed () {
+    private void updatePropsIfNeed() {
         if (mProgressWheel != null) {
-            if (!mToSpin && mProgressWheel.isSpinning()) {
+            if (! mToSpin && mProgressWheel.isSpinning()) {
                 mProgressWheel.stopSpinning();
-            } else if (mToSpin && !mProgressWheel.isSpinning()) {
+            } else if (mToSpin && ! mProgressWheel.isSpinning()) {
                 mProgressWheel.spin();
             }
             if (mSpinSpeed != mProgressWheel.getSpinSpeed()) {
@@ -114,7 +115,7 @@ public class ProgressHelper {
 
     /**
      * @param circleRadius units using pixel
-     * **/
+     **/
     public void setCircleRadius(int circleRadius) {
         mCircleRadius = circleRadius;
         updatePropsIfNeed();

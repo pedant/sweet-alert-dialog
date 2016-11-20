@@ -10,7 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 public class SuccessTickView extends View {
-    private float mDensity = -1;
+
+    private float mDensity = - 1;
     private Paint mPaint;
     private final float CONST_RADIUS = dip2px(1.2f);
     private final float CONST_RECT_WEIGHT = dip2px(3);
@@ -29,14 +30,14 @@ public class SuccessTickView extends View {
         init();
     }
 
-    public SuccessTickView(Context context, AttributeSet attrs){
-        super(context,attrs);
+    public SuccessTickView(Context context, AttributeSet attrs) {
+        super(context, attrs);
         init();
     }
 
-    private void init () {
+    private void init() {
         mPaint = new Paint();
-        mPaint.setColor(getResources().getColor(R.color.success_stroke_color));
+        mPaint.setColor(getResources().getColor(R.color.sweet_dialog_success_stroke_color));
         mLeftRectWidth = CONST_LEFT_RECT_W;
         mRightRectWidth = CONST_RIGHT_RECT_W;
         mLeftRectGrowMode = false;
@@ -47,6 +48,7 @@ public class SuccessTickView extends View {
         super.draw(canvas);
         int totalW = getWidth();
         int totalH = getHeight();
+
         // rotate canvas first
         canvas.rotate(45, totalW / 2, totalH / 2);
 
@@ -78,13 +80,13 @@ public class SuccessTickView extends View {
     }
 
     public float dip2px(float dpValue) {
-        if(mDensity == -1) {
+        if (mDensity == - 1) {
             mDensity = getResources().getDisplayMetrics().density;
         }
         return dpValue * mDensity + 0.5f;
     }
 
-    public void startTickAnim () {
+    public void startTickAnim() {
         // hide tick
         mLeftRectWidth = 0;
         mRightRectWidth = 0;

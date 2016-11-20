@@ -5,7 +5,13 @@ import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.util.AttributeSet;
 import android.util.Xml;
-import android.view.animation.*;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.RotateAnimation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -14,7 +20,7 @@ import java.io.IOException;
 public class OptAnimationLoader {
 
     public static Animation loadAnimation(Context context, int id)
-            throws Resources.NotFoundException {
+        throws Resources.NotFoundException {
 
         XmlResourceParser parser = null;
         try {
@@ -22,21 +28,23 @@ public class OptAnimationLoader {
             return createAnimationFromXml(context, parser);
         } catch (XmlPullParserException ex) {
             Resources.NotFoundException rnf = new Resources.NotFoundException("Can't load animation resource ID #0x" +
-                    Integer.toHexString(id));
+                Integer.toHexString(id));
             rnf.initCause(ex);
             throw rnf;
         } catch (IOException ex) {
             Resources.NotFoundException rnf = new Resources.NotFoundException("Can't load animation resource ID #0x" +
-                    Integer.toHexString(id));
+                Integer.toHexString(id));
             rnf.initCause(ex);
             throw rnf;
         } finally {
-            if (parser != null) parser.close();
+            if (parser != null) {
+                parser.close();
+            }
         }
     }
 
     private static Animation createAnimationFromXml(Context c, XmlPullParser parser)
-            throws XmlPullParserException, IOException {
+        throws XmlPullParserException, IOException {
 
         return createAnimationFromXml(c, parser, null, Xml.asAttributeSet(parser));
     }
@@ -50,25 +58,25 @@ public class OptAnimationLoader {
         int type;
         int depth = parser.getDepth();
 
-        while (((type=parser.next()) != XmlPullParser.END_TAG || parser.getDepth() > depth)
-                && type != XmlPullParser.END_DOCUMENT) {
+        while (((type = parser.next()) != XmlPullParser.END_TAG || parser.getDepth() > depth)
+            && type != XmlPullParser.END_DOCUMENT) {
 
             if (type != XmlPullParser.START_TAG) {
                 continue;
             }
 
-            String  name = parser.getName();
+            String name = parser.getName();
 
             if (name.equals("set")) {
                 anim = new AnimationSet(c, attrs);
-                createAnimationFromXml(c, parser, (AnimationSet)anim, attrs);
+                createAnimationFromXml(c, parser, (AnimationSet) anim, attrs);
             } else if (name.equals("alpha")) {
                 anim = new AlphaAnimation(c, attrs);
             } else if (name.equals("scale")) {
                 anim = new ScaleAnimation(c, attrs);
-            }  else if (name.equals("rotate")) {
+            } else if (name.equals("rotate")) {
                 anim = new RotateAnimation(c, attrs);
-            }  else if (name.equals("translate")) {
+            } else if (name.equals("translate")) {
                 anim = new TranslateAnimation(c, attrs);
             } else {
                 try {
@@ -84,6 +92,5 @@ public class OptAnimationLoader {
         }
 
         return anim;
-
     }
 }
