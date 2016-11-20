@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:wheel="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/loading"
     android:layout_width="@dimen/alert_width"
     android:layout_height="wrap_content"
@@ -113,8 +114,8 @@
             android:id="@+id/progressWheel"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            wheel:progressIndeterminate="true"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            app:matProg_progressIndeterminate="true"/>
     </FrameLayout>
 
     <TextView
