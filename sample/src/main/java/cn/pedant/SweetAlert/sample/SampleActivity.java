@@ -121,16 +121,16 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                     public void onTick(long millisUntilFinished) {
                         // you can change the progress bar color by ProgressHelper every 800 millis
                         i++;
-                        int colorResource = R.color.blue_btn_bg_color;
+                        int colorResource = R.color.sweet_dialog_blue_btn_bg_color;
                         switch (i) {
                             case 0:
-                                colorResource = R.color.blue_btn_bg_color;
+                                colorResource = R.color.sweet_dialog_blue_btn_bg_color;
                                 break;
                             case 1:
                                 colorResource = R.color.material_deep_teal_50;
                                 break;
                             case 2:
-                                colorResource = R.color.success_stroke_color;
+                                colorResource = R.color.sweet_dialog_success_stroke_color;
                                 break;
                             case 3:
                                 colorResource = R.color.material_deep_teal_20;
@@ -139,10 +139,10 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                                 colorResource = R.color.material_blue_grey_80;
                                 break;
                             case 5:
-                                colorResource = R.color.warning_stroke_color;
+                                colorResource = R.color.sweet_dialog_warning_stroke_color;
                                 break;
                             case 6:
-                                colorResource = R.color.success_stroke_color;
+                                colorResource = R.color.sweet_dialog_success_stroke_color;
                                 break;
                         }
                         pDialog.getProgressHelper().setBarColor(ContextCompat.getColor(SampleActivity.this, colorResource));

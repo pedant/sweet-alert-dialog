@@ -3,7 +3,7 @@
        xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="@android:color/transparent"/>
     <stroke
-        android:color="@color/error_stroke_color"
+        android:color="@color/sweet_dialog_error_stroke_color"
         android:width="@dimen/common_circle_width"/>
 </shape>
 
