@@ -1,39 +1,16 @@
+#此框架转自pedant ![]{https://github.com/pedant/sweet-alert-dialog} 
+##只是再原作者原有基础上添加两个方法(如文底)
+
 Sweet Alert Dialog
 ===================
 Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Sweet%20Alert%20Dialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1065)
 
-[English Version](https://github.com/pedant/sweet-alert-dialog/blob/master/README.md)
-
 灵感来源于JS版[SweetAlert](http://tristanedwards.me/sweetalert)
-
-[Demo下载](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.1/sweet-alert-sample-v1.1.apk)
 
 ## 运行示意图
 ![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
-
-## 安装
-使用SweetAlertDialog最简单的办法就是像下面这样添加项目依赖。
-
-**Maven**
-
-    <dependency>
-      <groupId>cn.pedant.sweetalert</groupId>
-      <artifactId>library</artifactId>
-      <version>1.3</version>
-      <type>aar</type>
-    </dependency>
-
-**Gradle**
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        compile 'cn.pedant.sweetalert:library:1.3'
-    }
 
 ## 如何开始
 显示Material进度样式
@@ -66,10 +43,6 @@ Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
 - setRimColor(int rimColor)
 - getSpinSpeed()
 - setSpinSpeed(float spinSpeed)
-
-感谢[materialish-progress](https://github.com/pnikosis/materialish-progress)项目以及[@croccio](https://github.com/croccio)的参与。
-
-更多关于进度条的用法，请参见样例代码。
 
 只显示标题：
 
@@ -165,6 +138,15 @@ Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
 
 [更多Android原创技术分享见: pedant.cn](http://www.pedant.cn)
 
+##添加功能
+    ***改变确定按钮颜色***
+    .setConfirmButtonColor(int)         //修改按钮颜色,按钮点击没有变化
+    .setConfirmButtonColor(int,int)     //修改按钮颜色,按钮点击颜色
+    
+    ***改变确定按钮颜色***
+    .setCancelButtonColor(int)          
+    .setCancelButtonColor(int,int)
+    
 ## License
 
     The MIT License (MIT)
