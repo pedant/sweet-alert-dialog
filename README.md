@@ -6,7 +6,7 @@ SweetAlert for Android, a beautiful and clever alert dialog
 
 [中文版](https://github.com/pedant/sweet-alert-dialog/blob/master/README.zh.md)
 
-Inspired by JavaScript [SweetAlert](http://tristanedwards.me/sweetalert)
+Inspired by JavaScript [SweetAlert](https://github.com/t4t5/sweetalert)
 
 [Demo Download](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.1/sweet-alert-sample-v1.1.apk)
 
