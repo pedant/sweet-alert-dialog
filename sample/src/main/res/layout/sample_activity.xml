@@ -148,6 +148,17 @@
                 android:layout_margin="10dp"
                 android:text="Try me!" />
 
+            <TextView
+                android:id="@+id/txt_10"
+                style="@style/description_style"
+                android:text="Custom view" />
+
+            <Button
+                android:id="@+id/custom_view_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
         </LinearLayout>
 
     </RelativeLayout>

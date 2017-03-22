@@ -2,6 +2,16 @@ Sweet Alert Dialog
 ===================
 SweetAlert for Android, a beautiful and clever alert dialog
 
+#### This is the most advanced and contemporary fork
+**Added:**
+- Ability to set custom view
+- More convenient interface to bind listeners (like in AlertDiaog)
+- Third neutral button with own listener,colors, methods and etc
+- Ability to disable button
+- Ability to set buttons stroke
+- Switcher to dark theme
+
+
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Sweet%20Alert%20Dialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1065)
 
 [中文版](https://github.com/pedant/sweet-alert-dialog/blob/master/README.zh.md)
@@ -115,7 +125,18 @@ A message with a custom icon：
         .setCustomImage(R.drawable.custom_img)
         .show();
 
-Bind the listener to confirm button：
+A message with a custom view：
+
+    final EditText editText = new EditText(this);
+    SweetAlertDialog dialog = new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+            .setTitleText("Custom view")
+            .setConfirmText("Ok");
+
+    dialog.setCustomView(editText);
+    dialog.show();
+
+
+Different ways to bind the listener to button：
 
     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
         .setTitleText("Are you sure?")
@@ -127,23 +148,31 @@ Bind the listener to confirm button：
                 sDialog.dismissWithAnimation();
             }
         })
-        .show();
-
-Show the cancel button and bind listener to it：
-
-    new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-        .setTitleText("Are you sure?")
-        .setContentText("Won't be able to recover this file!")
-        .setCancelText("No,cancel plx!")
-        .setConfirmText("Yes,delete it!")
-        .showCancelButton(true)
-        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+        .setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog) {
-                sDialog.cancel();
+                sDialog.dismissWithAnimation();
             }
         })
         .show();
+
+
+Disable button
+
+    final SweetAlertDialog disabledBtnDialog = new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+            .setTitleText("Title")
+            .setContentText("Disabled button dialog")
+            .setConfirmText("Confirm")
+            .setCancelText("Cancel")
+
+    disabledBtnDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+        @Override
+        public void onShow(DialogInterface dialog) {
+            disabledBtnDialog.getButton(SweetAlertDialog.BUTTON_CONFIRM).setEnabled(false);
+        }
+    });
+    disabledBtnDialog.show();
+
 
 **Change** the dialog style upon confirming：
 

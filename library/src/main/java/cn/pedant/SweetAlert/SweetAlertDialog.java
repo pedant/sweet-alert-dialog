@@ -3,6 +3,7 @@ package cn.pedant.SweetAlert;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -71,8 +72,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     public static boolean DARK_STYLE = false;
 
-    public static interface OnSweetClickListener {
-        public void onClick(SweetAlertDialog sweetAlertDialog);
+    //aliases
+    public final static int BUTTON_CONFIRM = DialogInterface.BUTTON_POSITIVE;
+    public final static int BUTTON_CANCEL = DialogInterface.BUTTON_NEGATIVE;
+
+    public interface OnSweetClickListener {
+        void onClick(SweetAlertDialog sweetAlertDialog);
     }
 
     public SweetAlertDialog(Context context) {
@@ -383,9 +388,9 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public Button getButton(int buttonType) {
         switch (buttonType) {
             default:
-            case BUTTON_POSITIVE: //constants from parent class
+            case BUTTON_CONFIRM:
                 return mConfirmButton;
-            case BUTTON_NEGATIVE:
+            case BUTTON_CANCEL:
                 return mCancelButton;
             case BUTTON_NEUTRAL:
                 return mNeutralButton;

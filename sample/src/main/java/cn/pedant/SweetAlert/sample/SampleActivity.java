@@ -2,10 +2,13 @@ package cn.pedant.SweetAlert.sample;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import cn.pedant.SweetAlert.Constants;
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -29,6 +32,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.neutral_btn_test).setOnClickListener(this);
         findViewById(R.id.disabled_btn_test).setOnClickListener(this);
         findViewById(R.id.dark_style).setOnClickListener(this);
+        findViewById(R.id.custom_view_test).setOnClickListener(this);
 
         findViewById(R.id.basic_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
         findViewById(R.id.under_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
@@ -40,6 +44,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.progress_dialog).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
         findViewById(R.id.neutral_btn_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
         findViewById(R.id.disabled_btn_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.custom_view_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
     }
 
     @Override
@@ -200,7 +205,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 disabledBtnDialog.setOnShowListener(new DialogInterface.OnShowListener() {
                     @Override
                     public void onShow(DialogInterface dialog) {
-                        disabledBtnDialog.getButton(SweetAlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                        disabledBtnDialog.getButton(SweetAlertDialog.BUTTON_CONFIRM).setEnabled(false);
                     }
                 });
                 disabledBtnDialog.show();
@@ -212,6 +217,31 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 } else {
                     SweetAlertDialog.DARK_STYLE = false;
                 }
+                break;
+
+            case R.id.custom_view_test:
+                final EditText editText = new EditText(this);
+                final CheckBox checkBox = new CheckBox(this);
+                editText.setText("Some edit text");
+                checkBox.setChecked(true);
+                checkBox.setText("Some checkbox");
+
+                if (SweetAlertDialog.DARK_STYLE) {
+                    editText.setTextColor(Color.WHITE);
+                    checkBox.setTextColor(Color.WHITE);
+                }
+
+                LinearLayout linearLayout = new LinearLayout(getApplicationContext());
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                linearLayout.addView(editText);
+                linearLayout.addView(checkBox);
+
+                SweetAlertDialog dialog = new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+                        .setTitleText("Custom view")
+                        .setConfirmText("Ok");
+
+                dialog.setCustomView(linearLayout);
+                dialog.show();
         }
     }
 }
