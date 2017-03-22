@@ -383,7 +383,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public Button getButton(int buttonType) {
         switch (buttonType) {
             default:
-            case BUTTON_POSITIVE: //constant from parent class
+            case BUTTON_POSITIVE: //constants from parent class
                 return mConfirmButton;
             case BUTTON_NEGATIVE:
                 return mCancelButton;

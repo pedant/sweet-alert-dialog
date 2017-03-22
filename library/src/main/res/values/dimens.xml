@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="alert_width">290dp</dimen>
+    <dimen name="common_circle_width">3dp</dimen>
+    <dimen name="progress_circle_radius">34dp</dimen>
+
     <dimen name="custom_image_size">53dp</dimen>
+    <dimen name="buttons_stroke_width">0px</dimen>
 </resources>

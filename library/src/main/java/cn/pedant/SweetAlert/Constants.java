@@ -5,9 +5,9 @@ import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
 
-class Constants {
+public class Constants {
     //make bg a little bit darker
-    static final View.OnTouchListener FOCUS_TOUCH_LISTENER = new View.OnTouchListener() {
+    public static final View.OnTouchListener FOCUS_TOUCH_LISTENER = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             Drawable drawable = v.getBackground();
@@ -15,7 +15,7 @@ class Constants {
                 case MotionEvent.ACTION_DOWN:
                 case MotionEvent.ACTION_BUTTON_PRESS:
 
-                    drawable.setColorFilter(0x14000000, PorterDuff.Mode.SRC_ATOP);
+                    drawable.setColorFilter(0x20000000, PorterDuff.Mode.SRC_ATOP);
                     v.invalidate();
                     break;
                 case MotionEvent.ACTION_UP:

@@ -1,10 +1,13 @@
 package cn.pedant.SweetAlert.sample;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.CheckBox;
 
+import cn.pedant.SweetAlert.Constants;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SampleActivity extends Activity implements View.OnClickListener {
@@ -23,20 +26,35 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
+        findViewById(R.id.neutral_btn_test).setOnClickListener(this);
+        findViewById(R.id.disabled_btn_test).setOnClickListener(this);
+        findViewById(R.id.dark_style).setOnClickListener(this);
+
+        findViewById(R.id.basic_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.under_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.error_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.success_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.warning_confirm_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.warning_cancel_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.custom_img_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.progress_dialog).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.neutral_btn_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.disabled_btn_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.basic_test:
-                // default title "Here's a message!"
                 SweetAlertDialog sd = new SweetAlertDialog(this);
                 sd.setCancelable(true);
                 sd.setCanceledOnTouchOutside(true);
+                sd.setContentText("Here's a message");
                 sd.show();
                 break;
             case R.id.under_text_test:
                 new SweetAlertDialog(this)
+                        .setTitleText("Title")
                         .setContentText("It's pretty, isn't it?")
                         .show();
                 break;
@@ -56,17 +74,16 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Are you sure?")
                         .setContentText("Won't be able to recover this file!")
-                        .setConfirmText("Yes,delete it!")
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            // reuse previous dialog instance
-                            sDialog.setTitleText("Deleted!")
-                                    .setContentText("Your imaginary file has been deleted!")
-                                    .setConfirmText("OK")
-                                    .setConfirmClickListener(null)
-                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        }
+                        .setCancelButton("Yes,delete it!", new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                // reuse previous dialog instance
+                                sweetAlertDialog.setTitleText("Deleted!")
+                                        .setContentText("Your imaginary file has been deleted!")
+                                        .setCancelText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
                         })
                         .show();
                 break;
@@ -128,7 +145,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                     public void onTick(long millisUntilFinished) {
                         // you can change the progress bar color by ProgressHelper every 800 millis
                         i++;
-                        switch (i){
+                        switch (i) {
                             case 0:
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
                                 break;
@@ -161,6 +178,40 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                     }
                 }.start();
                 break;
+
+            case R.id.neutral_btn_test:
+                new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+                        .setTitleText("Title")
+                        .setContentText("Three buttons dialog")
+                        .setConfirmText("Confirm")
+                        .setCancelText("Cancel")
+                        .setNeutralText("Neutral")
+                        .show();
+                break;
+
+            case R.id.disabled_btn_test:
+                final SweetAlertDialog disabledBtnDialog = new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+                        .setTitleText("Title")
+                        .setContentText("Disabled button dialog")
+                        .setConfirmText("Confirm")
+                        .setCancelText("Cancel")
+                        .setNeutralText("Neutral");
+
+                disabledBtnDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface dialog) {
+                        disabledBtnDialog.getButton(SweetAlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                    }
+                });
+                disabledBtnDialog.show();
+                break;
+
+            case R.id.dark_style:
+                if (((CheckBox) v).isChecked()) {
+                    SweetAlertDialog.DARK_STYLE = true;
+                } else {
+                    SweetAlertDialog.DARK_STYLE = false;
+                }
         }
     }
 }
