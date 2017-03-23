@@ -11,6 +11,14 @@ SweetAlert for Android, a beautiful and clever alert dialog
 - Ability to set buttons stroke
 - Switcher to dark theme
 
+Some screenshots of the new features:
+
+<img src="https://cloud.githubusercontent.com/assets/10178982/24260517/c6f72da6-0ffc-11e7-9a16-67fea4010a34.jpg" width="30%"/>
+
+#### Known issues:
+- [ ] Bug with buttons height if custom view too big and need scrollview
+- [ ] Buttons can handle only one line strings
+- [ ] Bug with animation's background with dark theme
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Sweet%20Alert%20Dialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1065)
 
