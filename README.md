@@ -50,7 +50,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
     dependencies {
-        compile 'cn.pedant.sweetalert:library:1.3'
+        compile 'com.github.f0ris.sweetalert:library:1.5'
     }
 
 ## Usage
