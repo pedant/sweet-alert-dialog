@@ -444,13 +444,14 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
      *
      * @param view
      */
-    public void setCustomView(View view) {
+    public SweetAlertDialog setCustomView(View view) {
         mCustomView = view;
         if (mCustomView != null && mCustomViewContainer != null) {
             mCustomViewContainer.addView(view);
             mCustomViewContainer.setVisibility(View.VISIBLE);
             mContentTextView.setVisibility(View.GONE);
         }
+        return this;
     }
 
     /**

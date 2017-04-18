@@ -50,7 +50,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
     dependencies {
-        compile 'com.github.f0ris.sweetalert:library:1.5'
+        compile 'com.github.f0ris.sweetalert:library:1.5.1'
     }
 
 ## Usage
@@ -136,12 +136,11 @@ A message with a custom icon：
 A message with a custom view：
 
     final EditText editText = new EditText(this);
-    SweetAlertDialog dialog = new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+    new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
             .setTitleText("Custom view")
-            .setConfirmText("Ok");
-
-    dialog.setCustomView(editText);
-    dialog.show();
+            .setConfirmText("Ok")
+            .setCustomView(editText)
+            .show();
 
 
 Different ways to bind the listener to button：
