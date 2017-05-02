@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.Transformation;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,6 +56,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private OnSweetClickListener mCancelClickListener;
     private OnSweetClickListener mConfirmClickListener;
     private boolean mCloseFromCancel;
+    private FrameLayout mEditTextFrame;
+    private EditText mEditText;
+    private Button mEditTextConfirmButton;
+    private OnEditTextSweetClickListener mEditTextConfirmClickListener;
 
     public static final int NORMAL_TYPE = 0;
     public static final int ERROR_TYPE = 1;
@@ -62,9 +67,14 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public static final int WARNING_TYPE = 3;
     public static final int CUSTOM_IMAGE_TYPE = 4;
     public static final int PROGRESS_TYPE = 5;
+    public static final int EDIT_TEXT_TYPE = 6;
 
     public static interface OnSweetClickListener {
         public void onClick (SweetAlertDialog sweetAlertDialog);
+    }
+
+    public static interface OnEditTextSweetClickListener {
+        public void onClick (SweetAlertDialog sweetAlertDialog, String inputText);
     }
 
     public SweetAlertDialog(Context context) {
@@ -156,6 +166,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mProgressHelper.setProgressWheel((ProgressWheel)findViewById(R.id.progressWheel));
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
+        mEditTextFrame = (FrameLayout)findViewById(R.id.edit_text_frame);
+        mEditText = (EditText)findViewById(R.id.editText);
+        mEditTextConfirmButton = (Button)findViewById(R.id.edit_text_confirm_button);
+        mEditTextConfirmButton.setOnClickListener(this);
 
         setTitleText(mTitleText);
         setContentText(mContentText);
@@ -172,6 +186,8 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mWarningFrame.setVisibility(View.GONE);
         mProgressFrame.setVisibility(View.GONE);
         mConfirmButton.setVisibility(View.VISIBLE);
+        mEditTextFrame.setVisibility(View.GONE);
+        mEditTextConfirmButton.setVisibility(View.GONE);
 
         mConfirmButton.setBackgroundResource(R.drawable.blue_button_background);
         mErrorFrame.clearAnimation();
@@ -220,6 +236,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                     mProgressFrame.setVisibility(View.VISIBLE);
                     mConfirmButton.setVisibility(View.GONE);
                     break;
+                case EDIT_TEXT_TYPE:
+                    mEditTextFrame.setVisibility(View.VISIBLE);
+                    mConfirmButton.setVisibility(View.GONE);
+                    mEditTextConfirmButton.setVisibility(View.VISIBLE);
+                    mEditText.requestFocus();
+                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
             }
             if (!fromCreate) {
                 playAnimation();
@@ -320,6 +342,9 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         if (mConfirmButton != null && mConfirmText != null) {
             mConfirmButton.setText(mConfirmText);
         }
+        if (mEditTextConfirmButton != null && mConfirmText != null) {
+            mEditTextConfirmButton.setText(mConfirmText);
+        }
         return this;
     }
 
@@ -330,6 +355,11 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     public SweetAlertDialog setConfirmClickListener (OnSweetClickListener listener) {
         mConfirmClickListener = listener;
+        return this;
+    }
+
+    public SweetAlertDialog setEditTextConfirmClickListener (OnEditTextSweetClickListener listener) {
+        mEditTextConfirmClickListener = listener;
         return this;
     }
 
@@ -356,6 +386,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private void dismissWithAnimation(boolean fromCancel) {
         mCloseFromCancel = fromCancel;
         mConfirmButton.startAnimation(mOverlayOutAnim);
+        mEditTextConfirmButton.startAnimation(mOverlayOutAnim);
         mDialogView.startAnimation(mModalOutAnim);
     }
 
@@ -370,6 +401,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         } else if (v.getId() == R.id.confirm_button) {
             if (mConfirmClickListener != null) {
                 mConfirmClickListener.onClick(SweetAlertDialog.this);
+            } else {
+                dismissWithAnimation();
+            }
+        } else if (v.getId() == R.id.edit_text_confirm_button) {
+            if (mEditTextConfirmClickListener != null) {
+                mEditTextConfirmClickListener.onClick(SweetAlertDialog.this, mEditText.getText().toString());
             } else {
                 dismissWithAnimation();
             }

@@ -23,6 +23,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
+        findViewById(R.id.edit_text_test).setOnClickListener(this);
     }
 
     @Override
@@ -30,7 +31,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.basic_test:
                 // default title "Here's a message!"
-                SweetAlertDialog sd = new SweetAlertDialog(this);
+                final SweetAlertDialog sd = new SweetAlertDialog(this);
                 sd.setCancelable(true);
                 sd.setCanceledOnTouchOutside(true);
                 sd.show();
@@ -160,6 +161,25 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                                 .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                     }
                 }.start();
+                break;
+            case R.id.edit_text_test:
+                new SweetAlertDialog(this, SweetAlertDialog.EDIT_TEXT_TYPE)
+                        .setTitleText("Edit text")
+                        .setContentText("Please enter the text.")
+                        .showCancelButton(true)
+                        .setCancelText("Cancel")
+                        .setConfirmText("OK")
+                        .setEditTextConfirmClickListener(new SweetAlertDialog.OnEditTextSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog, String inputText) {
+                                sDialog.setTitleText("Text you entered")
+                                        .setContentText(inputText)
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
+                        })
+                        .show();
                 break;
         }
     }
