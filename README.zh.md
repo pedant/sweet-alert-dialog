@@ -128,6 +128,20 @@ Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
         })
         .show();
 
+Bind the listener to edit text confirm button：
+
+    new SweetAlertDialog(this, SweetAlertDialog.EDIT_TEXT_TYPE)
+        .setTitleText("Are you sure?")
+        .setTitleText("Edit text")
+        .setContentText("Please enter the text.")
+        .setEditTextConfirmClickListener(new SweetAlertDialog.OnEditTextSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sDialog, String inputText) {
+                sDialog.dismissWithAnimation();
+            }
+        })
+        .show();
+
 显示取消按钮及事件绑定：
 
     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)

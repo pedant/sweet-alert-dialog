@@ -115,6 +115,13 @@ A message with a custom icon：
         .setCustomImage(R.drawable.custom_img)
         .show();
 
+A edit text dialog：
+
+    new SweetAlertDialog(this, SweetAlertDialog.EDIT_TEXT_TYPE)
+        .setTitleText("Edit text")
+        .setContentText("Please enter the text.")
+        .show();
+
 Bind the listener to confirm button：
 
     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
@@ -124,6 +131,20 @@ Bind the listener to confirm button：
         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog) {
+                sDialog.dismissWithAnimation();
+            }
+        })
+        .show();
+
+Bind the listener to edit text confirm button：
+
+    new SweetAlertDialog(this, SweetAlertDialog.EDIT_TEXT_TYPE)
+        .setTitleText("Are you sure?")
+        .setTitleText("Edit text")
+        .setContentText("Please enter the text.")
+        .setEditTextConfirmClickListener(new SweetAlertDialog.OnEditTextSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sDialog, String inputText) {
                 sDialog.dismissWithAnimation();
             }
         })
