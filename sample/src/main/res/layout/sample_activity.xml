@@ -177,6 +177,45 @@
                 android:layout_margin="10dp"
                 android:text="Try me!"/>
 
+        <TextView
+            android:id="@+id/txt_8"
+            android:layout_alignLeft="@id/logo_img"
+            android:layout_below="@id/custom_img_test"
+            android:layout_marginLeft="15dp"
+            android:text="A edit text dialog"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="15dp"
+            android:textColor="#797979"/>
+
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/txt_8"
+            android:id="@+id/edit_text_test"
+            style="@style/dialog_blue_button"
+            android:layout_margin="10dp"
+            android:text="Try me!"/>
+
+        <TextView
+            android:id="@+id/txt_9"
+            android:layout_alignLeft="@id/logo_img"
+            android:layout_below="@id/edit_text_test"
+            android:layout_marginLeft="15dp"
+            android:text="A list dialog"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="15dp"
+            android:textColor="#797979"/>
+
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/txt_9"
+            android:id="@+id/list_test"
+            style="@style/dialog_blue_button"
+            android:layout_margin="10dp"
+            android:text="Try me!"/>
     </RelativeLayout>
 </ScrollView>
 

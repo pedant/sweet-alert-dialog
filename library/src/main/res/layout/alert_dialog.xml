@@ -138,6 +138,33 @@
         android:textColor="#797979"
         android:visibility="gone" />
 
+    <FrameLayout
+        android:id="@+id/edit_text_frame"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:inputType="" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/list_view_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+    </FrameLayout>
+
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -151,6 +178,12 @@
             android:layout_marginRight="10dp"
             android:visibility="gone"
             android:text="@string/dialog_cancel" />
+
+        <Button
+            android:id="@+id/edit_text_confirm_button"
+            style="@style/dialog_blue_button"
+            android:visibility="gone"
+            android:text="@string/dialog_ok"  />
 
         <Button
             android:id="@+id/confirm_button"
