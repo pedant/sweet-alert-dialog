@@ -169,6 +169,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 new SweetAlertDialog(this, SweetAlertDialog.EDIT_TEXT_TYPE)
                         .setTitleText("Edit text")
                         .setContentText("Please enter the text.")
+                        .setDefaultEditText("default text")
                         .showCancelButton(true)
                         .setCancelText("Cancel")
                         .setConfirmText("OK")

@@ -64,6 +64,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener, Li
     private EditText mEditText;
     private Button mEditTextConfirmButton;
     private OnEditTextSweetClickListener mEditTextConfirmClickListener;
+    private String mDefaultEditText = "";
     private FrameLayout mListViewFrame;
     private ArrayList<String> mList;
     private RecyclerView mListView;
@@ -257,6 +258,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener, Li
                     mEditTextFrame.setVisibility(View.VISIBLE);
                     mConfirmButton.setVisibility(View.GONE);
                     mEditTextConfirmButton.setVisibility(View.VISIBLE);
+                    mEditText.setText(mDefaultEditText);
                     mEditText.requestFocus();
                     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                     break;
@@ -383,6 +385,11 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener, Li
 
     public SweetAlertDialog setListTextSize (final int listTextSize) {
         mListTextSize = listTextSize;
+        return this;
+    }
+
+    public SweetAlertDialog setDefaultEditText (String defaultText) {
+        mDefaultEditText = defaultText;
         return this;
     }
 
