@@ -114,6 +114,22 @@ Android版的SweetAlert，清新文艺，快意灵动的甜心弹框
         .setCustomImage(R.drawable.custom_img)
         .show();
 
+A edit text dialog：
+
+    new SweetAlertDialog(this, SweetAlertDialog.EDIT_TEXT_TYPE)
+        .setTitleText("Edit text")
+        .setContentText("Please enter the text.")
+        .show();
+
+A list text dialog：
+
+    new SweetAlertDialog(this, SweetAlertDialog.LIST_TYPE)
+        .setTitleText("List dialog")
+        .setContentText("Please select list item.")
+        .setList(list)
+        .setListTextSize(20)
+        .show();
+
 确认事件绑定：
 
     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
@@ -137,6 +153,21 @@ Bind the listener to edit text confirm button：
         .setEditTextConfirmClickListener(new SweetAlertDialog.OnEditTextSweetClickListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog, String inputText) {
+                sDialog.dismissWithAnimation();
+            }
+        })
+        .show();
+
+Bind the listener to list：
+
+    new SweetAlertDialog(this, SweetAlertDialog.LIST_TYPE)
+        .setTitleText("List dialog")
+        .setContentText("Please select list item.")
+        .setList(list)
+        .setListTextSize(20)
+        .setListClickListener(new SweetAlertDialog.OnListSweetClickListener() {
+            @Override
+            public void onItemClick(SweetAlertDialog sDialog, int position, String listText) {
                 sDialog.dismissWithAnimation();
             }
         })

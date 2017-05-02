@@ -122,6 +122,15 @@ A edit text dialog：
         .setContentText("Please enter the text.")
         .show();
 
+A list text dialog：
+
+    new SweetAlertDialog(this, SweetAlertDialog.LIST_TYPE)
+        .setTitleText("List dialog")
+        .setContentText("Please select list item.")
+        .setList(list)
+        .setListTextSize(20)
+        .show();
+
 Bind the listener to confirm button：
 
     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
@@ -145,6 +154,21 @@ Bind the listener to edit text confirm button：
         .setEditTextConfirmClickListener(new SweetAlertDialog.OnEditTextSweetClickListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog, String inputText) {
+                sDialog.dismissWithAnimation();
+            }
+        })
+        .show();
+
+Bind the listener to list：
+
+    new SweetAlertDialog(this, SweetAlertDialog.LIST_TYPE)
+        .setTitleText("List dialog")
+        .setContentText("Please select list item.")
+        .setList(list)
+        .setListTextSize(20)
+        .setListClickListener(new SweetAlertDialog.OnListSweetClickListener() {
+            @Override
+            public void onItemClick(SweetAlertDialog sDialog, int position, String listText) {
                 sDialog.dismissWithAnimation();
             }
         })

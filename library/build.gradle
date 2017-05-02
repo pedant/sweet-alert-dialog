@@ -8,7 +8,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 9
+        minSdkVersion 21
     }
 
     lintOptions {
@@ -18,6 +18,8 @@ android {
 
 dependencies {
     compile 'com.pnikosis:materialish-progress:1.0'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
 }
 
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'

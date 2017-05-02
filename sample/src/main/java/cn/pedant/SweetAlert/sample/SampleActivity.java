@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SampleActivity extends Activity implements View.OnClickListener {
@@ -24,6 +26,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
         findViewById(R.id.edit_text_test).setOnClickListener(this);
+        findViewById(R.id.list_test).setOnClickListener(this);
     }
 
     @Override
@@ -174,6 +177,32 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                             public void onClick(SweetAlertDialog sDialog, String inputText) {
                                 sDialog.setTitleText("Text you entered")
                                         .setContentText(inputText)
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
+                        })
+                        .show();
+                break;
+            case R.id.list_test:
+                ArrayList<String> list = new ArrayList<>();
+                list.add("list1");
+                list.add("list2");
+                list.add("list3");
+                list.add("list4");
+                list.add("list5");
+                new SweetAlertDialog(this, SweetAlertDialog.LIST_TYPE)
+                        .setTitleText("List dialog")
+                        .setContentText("Please select list item.")
+                        .setList(list)
+                        .setListTextSize(20)
+                        .showCancelButton(true)
+                        .setCancelText("Cancel")
+                        .setListClickListener(new SweetAlertDialog.OnListSweetClickListener() {
+                            @Override
+                            public void onItemClick(SweetAlertDialog sDialog, int position, String listText) {
+                                sDialog.setTitleText("Item selected")
+                                        .setContentText("position:" + position + ", listText:" + listText)
                                         .setConfirmText("OK")
                                         .setConfirmClickListener(null)
                                         .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
