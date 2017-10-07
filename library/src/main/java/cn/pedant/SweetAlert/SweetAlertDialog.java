@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -55,6 +56,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private ImageView mCustomImage;
     private LinearLayout mButtonsContainer;
     private Button mConfirmButton;
+    private boolean mHideConfirmButton = false;
     private Button mCancelButton;
     private Button mNeutralButton;
     private ProgressHelper mProgressHelper;
@@ -77,6 +79,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     //aliases
     public final static int BUTTON_CONFIRM = DialogInterface.BUTTON_POSITIVE;
     public final static int BUTTON_CANCEL = DialogInterface.BUTTON_NEGATIVE;
+    ;
+
+    public SweetAlertDialog hideConfirmButton() {
+        this.mHideConfirmButton = true;
+        return this;
+    }
 
     public interface OnSweetClickListener {
         void onClick(SweetAlertDialog sweetAlertDialog);
@@ -195,8 +203,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mSuccessFrame.setVisibility(View.GONE);
         mWarningFrame.setVisibility(View.GONE);
         mProgressFrame.setVisibility(View.GONE);
-        mButtonsContainer.setVisibility(View.VISIBLE);
-        mConfirmButton.setVisibility(View.VISIBLE);
+
+        mConfirmButton.setVisibility(mHideConfirmButton ? View.GONE : View.VISIBLE);
+
+        adjustButtonContainerVisibility();
 
         mConfirmButton.setBackgroundResource(R.drawable.green_button_background);
         mErrorFrame.clearAnimation();
@@ -204,6 +214,22 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mSuccessTick.clearAnimation();
         mSuccessLeftMask.clearAnimation();
         mSuccessRightMask.clearAnimation();
+    }
+
+    /**
+     * Hides buttons container if all buttons are invisible or gone.
+     * This deletes useless margins
+     */
+    private void adjustButtonContainerVisibility() {
+        boolean showButtonsContainer = false;
+        for (int i = 0; i < mButtonsContainer.getChildCount(); i++) {
+            View view = mButtonsContainer.getChildAt(i);
+            if (view instanceof Button && view.getVisibility() == View.VISIBLE) {
+                showButtonsContainer = true;
+                break;
+            }
+        }
+        mButtonsContainer.setVisibility(showButtonsContainer ? View.VISIBLE : View.GONE);
     }
 
     private void playAnimation() {
@@ -224,6 +250,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                 // restore all of views state before switching alert type
                 restore();
             }
+            mConfirmButton.setVisibility(mHideConfirmButton ? View.GONE : View.VISIBLE);
             switch (mAlertType) {
                 case ERROR_TYPE:
                     mErrorFrame.setVisibility(View.VISIBLE);
@@ -244,9 +271,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                 case PROGRESS_TYPE:
                     mProgressFrame.setVisibility(View.VISIBLE);
                     mConfirmButton.setVisibility(View.GONE);
-                    mButtonsContainer.setVisibility(View.GONE);
+//                    mButtonsContainer.setVisibility(View.GONE);
                     break;
             }
+            adjustButtonContainerVisibility();
             if (!fromCreate) {
                 playAnimation();
             }
@@ -476,8 +504,9 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     private void dismissWithAnimation(boolean fromCancel) {
         mCloseFromCancel = fromCancel;
-        mConfirmButton.startAnimation(mOverlayOutAnim);
-        mDialogView.startAnimation(mModalOutAnim);
+        //several view animations can't be launched at one view, that's why apply alpha animation on child
+        ((ViewGroup) mDialogView).getChildAt(0).startAnimation(mOverlayOutAnim); //alpha animation
+        mDialogView.startAnimation(mModalOutAnim); //scale animation
     }
 
     @Override

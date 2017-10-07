@@ -60,6 +60,17 @@
                 android:text="Try me!" />
 
             <TextView
+                android:id="@+id/txt_1_1"
+                style="@style/description_style"
+                android:text="A basic message \nwithout buttons" />
+
+            <Button
+                android:id="@+id/basic_test_without_buttons"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+            <TextView
                 android:id="@+id/txt_2"
                 style="@style/description_style"
                 android:text="A title with a text under" />

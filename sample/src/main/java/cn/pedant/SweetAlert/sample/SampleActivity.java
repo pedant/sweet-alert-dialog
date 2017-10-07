@@ -22,6 +22,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_activity);
         findViewById(R.id.basic_test).setOnClickListener(this);
+        findViewById(R.id.basic_test_without_buttons).setOnClickListener(this);
         findViewById(R.id.under_text_test).setOnClickListener(this);
         findViewById(R.id.error_text_test).setOnClickListener(this);
         findViewById(R.id.success_text_test).setOnClickListener(this);
@@ -35,6 +36,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.custom_view_test).setOnClickListener(this);
 
         findViewById(R.id.basic_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.basic_test_without_buttons).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
         findViewById(R.id.under_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
         findViewById(R.id.error_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
         findViewById(R.id.success_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
@@ -56,6 +58,14 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 sd.setCanceledOnTouchOutside(true);
                 sd.setContentText("Here's a message");
                 sd.show();
+                break;
+            case R.id.basic_test_without_buttons:
+                SweetAlertDialog sd2 = new SweetAlertDialog(this);
+                sd2.setCancelable(true);
+                sd2.setCanceledOnTouchOutside(true);
+                sd2.setContentText("Here's a message");
+                sd2.hideConfirmButton();
+                sd2.show();
                 break;
             case R.id.under_text_test:
                 new SweetAlertDialog(this)
@@ -238,10 +248,11 @@ public class SampleActivity extends Activity implements View.OnClickListener {
 
                 SweetAlertDialog dialog = new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
                         .setTitleText("Custom view")
-                        .setConfirmText("Ok");
+                        .hideConfirmButton();
 
                 dialog.setCustomView(linearLayout);
                 dialog.show();
+
         }
     }
 }
