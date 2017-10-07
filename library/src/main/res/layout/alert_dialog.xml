@@ -5,9 +5,8 @@
     xmlns:wheel="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:layoutDirection="ltr"
     android:background="?attr/sweet_alert_bg_drawable"
-    >
+    android:layoutDirection="ltr">
 
     <LinearLayout
 
@@ -18,7 +17,7 @@
         android:gravity="center"
         android:minWidth="@dimen/alert_width"
         android:orientation="vertical"
-        android:paddingBottom="20dp"
+        android:paddingBottom="15dp"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
         android:paddingTop="10dp">
@@ -178,6 +177,7 @@
         </FrameLayout>
 
         <LinearLayout
+            android:id="@+id/buttons_container"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"

@@ -16,6 +16,7 @@ import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -52,6 +53,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private View mSuccessRightMask;
     private Drawable mCustomImgDrawable;
     private ImageView mCustomImage;
+    private LinearLayout mButtonsContainer;
     private Button mConfirmButton;
     private Button mCancelButton;
     private Button mNeutralButton;
@@ -165,6 +167,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mSuccessRightMask = mSuccessFrame.findViewById(R.id.mask_right);
         mCustomImage = (ImageView) findViewById(R.id.custom_image);
         mWarningFrame = (FrameLayout) findViewById(R.id.warning_frame);
+        mButtonsContainer = (LinearLayout) findViewById(R.id.buttons_container);
         mConfirmButton = (Button) findViewById(R.id.confirm_button);
         mConfirmButton.setOnClickListener(this);
         mConfirmButton.setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
@@ -192,6 +195,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mSuccessFrame.setVisibility(View.GONE);
         mWarningFrame.setVisibility(View.GONE);
         mProgressFrame.setVisibility(View.GONE);
+        mButtonsContainer.setVisibility(View.VISIBLE);
         mConfirmButton.setVisibility(View.VISIBLE);
 
         mConfirmButton.setBackgroundResource(R.drawable.green_button_background);
@@ -240,6 +244,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                 case PROGRESS_TYPE:
                     mProgressFrame.setVisibility(View.VISIBLE);
                     mConfirmButton.setVisibility(View.GONE);
+                    mButtonsContainer.setVisibility(View.GONE);
                     break;
             }
             if (!fromCreate) {
