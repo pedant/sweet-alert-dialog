@@ -10,6 +10,7 @@ SweetAlert for Android, a beautiful and clever alert dialog
 - Ability to disable button
 - Ability to set buttons stroke
 - Switcher to dark theme
+- Ability to make dialogs without buttons
 
 Some screenshots of the new features:
 
@@ -37,9 +38,9 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
 **Maven**
 
     <dependency>
-      <groupId>cn.pedant.sweetalert</groupId>
+      <groupId>com.github.f0ris.sweetalert</groupId>
       <artifactId>library</artifactId>
-      <version>1.3</version>
+      <version>1.5.2</version>
       <type>aar</type>
     </dependency>
 
@@ -50,7 +51,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
     dependencies {
-        compile 'com.github.f0ris.sweetalert:library:1.5.1'
+        compile 'com.github.f0ris.sweetalert:library:1.5.2'
     }
 
 ## Usage
