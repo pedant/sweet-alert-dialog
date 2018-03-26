@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/hongchengzhang/osd600/sweet-alert-dialog/library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-w600dp-v13/values-w600dp-v13.xml",
+            "map": [
+                {
+                    "source": "/Users/hongchengzhang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-21.0.0.aar/beb7836e504df9c31d946b8c6906dae1/res/values-w600dp/values.xml",
+                    "from": {
+                        "startLines": "3,5",
+                        "startColumns": "4,4",
+                        "startOffsets": "56,121",
+                        "endColumns": "63,54",
+                        "endOffsets": "115,171"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,119",
+                        "endColumns": "63,54",
+                        "endOffsets": "114,169"
+                    }
+                }
+            ]
+        }
+    ]
+}

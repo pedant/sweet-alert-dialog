@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:sweet="http://schemas.android.com/apk/res-auto"
+     android:interpolator="@android:anim/linear_interpolator"
+     android:shareInterpolator="true">
+
+    <alpha
+        android:fromAlpha="0"
+        android:toAlpha="1"
+        android:duration="400"/>
+
+    <sweet:cn.pedant.SweetAlert.Rotate3dAnimation
+        sweet:rollType="x"
+        sweet:fromDeg="100"
+        sweet:toDeg="0"
+        sweet:pivotX="50%"
+        sweet:pivotY="50%"
+        android:duration="400"/>
+</set>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config=":library"><source path="/Users/hongchengzhang/osd600/sweet-alert-dialog/library/build/intermediates/bundles/debug/assets"/></dataSet><dataSet config="main"><source path="/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/src/main/assets"/><source path="/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/src/debug/assets"/></dataSet></merger>

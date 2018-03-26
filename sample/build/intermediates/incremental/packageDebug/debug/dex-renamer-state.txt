@@ -1,0 +1,19 @@
+#Mon Mar 26 10:15:41 EDT 2018
+path.1=classes.dex
+path.0=classes.dex
+renamed.5=classes6.dex
+renamed.4=classes5.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+base.5=/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/transforms/dexMerger/debug/16
+base.4=/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/transforms/dexMerger/debug/11
+base.3=/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/transforms/dexMerger/debug/14
+base.2=/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/transforms/dexMerger/debug/12
+base.1=/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/transforms/dexMerger/debug/15
+base.0=/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/transforms/dexMerger/debug/13
+path.5=classes.dex
+path.4=classes.dex
+path.3=classes.dex
+path.2=classes.dex

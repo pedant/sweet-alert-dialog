@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/incremental/mergeDebugResources/merged.dir/values-vi/values-vi.xml",
+            "map": [
+                {
+                    "source": "/Users/hongchengzhang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-21.0.0.aar/beb7836e504df9c31d946b8c6906dae1/res/values-vi/values.xml",
+                    "from": {
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "56,170,278,401,509,618,702,805,924,1028,1137,1238,1343,1457,1562",
+                        "endColumns": "113,107,122,107,108,83,102,118,103,108,100,104,113,104,119",
+                        "endOffsets": "165,273,396,504,613,697,800,919,1023,1132,1233,1338,1452,1557,1677"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,169,277,400,508,617,701,804,923,1027,1136,1237,1342,1456,1561",
+                        "endColumns": "113,107,122,107,108,83,102,118,103,108,100,104,113,104,119",
+                        "endOffsets": "164,272,395,503,612,696,799,918,1022,1131,1232,1337,1451,1556,1676"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+#Mon Mar 26 10:09:52 EDT 2018
+base.0=/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/transforms/dexMerger/debug/4
+path.0=classes.dex
+renamed.0=classes.dex

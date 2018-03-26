@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-af/values-af.xml",
+            "map": [
+                {
+                    "source": "/Users/hongchengzhang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-21.0.0.aar/beb7836e504df9c31d946b8c6906dae1/res/values-af/values.xml",
+                    "from": {
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "56,160,268,391,491,597,682,785,903,1010,1113,1210,1318,1420,1522",
+                        "endColumns": "103,107,122,99,105,84,102,117,106,102,96,107,101,101,116",
+                        "endOffsets": "155,263,386,486,592,677,780,898,1005,1108,1205,1313,1415,1517,1634"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,159,267,390,490,596,681,784,902,1009,1112,1209,1317,1419,1521",
+                        "endColumns": "103,107,122,99,105,84,102,117,106,102,96,107,101,101,116",
+                        "endOffsets": "154,262,385,485,591,676,779,897,1004,1107,1204,1312,1414,1516,1633"
+                    }
+                }
+            ]
+        }
+    ]
+}
