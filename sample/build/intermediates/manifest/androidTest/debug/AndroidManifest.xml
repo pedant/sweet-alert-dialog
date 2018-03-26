@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.pedant.SweetAlert.sample.test">
+
+    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="21" />
+
+    <application android:debuggable="true" >
+        <uses-library android:name="android.test.runner" />
+    </application>
+
+    <instrumentation android:name="android.test.InstrumentationTestRunner"
+                     android:targetPackage="cn.pedant.SweetAlert.sample"
+                     android:handleProfiling="false"
+                     android:functionalTest="false"
+                     android:label="Tests for cn.pedant.SweetAlert.sample"/>
+</manifest>

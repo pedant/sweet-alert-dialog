@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="com.android.support:support-annotations:21.0.0@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

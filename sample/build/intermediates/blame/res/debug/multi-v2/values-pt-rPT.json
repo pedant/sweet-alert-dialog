@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rPT/values-pt-rPT.xml",
+            "map": [
+                {
+                    "source": "/Users/hongchengzhang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-21.0.0.aar/beb7836e504df9c31d946b8c6906dae1/res/values-pt-rPT/values.xml",
+                    "from": {
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "56,176,284,407,513,620,709,810,934,1041,1153,1255,1363,1470,1577",
+                        "endColumns": "119,107,122,105,106,88,100,123,106,111,101,107,106,106,121",
+                        "endOffsets": "171,279,402,508,615,704,805,929,1036,1148,1250,1358,1465,1572,1694"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,175,283,406,512,619,708,809,933,1040,1152,1254,1362,1469,1576",
+                        "endColumns": "119,107,122,105,106,88,100,123,106,111,101,107,106,106,121",
+                        "endOffsets": "170,278,401,507,614,703,804,928,1035,1147,1249,1357,1464,1571,1693"
+                    }
+                }
+            ]
+        }
+    ]
+}

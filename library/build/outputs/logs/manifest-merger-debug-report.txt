@@ -1,0 +1,35 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:1:1-10:12
+	package
+		ADDED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:2:1-31
+		INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml
+		INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:4:1-26
+		INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml
+		INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:1:11-69
+	android:versionCode
+		ADDED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:3:1-24
+		INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml
+		INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml
+uses-sdk
+ADDED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:6:1-68
+INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:6:1-68
+INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:6:1-68
+	android:targetSdkVersion
+		ADDED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:6:37-66
+	android:minSdkVersion
+		ADDED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:6:11-36
+		INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml
+		INJECTED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml
+application
+ADDED from /Users/hongchengzhang/osd600/sweet-alert-dialog/library/src/main/AndroidManifest.xml:8:1-16

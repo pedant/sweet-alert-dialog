@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/hongchengzhang/osd600/sweet-alert-dialog/library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-ms-rMY/values-ms-rMY.xml",
+            "map": [
+                {
+                    "source": "/Users/hongchengzhang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-21.0.0.aar/beb7836e504df9c31d946b8c6906dae1/res/values-ms-rMY/values.xml",
+                    "from": {
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "56,167,275,398,503,611,698,802,913,1025,1134,1231,1340,1443,1550",
+                        "endColumns": "110,107,122,104,107,86,103,110,111,108,96,108,102,106,121",
+                        "endOffsets": "162,270,393,498,606,693,797,908,1020,1129,1226,1335,1438,1545,1667"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,166,274,397,502,610,697,801,912,1024,1133,1230,1339,1442,1549",
+                        "endColumns": "110,107,122,104,107,86,103,110,111,108,96,108,102,106,121",
+                        "endOffsets": "161,269,392,497,605,692,796,907,1019,1128,1225,1334,1437,1544,1666"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ka-rGE/values-ka-rGE.xml",
+            "map": [
+                {
+                    "source": "/Users/hongchengzhang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-21.0.0.aar/beb7836e504df9c31d946b8c6906dae1/res/values-ka-rGE/values.xml",
+                    "from": {
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "56,165,273,396,500,611,699,804,917,1030,1137,1235,1348,1452,1556",
+                        "endColumns": "108,107,122,103,110,87,104,112,112,106,97,112,103,103,121",
+                        "endOffsets": "160,268,391,495,606,694,799,912,1025,1132,1230,1343,1447,1551,1673"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,164,272,395,499,610,698,803,916,1029,1136,1234,1347,1451,1555",
+                        "endColumns": "108,107,122,103,110,87,104,112,112,106,97,112,103,103,121",
+                        "endOffsets": "159,267,390,494,605,693,798,911,1024,1131,1229,1342,1446,1550,1672"
+                    }
+                }
+            ]
+        }
+    ]
+}

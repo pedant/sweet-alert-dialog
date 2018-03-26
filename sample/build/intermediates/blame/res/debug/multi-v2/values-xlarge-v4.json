@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/hongchengzhang/osd600/sweet-alert-dialog/sample/build/intermediates/incremental/mergeDebugResources/merged.dir/values-xlarge-v4/values-xlarge-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/hongchengzhang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-21.0.0.aar/beb7836e504df9c31d946b8c6906dae1/res/values-xlarge/values.xml",
+                    "from": {
+                        "startLines": "3,5,7,8,9,10,12",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "56,134,199,266,333,399,466",
+                        "endColumns": "76,63,66,66,65,65,54",
+                        "endOffsets": "128,193,261,328,394,460,516"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,132,196,263,330,396,462",
+                        "endColumns": "76,63,66,66,65,65,54",
+                        "endOffsets": "127,191,258,325,391,457,512"
+                    }
+                }
+            ]
+        }
+    ]
+}

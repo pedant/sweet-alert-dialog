@@ -130,6 +130,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         i++;
                         switch (i){
                             case 0:
+                                //pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
                                 break;
                             case 1:
