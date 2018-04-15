@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -65,6 +67,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private OnSweetClickListener mConfirmClickListener;
     private OnSweetClickListener mNeutralClickListener;
     private boolean mCloseFromCancel;
+    private int contentTextSize = 0;
 
     public static final int NORMAL_TYPE = 0;
     public static final int ERROR_TYPE = 1;
@@ -301,10 +304,14 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                 mTitleTextView.setVisibility(View.GONE);
             } else {
                 mTitleTextView.setVisibility(View.VISIBLE);
-                mTitleTextView.setText(mTitleText);
+                mTitleTextView.setText(Html.fromHtml(mTitleText));
             }
         }
         return this;
+    }
+
+    public SweetAlertDialog setTitleText(int resId) {
+        return setTitleText(getContext().getResources().getString(resId));
     }
 
     public SweetAlertDialog setCustomImage(Drawable drawable) {
@@ -324,15 +331,26 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         return mContentText;
     }
 
+    /**
+     * @param text text which can contain html tags.
+     */
     public SweetAlertDialog setContentText(String text) {
         mContentText = text;
         if (mContentTextView != null && mContentText != null) {
             showContentText(true);
-            mContentTextView.setText(mContentText);
+            if (contentTextSize != 0) {
+                mContentTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, spToPx(contentTextSize, getContext()));
+            }
+            mContentTextView.setText(Html.fromHtml(mContentText));
             mContentTextView.setVisibility(View.VISIBLE);
             mCustomViewContainer.setVisibility(View.GONE);
         }
         return this;
+    }
+
+    public static int spToPx(float sp, Context context) {
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.getResources().getDisplayMetrics());
+        return px;
     }
 
     public boolean isShowCancelButton() {
@@ -465,6 +483,20 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         String text = getContext().getResources().getString(resId);
         setNeutralButton(text, listener);
         return this;
+    }
+
+    /**
+     * Set content text size
+     *
+     * @param value text size in sp
+     */
+    public SweetAlertDialog setContentTextSize(int value) {
+        this.contentTextSize = value;
+        return this;
+    }
+
+    public int getContentTextSize() {
+        return contentTextSize;
     }
 
     protected void onStart() {

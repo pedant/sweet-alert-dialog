@@ -82,6 +82,16 @@
                 android:text="Try me!" />
 
             <TextView
+                style="@style/description_style"
+                android:text="Styled text" />
+
+            <Button
+                android:id="@+id/styled_text"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+            <TextView
                 android:id="@+id/txt_3"
                 style="@style/description_style"
                 android:text="show error message" />

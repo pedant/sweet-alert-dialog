@@ -5,12 +5,14 @@ SweetAlert for Android, a beautiful and clever alert dialog
 #### This is the most advanced and contemporary fork
 **Added:**
 - Ability to set custom view
-- More convenient interface to bind listeners (like in AlertDiaog)
-- Third neutral button with own listener,colors, methods and etc
-- Ability to disable button
+- More convenient interface to bind listeners (like in AlertDialog)
+- Third neutral button with own listener, colors, methods and etc.
+- Ability to disable buttons
 - Ability to set buttons stroke
-- Switcher to dark theme
+- Dark style of dialogs
 - Ability to make dialogs without buttons
+- Support of HTML tags
+- Ability to set text size
 
 Some screenshots of the new features:
 

@@ -22,6 +22,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_activity);
         findViewById(R.id.basic_test).setOnClickListener(this);
+        findViewById(R.id.styled_text).setOnClickListener(this);
         findViewById(R.id.basic_test_without_buttons).setOnClickListener(this);
         findViewById(R.id.under_text_test).setOnClickListener(this);
         findViewById(R.id.error_text_test).setOnClickListener(this);
@@ -36,6 +37,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.custom_view_test).setOnClickListener(this);
 
         findViewById(R.id.basic_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        findViewById(R.id.styled_text).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
         findViewById(R.id.basic_test_without_buttons).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
         findViewById(R.id.under_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
         findViewById(R.id.error_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
@@ -71,6 +73,13 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 new SweetAlertDialog(this)
                         .setTitleText("Title")
                         .setContentText("It's pretty, isn't it?")
+                        .show();
+                break;
+            case R.id.styled_text:
+                new SweetAlertDialog(this)
+                        .setTitleText("<font color='red'>Red</font> title")
+                        .setContentText("Big <font color='green'>green </font><b><i> bold</i></b>")
+                        .setContentTextSize(21)
                         .show();
                 break;
             case R.id.error_text_test:
