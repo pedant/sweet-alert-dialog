@@ -2,7 +2,7 @@ Sweet Alert Dialog
 ===================
 SweetAlert for Android, a beautiful and clever alert dialog
 
-#### This is the most advanced and contemporary fork
+#### This is the most advanced and contemporary fork of the apparently dead project 
 **Added:**
 - Ability to set custom view
 - More convenient interface to bind listeners (like in AlertDialog)

@@ -98,13 +98,12 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Are you sure?")
                         .setContentText("Won't be able to recover this file!")
-                        .setCancelButton("Yes,delete it!", new SweetAlertDialog.OnSweetClickListener() {
+                        .setCancelButton("Yes, delete it!", new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 // reuse previous dialog instance
                                 sweetAlertDialog.setTitleText("Deleted!")
                                         .setContentText("Your imaginary file has been deleted!")
-                                        .setCancelText("OK")
                                         .setConfirmClickListener(null)
                                         .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                             }
@@ -115,8 +114,8 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Are you sure?")
                         .setContentText("Won't be able to recover this file!")
-                        .setCancelText("No,cancel plx!")
-                        .setConfirmText("Yes,delete it!")
+                        .setCancelText("No, cancel pls!")
+                        .setConfirmText("Yes, delete it!")
                         .showCancelButton(true)
                         .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
