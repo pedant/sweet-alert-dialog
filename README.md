@@ -18,6 +18,8 @@ Some screenshots of the new features:
 
 <img src="https://cloud.githubusercontent.com/assets/10178982/24260517/c6f72da6-0ffc-11e7-9a16-67fea4010a34.jpg" width="30%"/>
 
+<img src="https://user-images.githubusercontent.com/10178982/39063916-3a3db5ce-44d5-11e8-97bc-adb390c2f78a.jpg" width="30%"/>
+
 #### Known issues:
 - [ ] Bug with buttons height if custom view too big and need scrollview
 - [ ] Buttons can handle only one line strings
@@ -42,7 +44,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     <dependency>
       <groupId>com.github.f0ris.sweetalert</groupId>
       <artifactId>library</artifactId>
-      <version>1.5.2</version>
+      <version>1.5.3</version>
       <type>aar</type>
     </dependency>
 
@@ -53,7 +55,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
     dependencies {
-        compile 'com.github.f0ris.sweetalert:library:1.5.2'
+        compile 'com.github.f0ris.sweetalert:library:1.5.3'
     }
 
 ## Usage
