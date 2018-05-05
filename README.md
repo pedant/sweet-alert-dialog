@@ -32,7 +32,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
     dependencies {
-        compile 'cn.pedant.sweetalert:library:1.3'
+        implementation 'cn.pedant.sweetalert:library:1.3'
     }
 
 ## Usage
