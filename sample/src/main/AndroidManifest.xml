@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.pedant.SweetAlert.sample"
-    android:versionCode="8"
-    android:versionName="1.5.3">
+    android:versionCode="9"
+    android:versionName="1.5.4">
 
     <application
         android:icon="@drawable/ic_launcher"

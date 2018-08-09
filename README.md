@@ -23,7 +23,6 @@ Some screenshots of the new features:
 #### Known issues:
 - [ ] Bug with buttons height if custom view too big and need scrollview
 - [ ] Buttons can handle only one line strings
-- [ ] Bug with animation's background with dark theme
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Sweet%20Alert%20Dialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1065)
 
