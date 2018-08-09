@@ -72,7 +72,7 @@
                 android:layout_height="80dp"
                 android:layout_gravity="right"
                 android:layout_marginTop="-13dp"
-                android:background="@android:color/white" />
+                android:background="@android:color/transparent" />
 
             <View
                 android:id="@+id/mask_left"
@@ -80,7 +80,7 @@
                 android:layout_height="60dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="-3dp"
-                android:background="@android:color/white" />
+                android:background="@android:color/transparent" />
 
             <View
                 android:layout_width="match_parent"
