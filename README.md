@@ -43,7 +43,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     <dependency>
       <groupId>com.github.f0ris.sweetalert</groupId>
       <artifactId>library</artifactId>
-      <version>1.5.3</version>
+      <version>1.5.5</version>
       <type>aar</type>
     </dependency>
 
@@ -54,7 +54,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
     dependencies {
-        compile 'com.github.f0ris.sweetalert:library:1.5.3'
+        compile 'com.github.f0ris.sweetalert:library:1.5.5'
     }
 
 ## Usage
