@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:wheel="http://schemas.android.com/apk/res-auto"
@@ -9,13 +8,11 @@
     android:layoutDirection="ltr">
 
     <LinearLayout
-
         android:id="@+id/loading"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/alert_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:minWidth="@dimen/alert_width"
         android:orientation="vertical"
         android:paddingBottom="15dp"
         android:paddingLeft="30dp"
@@ -148,7 +145,7 @@
 
         <TextView
             android:id="@+id/content_text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
@@ -159,8 +156,7 @@
             android:textColor="?attr/sweet_alert_content_text_color"
             android:textSize="16sp"
             android:visibility="gone"
-            tools:text="message \n message \n message
-        "
+            tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
             tools:visibility="visible" />
 
         <FrameLayout
@@ -180,10 +176,10 @@
             android:id="@+id/buttons_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:paddingBottom="4dp"
             android:paddingTop="10dp"
-            android:visibility="visible"
-            android:gravity="center">
+            android:visibility="visible">
 
             <Button
                 android:id="@+id/cancel_button"
@@ -207,8 +203,8 @@
             <Button
                 android:id="@+id/confirm_button"
                 style="@style/dialog_blue_button"
-                android:visibility="gone"
-                android:text="Ok" />
+                android:text="Ok"
+                android:visibility="gone" />
         </LinearLayout>
 
 
