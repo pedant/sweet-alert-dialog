@@ -14,7 +14,7 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion '26'
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -22,4 +22,6 @@ dependencies {
 }
 
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
-//upload command gradlew -p {moduleName} clean build uploadArchives --info
+/* upload command:
+    gradlew -p library clean build uploadArchives --info
+ */

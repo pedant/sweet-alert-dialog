@@ -1,12 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.pedant.SweetAlert"
-    android:versionCode="10"
-    android:versionName="1.5.5">
+    android:versionCode="11"
+    android:versionName="1.5.6">
 
-    <uses-sdk
-        android:minSdkVersion="9"
-        android:targetSdkVersion="23" />
-
+    <uses-sdk android:targetSdkVersion="27" />
     <application />
 
 </manifest>
