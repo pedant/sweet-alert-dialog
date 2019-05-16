@@ -8,8 +8,8 @@
         </attr>
         <attr name="fromDeg" format="float" />
         <attr name="toDeg" format="float" />
-        <attr name="pivotX" format="fraction"/>
-        <attr name="pivotY" format="fraction" />
+        <attr name="customPivotX" format="fraction"/>
+        <attr name="customPivotY" format="fraction" />
     </declare-styleable>
 
     <attr name="sweet_alert_bg_drawable" format="reference" />
