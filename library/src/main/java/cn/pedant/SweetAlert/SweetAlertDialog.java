@@ -1,6 +1,7 @@
 package cn.pedant.SweetAlert;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,6 +20,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.Transformation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -76,6 +78,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private OnSweetClickListener mConfirmClickListener;
     private OnSweetClickListener mNeutralClickListener;
     private boolean mCloseFromCancel;
+    private boolean mHideKeyBoardOnDismiss = true;
     private int contentTextSize = 0;
 
     public static final int NORMAL_TYPE = 0;
@@ -148,6 +151,9 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
             @Override
             public void onAnimationEnd(Animation animation) {
                 mDialogView.setVisibility(View.GONE);
+                if (mHideKeyBoardOnDismiss) {
+                    hideSoftKeyboard();
+                }
                 mDialogView.post(new Runnable() {
                     @Override
                     public void run() {
@@ -691,5 +697,24 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     public ProgressHelper getProgressHelper() {
         return mProgressHelper;
+    }
+
+    public SweetAlertDialog setHideKeyBoardOnDismiss(boolean hide) {
+        this.mHideKeyBoardOnDismiss = hide;
+        return this;
+    }
+
+    public boolean isHideKeyBoardOnDismiss() {
+        return this.mHideKeyBoardOnDismiss;
+    }
+
+    private void hideSoftKeyboard() {
+        Activity activity = getOwnerActivity();
+        if (activity != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null && activity.getCurrentFocus() != null) {
+                inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+            }
+        }
     }
 }
