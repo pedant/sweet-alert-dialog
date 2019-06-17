@@ -4,7 +4,10 @@ package cn.pedant.SweetAlert;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -61,6 +64,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private boolean mHideConfirmButton = false;
     private Button mCancelButton;
     private Button mNeutralButton;
+    private Integer mConfirmButtonBackgroundColor;
+    private Integer mConfirmButtonTextColor;
+    private Integer mNeutralButtonBackgroundColor;
+    private Integer mNeutralButtonTextColor;
+    private Integer mCancelButtonBackgroundColor;
+    private Integer mCancelButtonTextColor;
     private ProgressHelper mProgressHelper;
     private FrameLayout mWarningFrame;
     private OnSweetClickListener mCancelClickListener;
@@ -82,7 +91,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     //aliases
     public final static int BUTTON_CONFIRM = DialogInterface.BUTTON_POSITIVE;
     public final static int BUTTON_CANCEL = DialogInterface.BUTTON_NEGATIVE;
-    ;
+
+    private final float defStrokeWidth;
+    private float strokeWidth = 0;
+
 
     public SweetAlertDialog hideConfirmButton() {
         this.mHideConfirmButton = true;
@@ -101,6 +113,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         super(context, DARK_STYLE ? R.style.alert_dialog_dark : R.style.alert_dialog_light);
         setCancelable(true);
         setCanceledOnTouchOutside(true); //TODO was false
+
+        defStrokeWidth = getContext().getResources().getDimension(R.dimen.buttons_stroke_width);
+        strokeWidth = defStrokeWidth;
+
         mProgressHelper = new ProgressHelper(context);
         mAlertType = alertType;
         mErrorInAnim = OptAnimationLoader.loadAnimation(getContext(), R.anim.error_frame_in);
@@ -166,26 +182,26 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setContentView(R.layout.alert_dialog);
 
         mDialogView = getWindow().getDecorView().findViewById(android.R.id.content);
-        mTitleTextView = (TextView) findViewById(R.id.title_text);
-        mContentTextView = (TextView) findViewById(R.id.content_text);
-        mCustomViewContainer = (FrameLayout) findViewById(R.id.custom_view_container);
-        mErrorFrame = (FrameLayout) findViewById(R.id.error_frame);
-        mErrorX = (ImageView) mErrorFrame.findViewById(R.id.error_x);
-        mSuccessFrame = (FrameLayout) findViewById(R.id.success_frame);
-        mProgressFrame = (FrameLayout) findViewById(R.id.progress_dialog);
-        mSuccessTick = (SuccessTickView) mSuccessFrame.findViewById(R.id.success_tick);
+        mTitleTextView = findViewById(R.id.title_text);
+        mContentTextView = findViewById(R.id.content_text);
+        mCustomViewContainer = findViewById(R.id.custom_view_container);
+        mErrorFrame = findViewById(R.id.error_frame);
+        mErrorX = mErrorFrame.findViewById(R.id.error_x);
+        mSuccessFrame = findViewById(R.id.success_frame);
+        mProgressFrame = findViewById(R.id.progress_dialog);
+        mSuccessTick = mSuccessFrame.findViewById(R.id.success_tick);
         mSuccessLeftMask = mSuccessFrame.findViewById(R.id.mask_left);
         mSuccessRightMask = mSuccessFrame.findViewById(R.id.mask_right);
-        mCustomImage = (ImageView) findViewById(R.id.custom_image);
-        mWarningFrame = (FrameLayout) findViewById(R.id.warning_frame);
-        mButtonsContainer = (LinearLayout) findViewById(R.id.buttons_container);
-        mConfirmButton = (Button) findViewById(R.id.confirm_button);
+        mCustomImage = findViewById(R.id.custom_image);
+        mWarningFrame = findViewById(R.id.warning_frame);
+        mButtonsContainer = findViewById(R.id.buttons_container);
+        mConfirmButton = findViewById(R.id.confirm_button);
         mConfirmButton.setOnClickListener(this);
         mConfirmButton.setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        mCancelButton = (Button) findViewById(R.id.cancel_button);
+        mCancelButton = findViewById(R.id.cancel_button);
         mCancelButton.setOnClickListener(this);
         mCancelButton.setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        mNeutralButton = (Button) findViewById(R.id.neutral_button);
+        mNeutralButton = findViewById(R.id.neutral_button);
         mNeutralButton.setOnClickListener(this);
         mNeutralButton.setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
         mProgressHelper.setProgressWheel((ProgressWheel) findViewById(R.id.progressWheel));
@@ -196,6 +212,13 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setCancelText(mCancelText);
         setConfirmText(mConfirmText);
         setNeutralText(mNeutralText);
+        applyStroke();
+        setConfirmButtonBackgroundColor(mConfirmButtonBackgroundColor);
+        setConfirmButtonTextColor(mConfirmButtonTextColor);
+        setCancelButtonBackgroundColor(mCancelButtonBackgroundColor);
+        setCancelButtonTextColor(mCancelButtonTextColor);
+        setNeutralButtonBackgroundColor(mNeutralButtonBackgroundColor);
+        setNeutralButtonTextColor(mNeutralButtonTextColor);
         changeAlertType(mAlertType, true);
 
     }
@@ -284,7 +307,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         }
     }
 
-    public int getAlerType() {
+    public int getAlertType() {
         return mAlertType;
     }
 
@@ -349,8 +372,24 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     }
 
     public static int spToPx(float sp, Context context) {
-        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.getResources().getDisplayMetrics());
-        return px;
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.getResources().getDisplayMetrics());
+    }
+
+    /**
+     * @param width in SP
+     */
+    public SweetAlertDialog setStrokeWidth(float width) {
+        this.strokeWidth = spToPx(width, getContext());
+        return this;
+    }
+
+    private void applyStroke() {
+        if (Float.compare(defStrokeWidth, strokeWidth) != 0) {
+            Resources r = getContext().getResources();
+            setButtonBackgroundColor(mConfirmButton, r.getColor(R.color.main_green_color));
+            setButtonBackgroundColor(mNeutralButton, r.getColor(R.color.main_disabled_color));
+            setButtonBackgroundColor(mCancelButton, r.getColor(R.color.red_btn_bg_color));
+        }
     }
 
     public boolean isShowCancelButton() {
@@ -400,6 +439,92 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
             mConfirmButton.setText(mConfirmText);
         }
         return this;
+    }
+
+    public SweetAlertDialog setConfirmButtonBackgroundColor(Integer color) {
+        mConfirmButtonBackgroundColor = color;
+        setButtonBackgroundColor(mConfirmButton, color);
+        return this;
+    }
+
+    public Integer getConfirmButtonBackgroundColor() {
+        return mConfirmButtonBackgroundColor;
+    }
+
+    public SweetAlertDialog setNeutralButtonBackgroundColor(Integer color) {
+        mNeutralButtonBackgroundColor = color;
+        setButtonBackgroundColor(mNeutralButton, color);
+        return this;
+    }
+
+    public Integer getNeutralButtonBackgroundColor() {
+        return mNeutralButtonBackgroundColor;
+    }
+
+    public SweetAlertDialog setCancelButtonBackgroundColor(Integer color) {
+        mCancelButtonBackgroundColor = color;
+        setButtonBackgroundColor(mCancelButton, color);
+        return this;
+    }
+
+    public Integer getCancelButtonBackgroundColor() {
+        return mCancelButtonBackgroundColor;
+    }
+
+    private void setButtonBackgroundColor(Button btn, Integer color) {
+        if (btn != null && color != null) {
+            Drawable[] drawableItems = ViewUtils.getDrawable(btn);
+            if (drawableItems != null) {
+                GradientDrawable gradientDrawableUnChecked = (GradientDrawable) drawableItems[1];
+                //solid color
+                gradientDrawableUnChecked.setColor(color);
+                //stroke
+                gradientDrawableUnChecked.setStroke((int) strokeWidth, genStrokeColor(color));
+            }
+        }
+    }
+
+    private int genStrokeColor(int color) {
+        float hsv[] = new float[3];
+        Color.colorToHSV(color, hsv);
+        hsv[2] *= 0.7f; // decrease value component
+        return Color.HSVToColor(hsv);
+    }
+
+    public SweetAlertDialog setConfirmButtonTextColor(Integer color) {
+        mConfirmButtonTextColor = color;
+        if (mConfirmButton != null && color != null) {
+            mConfirmButton.setTextColor(mConfirmButtonTextColor);
+        }
+        return this;
+    }
+
+    public Integer getConfirmButtonTextColor() {
+        return mConfirmButtonTextColor;
+    }
+
+    public SweetAlertDialog setNeutralButtonTextColor(Integer color) {
+        mNeutralButtonTextColor = color;
+        if (mNeutralButton != null && color != null) {
+            mNeutralButton.setTextColor(mNeutralButtonTextColor);
+        }
+        return this;
+    }
+
+    public Integer getNeutralButtonTextColor() {
+        return mNeutralButtonTextColor;
+    }
+
+    public SweetAlertDialog setCancelButtonTextColor(Integer color) {
+        mCancelButtonTextColor = color;
+        if (mCancelButton != null && color != null) {
+            mCancelButton.setTextColor(mCancelButtonTextColor);
+        }
+        return this;
+    }
+
+    public Integer getCancelButtonTextColor() {
+        return mCancelButtonTextColor;
     }
 
     public SweetAlertDialog setCancelClickListener(OnSweetClickListener listener) {

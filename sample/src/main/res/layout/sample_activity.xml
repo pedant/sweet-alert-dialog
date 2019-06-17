@@ -83,10 +83,10 @@
 
             <TextView
                 style="@style/description_style"
-                android:text="Styled text" />
+                android:text="Styled text and stroke" />
 
             <Button
-                android:id="@+id/styled_text"
+                android:id="@+id/styled_text_and_stroke"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"
                 android:text="Try me!" />
@@ -161,7 +161,7 @@
             <TextView
                 android:id="@+id/txt_9"
                 style="@style/description_style"
-                android:text="Disabled buttons" />
+                android:text="Disabled OK button" />
 
             <Button
                 android:id="@+id/disabled_btn_test"
@@ -176,6 +176,17 @@
 
             <Button
                 android:id="@+id/custom_view_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+            <TextView
+                android:id="@+id/txt_11"
+                style="@style/description_style"
+                android:text="Custom btn colors" />
+
+            <Button
+                android:id="@+id/custom_btn_colors_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"
                 android:text="Try me!" />

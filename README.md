@@ -8,17 +8,18 @@ SweetAlert for Android, a beautiful and clever alert dialog
 - More convenient interface to bind listeners (like in AlertDialog)
 - Third neutral button with own listener, colors, methods and etc.
 - Ability to disable buttons
-- Ability to set buttons stroke
+- Ability to set buttons stroke width
 - Dark style of dialogs
 - Ability to make dialogs without buttons
 - Support of HTML tags
 - Ability to set text size
+- Ability to set buttons color
 
 Some screenshots of the new features:
 
 <img src="https://cloud.githubusercontent.com/assets/10178982/24260517/c6f72da6-0ffc-11e7-9a16-67fea4010a34.jpg" width="30%"/>
 
-<img src="https://user-images.githubusercontent.com/10178982/39063916-3a3db5ce-44d5-11e8-97bc-adb390c2f78a.jpg" width="30%"/>
+<img src="https://user-images.githubusercontent.com/10178982/59605653-eee87d80-9117-11e9-9421-b116536c9388.png" width="30%"/>
 
 #### Known issues:
 - [ ] Bug with buttons height if custom view too big and need scrollview
@@ -43,7 +44,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     <dependency>
       <groupId>com.github.f0ris.sweetalert</groupId>
       <artifactId>library</artifactId>
-      <version>1.5.6</version>
+      <version>1.6.0</version>
       <type>aar</type>
     </dependency>
 
@@ -54,7 +55,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
     dependencies {
-        implementation 'com.github.f0ris.sweetalert:library:1.5.6'
+        implementation 'com.github.f0ris.sweetalert:library:1.6.0'
     }
 
 ## Usage

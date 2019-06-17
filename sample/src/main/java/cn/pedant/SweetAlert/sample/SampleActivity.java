@@ -21,34 +21,17 @@ public class SampleActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_activity);
-        findViewById(R.id.basic_test).setOnClickListener(this);
-        findViewById(R.id.styled_text).setOnClickListener(this);
-        findViewById(R.id.basic_test_without_buttons).setOnClickListener(this);
-        findViewById(R.id.under_text_test).setOnClickListener(this);
-        findViewById(R.id.error_text_test).setOnClickListener(this);
-        findViewById(R.id.success_text_test).setOnClickListener(this);
-        findViewById(R.id.warning_confirm_test).setOnClickListener(this);
-        findViewById(R.id.warning_cancel_test).setOnClickListener(this);
-        findViewById(R.id.custom_img_test).setOnClickListener(this);
-        findViewById(R.id.progress_dialog).setOnClickListener(this);
-        findViewById(R.id.neutral_btn_test).setOnClickListener(this);
-        findViewById(R.id.disabled_btn_test).setOnClickListener(this);
-        findViewById(R.id.dark_style).setOnClickListener(this);
-        findViewById(R.id.custom_view_test).setOnClickListener(this);
 
-        findViewById(R.id.basic_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.styled_text).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.basic_test_without_buttons).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.under_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.error_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.success_text_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.warning_confirm_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.warning_cancel_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.custom_img_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.progress_dialog).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.neutral_btn_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.disabled_btn_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
-        findViewById(R.id.custom_view_test).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        int[] btnIds = {
+                R.id.basic_test, R.id.styled_text_and_stroke, R.id.basic_test_without_buttons, R.id.under_text_test,
+                R.id.error_text_test, R.id.success_text_test, R.id.warning_confirm_test, R.id.warning_cancel_test,
+                R.id.custom_img_test, R.id.progress_dialog, R.id.neutral_btn_test, R.id.disabled_btn_test, R.id.dark_style,
+                R.id.custom_view_test, R.id.custom_btn_colors_test
+        };
+        for (Integer id : btnIds) {
+            findViewById(id).setOnClickListener(this);
+            findViewById(id).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        }
     }
 
     @Override
@@ -75,11 +58,12 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .setContentText("It's pretty, isn't it?")
                         .show();
                 break;
-            case R.id.styled_text:
+            case R.id.styled_text_and_stroke:
                 new SweetAlertDialog(this)
                         .setTitleText("<font color='red'>Red</font> title")
                         .setContentText("Big <font color='green'>green </font><b><i> bold</i></b>")
                         .setContentTextSize(21)
+                        .setStrokeWidth(2)
                         .show();
                 break;
             case R.id.error_text_test:
@@ -216,7 +200,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                 final SweetAlertDialog disabledBtnDialog = new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
                         .setTitleText("Title")
                         .setContentText("Disabled button dialog")
-                        .setConfirmText("Confirm")
+                        .setConfirmText("OK")
                         .setCancelText("Cancel")
                         .setNeutralText("Neutral");
 
@@ -260,6 +244,18 @@ public class SampleActivity extends Activity implements View.OnClickListener {
 
                 dialog.setCustomView(linearLayout);
                 dialog.show();
+                break;
+            case R.id.custom_btn_colors_test:
+                new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+                        .setTitleText("Custom view")
+                        .setCancelButton("red,", null)
+                        .setCancelButtonBackgroundColor(Color.RED)
+                        .setNeutralButton("cyan", null)
+                        .setNeutralButtonBackgroundColor(Color.CYAN)
+                        .setConfirmButton("blue", null)
+                        .setConfirmButtonBackgroundColor(Color.BLUE)
+                        .show();
+                break;
 
         }
     }

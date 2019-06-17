@@ -59,23 +59,30 @@ public class OptAnimationLoader {
 
             String  name = parser.getName();
 
-            if (name.equals("set")) {
-                anim = new AnimationSet(c, attrs);
-                createAnimationFromXml(c, parser, (AnimationSet)anim, attrs);
-            } else if (name.equals("alpha")) {
-                anim = new AlphaAnimation(c, attrs);
-            } else if (name.equals("scale")) {
-                anim = new ScaleAnimation(c, attrs);
-            }  else if (name.equals("rotate")) {
-                anim = new RotateAnimation(c, attrs);
-            }  else if (name.equals("translate")) {
-                anim = new TranslateAnimation(c, attrs);
-            } else {
-                try {
-                    anim = (Animation) Class.forName(name).getConstructor(Context.class, AttributeSet.class).newInstance(c, attrs);
-                } catch (Exception te) {
-                    throw new RuntimeException("Unknown animation name: " + parser.getName() + " error:" + te.getMessage());
-                }
+            switch (name) {
+                case "set":
+                    anim = new AnimationSet(c, attrs);
+                    createAnimationFromXml(c, parser, (AnimationSet) anim, attrs);
+                    break;
+                case "alpha":
+                    anim = new AlphaAnimation(c, attrs);
+                    break;
+                case "scale":
+                    anim = new ScaleAnimation(c, attrs);
+                    break;
+                case "rotate":
+                    anim = new RotateAnimation(c, attrs);
+                    break;
+                case "translate":
+                    anim = new TranslateAnimation(c, attrs);
+                    break;
+                default:
+                    try {
+                        anim = (Animation) Class.forName(name).getConstructor(Context.class, AttributeSet.class).newInstance(c, attrs);
+                    } catch (Exception te) {
+                        throw new RuntimeException("Unknown animation name: " + parser.getName() + " error:" + te.getMessage());
+                    }
+                    break;
             }
 
             if (parent != null) {
