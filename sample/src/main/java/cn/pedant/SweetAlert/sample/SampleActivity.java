@@ -248,7 +248,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
             case R.id.custom_btn_colors_test:
                 new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
                         .setTitleText("Custom view")
-                        .setCancelButton("red,", null)
+                        .setCancelButton("red", null)
                         .setCancelButtonBackgroundColor(Color.RED)
                         .setNeutralButton("cyan", null)
                         .setNeutralButtonBackgroundColor(Color.CYAN)
