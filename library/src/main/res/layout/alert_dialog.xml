@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:background="@drawable/dialog_background"
-    android:padding="10dp">
+    android:padding="30dp">
 
     <ImageView
         android:id="@+id/custom_image"
