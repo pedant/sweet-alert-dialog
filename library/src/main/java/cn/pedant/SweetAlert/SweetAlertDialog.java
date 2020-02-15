@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
@@ -50,6 +51,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private boolean mShowContent;
     private String mCancelText;
     private String mConfirmText;
+    private int mTitleSize;
+    private int mContentSize;
+    private int mButtonsSize;
+    private Typeface mTf;
     private String mNeutralText;
     private int mAlertType;
     private FrameLayout mErrorFrame;
@@ -217,6 +222,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setCustomView(mCustomView);
         setCancelText(mCancelText);
         setConfirmText(mConfirmText);
+	      setTitleTextSize(mTitleSize);
+	      setContentTextSize(mContentSize);
+	      setButtonsTextSize(mButtonsSize);
+	      setTypeface(mTf);
         setNeutralText(mNeutralText);
         applyStroke();
         setConfirmButtonBackgroundColor(mConfirmButtonBackgroundColor);
@@ -247,6 +256,58 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mSuccessLeftMask.clearAnimation();
         mSuccessRightMask.clearAnimation();
     }
+
+
+	public SweetAlertDialog setTitleTextSize(int sps){
+		mTitleSize = sps;
+		if (mTitleTextView != null && mTitleSize != 0) {
+			mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+		}
+
+
+		return this;
+	}
+
+	public SweetAlertDialog setContentTextSize(int sps){
+		mContentSize = sps;
+		if (mContentTextView != null && mContentSize != 0) {
+			mContentTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+		}
+
+		return this;
+	}
+
+	public SweetAlertDialog setButtonsTextSize(int sps){
+		mButtonsSize = sps;
+		if (mCancelButton != null && mButtonsSize != 0) {
+			mCancelButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+		}
+
+		if (mConfirmButton != null && mButtonsSize != 0) {
+			mConfirmButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
+		}
+
+		return this;
+	}
+
+	public SweetAlertDialog setTypeface(Typeface tf){
+		mTf = tf;
+		if (mTitleTextView != null && mTf != null) {
+			mTitleTextView.setTypeface(tf);
+		}
+		if (mContentTextView != null && mTf != null) {
+			mContentTextView.setTypeface(tf);
+		}
+
+		if (mCancelButton != null && mTf != null) {
+			mCancelButton.setTypeface(tf);
+		}
+
+		if (mConfirmButton != null && mTf != null) {
+			mConfirmButton.setTypeface(tf);
+		}
+		return this;
+	}
 
     /**
      * Hides buttons container if all buttons are invisible or gone.
@@ -616,15 +677,6 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
-    /**
-     * Set content text size
-     *
-     * @param value text size in sp
-     */
-    public SweetAlertDialog setContentTextSize(int value) {
-        this.contentTextSize = value;
-        return this;
-    }
 
     public int getContentTextSize() {
         return contentTextSize;
