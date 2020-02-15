@@ -1,181 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFF"
-            xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF">
 
-    <RelativeLayout android:layout_width="match_parent"
-                    android:paddingBottom="10dp"
-                  android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top">
+
 
         <ImageView
-               android:id="@+id/logo_img"
-               android:layout_width="180dp"
-               android:layout_height="wrap_content"
-               android:src="@drawable/logo_big"
-               android:layout_marginTop="10dp"
-               android:layout_marginBottom="15dp"
-               android:layout_centerHorizontal="true"
-               android:contentDescription="@string/app_name"/>
+            android:id="@+id/logo_img"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_big" />
 
-        <TextView
-            android:id="@+id/txt_0"
-            android:layout_alignLeft="@id/logo_img"
+        <CheckBox
+            android:id="@+id/dark_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/logo_img"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:text="Dark style"
+            android:textColor="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/logo_img"
-            android:layout_marginLeft="15dp"
-            android:text="show material progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#797979"/>
-
-        <Button
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/txt_0"
-            android:id="@+id/progress_dialog"
-            style="@style/dialog_blue_button"
-            android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txt_1"
-            android:layout_alignLeft="@id/logo_img"
-            android:layout_below="@id/progress_dialog"
-            android:layout_marginLeft="15dp"
-            android:text="A basic message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#797979"/>
 
-        <Button
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/txt_1"
-            android:id="@+id/basic_test"
-            style="@style/dialog_blue_button"
-            android:layout_margin="10dp"
-            android:text="Try me!"/>
+            <TextView
+                android:id="@+id/txt_0"
+                style="@style/description_style"
+                android:text="Show material progress" />
 
-        <TextView
+            <Button
+                android:id="@+id/progress_dialog"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+            <TextView
+                android:id="@+id/txt_1"
+                style="@style/description_style"
+                android:text="A basic message" />
+
+            <Button
+                android:id="@+id/basic_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+            <TextView
+                android:id="@+id/txt_1_1"
+                style="@style/description_style"
+                android:text="A basic message \nwithout buttons" />
+
+            <Button
+                android:id="@+id/basic_test_without_buttons"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+            <TextView
                 android:id="@+id/txt_2"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/basic_test"
-                android:layout_marginLeft="15dp"
-                android:text="A title with a text under"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+                style="@style/description_style"
+                android:text="A title with a text under" />
 
-        <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_2"
+            <Button
                 android:id="@+id/under_text_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"
-                android:text="Try me!"/>
+                android:text="Try me!" />
 
-        <TextView
+            <TextView
+                style="@style/description_style"
+                android:text="Styled text and stroke" />
+
+            <Button
+                android:id="@+id/styled_text_and_stroke"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+            <TextView
                 android:id="@+id/txt_3"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/under_text_test"
-                android:layout_marginLeft="15dp"
-                android:text="show error message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+                style="@style/description_style"
+                android:text="show error message" />
 
-        <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_3"
+            <Button
                 android:id="@+id/error_text_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"
-                android:text="Try me!"/>
+                android:text="Try me!" />
 
-        <TextView
+            <TextView
                 android:id="@+id/txt_4"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/error_text_test"
-                android:layout_marginLeft="15dp"
-                android:text="A success message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+                style="@style/description_style"
+                android:text="A success message" />
 
-        <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_4"
+            <Button
                 android:id="@+id/success_text_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"
-                android:text="Try me!"/>
+                android:text="Try me!" />
 
 
-        <TextView
+            <TextView
                 android:id="@+id/txt_5"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/success_text_test"
-                android:layout_marginLeft="15dp"
-                android:text="A warning message, with a listener bind to the Confirm-button..."
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+                style="@style/description_style"
+                android:text="A warning message, with a listener bind to the Confirm-button..." />
 
-        <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_5"
+            <Button
                 android:id="@+id/warning_confirm_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"
-                android:text="Try me!"/>
+                android:text="Try me!" />
 
-        <TextView
+            <TextView
                 android:id="@+id/txt_6"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/warning_confirm_test"
-                android:layout_marginLeft="15dp"
-                android:text="A warning message, with listeners bind to Cancel and Confirm button..."
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+                style="@style/description_style"
+                android:text="A warning message, with listeners bind to Cancel and Confirm button..." />
 
-        <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_6"
+            <Button
                 android:id="@+id/warning_cancel_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"
-                android:text="Try me!"/>
+                android:text="Try me!" />
 
-        <TextView
+            <TextView
                 android:id="@+id/txt_7"
-                android:layout_alignLeft="@id/logo_img"
-                android:layout_below="@id/warning_cancel_test"
-                android:layout_marginLeft="15dp"
-                android:text="A message with a custom icon"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#797979"/>
+                style="@style/description_style"
+                android:text="A message with a custom icon" />
 
-        <Button
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txt_7"
+            <Button
                 android:id="@+id/custom_img_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="10dp"
-                android:text="Try me!"/>
+                android:text="Try me!" />
+
+            <TextView
+                android:id="@+id/txt_8"
+                style="@style/description_style"
+                android:text="A message with neutral button" />
+
+            <Button
+                android:id="@+id/neutral_btn_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+            <TextView
+                android:id="@+id/txt_9"
+                style="@style/description_style"
+                android:text="Disabled OK button" />
+
+            <Button
+                android:id="@+id/disabled_btn_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+            <TextView
+                android:id="@+id/txt_10"
+                style="@style/description_style"
+                android:text="Custom view" />
+
+            <Button
+                android:id="@+id/custom_view_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+            <TextView
+                android:id="@+id/txt_11"
+                style="@style/description_style"
+                android:text="Custom btn colors" />
+
+            <Button
+                android:id="@+id/custom_btn_colors_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="10dp"
+                android:text="Try me!" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 </ScrollView>

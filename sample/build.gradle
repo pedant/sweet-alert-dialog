@@ -5,11 +5,10 @@ group = GROUP
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 21
+        minSdkVersion 13
+        targetSdkVersion 28
     }
 
     lintOptions {
@@ -27,5 +26,5 @@ android {
 
 dependencies {
     //compile 'cn.pedant.sweetalert:library:1.3'
-    compile project(':library')
+    implementation project(':library')
 }

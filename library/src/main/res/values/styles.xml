@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="alert_dialog" parent="android:Theme.Dialog">
+
+    <style name="alert_dialog_light" parent="android:Theme.Dialog">
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowNoTitle">true</item>
@@ -9,15 +10,30 @@
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.4</item>
+
+        <item name="sweet_alert_bg_drawable">@drawable/dialog_background</item>
+        <item name="sweet_alert_title_text_color">@color/title_color</item>
+        <item name="sweet_alert_content_text_color">@color/message_color</item>
     </style>
+
+    <style name="alert_dialog_dark" parent="alert_dialog_light">
+        <item name="android:backgroundDimAmount">0.8</item>
+        <item name="sweet_alert_bg_drawable">@drawable/dialog_background_dark</item>
+        <item name="sweet_alert_title_text_color">@color/title_color_dark</item>
+        <item name="sweet_alert_content_text_color">@color/message_color_dark</item>
+    </style>
+
 
     <style name="dialog_blue_button" parent="android:Widget.Button">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">31dp</item>
-        <item name="android:background">@drawable/blue_button_background</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:minWidth">85dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/green_button_background</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:paddingLeft">21dp</item>
         <item name="android:paddingRight">21dp</item>
         <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:lines">1</item>
     </style>
 </resources>

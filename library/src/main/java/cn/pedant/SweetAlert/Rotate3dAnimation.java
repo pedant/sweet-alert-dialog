@@ -69,11 +69,11 @@ public class Rotate3dAnimation extends Animation {
         mFromDegrees = a.getFloat(R.styleable.Rotate3dAnimation_fromDeg, 0.0f);
         mToDegrees = a.getFloat(R.styleable.Rotate3dAnimation_toDeg, 0.0f);
         mRollType = a.getInt(R.styleable.Rotate3dAnimation_rollType, ROLL_BY_X);
-        Description d = parseValue(a.peekValue(R.styleable.Rotate3dAnimation_pivotX));
+        Description d = parseValue(a.peekValue(R.styleable.Rotate3dAnimation_customPivotX));
         mPivotXType = d.type;
         mPivotXValue = d.value;
 
-        d = parseValue(a.peekValue(R.styleable.Rotate3dAnimation_pivotY));
+        d = parseValue(a.peekValue(R.styleable.Rotate3dAnimation_customPivotY));
         mPivotYType = d.type;
         mPivotYValue = d.value;
 
