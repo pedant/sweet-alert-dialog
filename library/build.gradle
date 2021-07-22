@@ -8,7 +8,10 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 9
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 2
+        versionName "1.1"
     }
 
     lintOptions {
@@ -17,7 +20,8 @@ android {
 }
 
 dependencies {
-    compile 'com.pnikosis:materialish-progress:1.0'
+    implementation 'com.pnikosis:materialish-progress:1.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
 }
 
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'

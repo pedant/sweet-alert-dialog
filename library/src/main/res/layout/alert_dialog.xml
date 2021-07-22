@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/error_center_x"
+            wheel:srcCompat="@drawable/error_center_x"
             android:scaleType="center" />
 
     </FrameLayout>
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/warning_sigh"
+            wheel:srcCompat="@drawable/warning_sigh"
             android:scaleType="center" />
     </FrameLayout>
 
